@@ -64,6 +64,26 @@ I've adopted Agile methodology for project planning, using GitHub Projects as th
 
 ### Design Choices
 
+#### Colors
+
+I've curated the color palette using coolors.co, focusing on earthy and natural tones: These colors create a harmonious and inviting visual experience for the web application.
+
+Dark Spring Green: RGBA(41, 122, 76)
+Russet: RGBA(139, 69, 19)
+Lavender: RGBA(216, 212, 242)
+Cocoa Brown: RGBA(210, 105, 30)
+Azure: RGBA(0, 127, 255)
+
+For consistency, I've added these neutral colors:
+
+Slate Gray: RGBA(112, 128, 144, 1)
+Cloud White: RGBA(255, 255, 255, 1)
+Beige: RGBA(245, 245, 220, 1)
+
+#### Fonts
+
+The selected fonts are Montserrat for titles and Lato for the body. This pair combines style and simplicity, providing a harmonious and balanced look.
+
 ## Features
 
 ## Database Design
