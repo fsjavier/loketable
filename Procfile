@@ -1,1 +1,1 @@
-web: gunicorn loketabel.wsgi
+web: gunicorn loketable.wsgi
