@@ -1,110 +1,77 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Loketable
 
-Welcome USER_NAME,
+Lokatable is a web platform project that brings local producers and communities closer together. The goal is to simplify the process for producers to list their products, making them easily accessible to nearby consumers. And by doing so, empowering producers, enriching local communities, and contributing to environmental sustainability.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Table of Contents
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+* [UX / UI](#ui-/-ux)
+* [Features](#features)
+* [Database Design](#database-design)
+* [Technologies Used](#technologies-used)
+* [Testing](#testing)
+* [Deployment](#deployment)
+* [Credits](#credits)
 
-## Gitpod Reminders
+## UI / UX
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+The website prioritizes a clean and simple design, catering to users of all ages. The goal is to ensure a user-friendly experience with clear and intuitive navigation, following established web standards such as a top navigation bar and a profile menu accessible via a profile icon/image click.
 
-`python3 -m http.server`
+### Agile
 
-A blue button should appear to click: _Make Public_,
+I've adopted Agile methodology for project planning, using GitHub Projects as the tool. Within the [project](https://github.com/users/fsjavier/projects/3), I've organized work into Epics (Milestones) to group user stories. Each user story includes a title, description, acceptance criteria, tasks, and tags to distinguish between "must-have" and "nice-to-have" features. The workflow progresses from "To Do" to "In Progress" while working on user stories and finally to "Done" upon completion.
 
-Another blue button should appear to click: _Open Browser_.
+#### User Stories
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+##### EPIC: Admin Functionality
+##### User Stories:
+- As a site admin I have complete CRUD functionality so that I can manage the website's content.
 
-A blue button should appear to click: _Make Public_,
+##### EPIC: Web Navigation
+##### User Stories:
+- As a user I can visit the home page so that see the list of offered products.
+- As a user I can navigate through pages so that I can see the full list of products.
+- As a user I can filter products by category so that easily find what I'm interested in.
+- As a user I can search for products using the search bar so that I can easily find what I'm looking for.
+- As a user I can sort products by distance so that I can see first the most relevant products based on my location.
+- As a user I can rely on a consistent top navigation bar throughout the site for easy navigation.
+- As a user I can access the website on different screen sizes so that I can have the same experience independently of the device I'm using.
 
-Another blue button should appear to click: _Open Browser_.
+##### EPIC: User Registration and Authentication
+##### User Stories:
+- As a user I can register so that I can gain access to the full range of features.
+- As a user I can register using social networks so that I can have a more convenient experience.
+- As a user I can log in and out so that I can control my access to the site.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+##### EPIC: User Profile Management
+##### User Stories:
+- As a registered user I can create, view, update and delete my own products so that I can have full control about what I offer.
+- As a registered user I can access my list of favorite products through my profile so that have a quick overview of them.
+- As a registered user I can view, update and delete my profile so that I can have full control over it.
 
-To log into the Heroku toolbelt CLI:
+##### EPIC: Interaction with Products
+##### User Stories:
+- As a registered user I can mark/unmark products as favorites so that I can easily find them later on.
+- As a registered user I can navigate to the detailed view of products so that I can see the full information and how to contact the producer.
+- As a registered user I can view the profiles of other users so that I see all their listed products and public profile information.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+##### EPIC: Conversations
+##### User Stories:
+- As a registered user I can access my inbox so that I can see a list of my conversations.
+- As a registered user I can send a message to another user so that I can get more information about a product.
+- As a registered user I can answer received messages from other users so that I can provide more information about my products.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Wireframes
 
-------
+### Design Choices
 
-## Release History
+## Features
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Database Design
 
-**September 20 2023:** Update Python version to 3.9.17.
+## Technologies Used
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Testing
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Deployment
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## Credits
