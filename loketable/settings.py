@@ -34,6 +34,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# Added CSRF_TRUSTED_ORIGINS because without it returns 403
+CSRF_TRUSTED_ORIGINS = [os.environ.get('TRUSTED_ORIGIN')]
+
 if development:
     ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
 else:
@@ -53,6 +58,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'home',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
