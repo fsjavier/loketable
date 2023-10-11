@@ -18,20 +18,24 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand bg-body-tertiary">
+    <nav class="navbar navbar-expand">
         <div class="container-fluid justify-content-between">
             <!-- Logo -->
             <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
             <!-- Search bar -->
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
+            <div class="central-element">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
+            </div>
             <!-- Profile dropdown -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -42,7 +46,39 @@
                 </ul>
             </div>
         </div>
-      </nav>
+    </nav>
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+
+        <!--
+        All external links open in a new tab and have attribute rel="noopener"
+        Aria label for screen readers.
+        -->
+
+        <a href="https://facebook.com" target="_blank" rel="noopener"
+            aria-label="Visit our Facebook page (opens in a new tab)"><i class="fab fa-facebook social-media-icon"></i></a>
+
+        <a href="https://twitter.com" target="_blank" rel="noopener"
+            aria-label="Visit our Twitter page (opens in a new tab)"><i
+                class="fab fa-twitter-square social-media-icon"></i></a>
+
+        <a href="https://youtube.com" target="_blank" rel="noopener"
+            aria-label="Visit our Youtube page (opens in a new tab)"><i
+                class="fab fa-youtube-square social-media-icon"></i></a>
+
+        <a href="https://instagram.com" target="_blank" rel="noopener"
+            aria-label="Visit our Instagram page (opens in a new tab)"><i
+                class="fab fa-instagram-square social-media-icon"></i></a>
+
+    </footer>
+    <!-- Font awesome script-->
+    <script src="https://kit.fontawesome.com/d0d853e7a3.js" crossorigin="anonymous"></script>
 
 </body>
 </html>

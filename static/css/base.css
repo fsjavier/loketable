@@ -9,6 +9,7 @@
     --spring-green: rgb(41,122,76);
     --russet: rgb(139,69,19);
     --lavender: rgb(216,212,242);
+    --off-lavender: rgba(216,212,242,0.1);
     --cocoa-brown: rgb(210,105,30);
     --azure: rgb(0,127,255);
 
@@ -32,7 +33,37 @@ main {
     flex: 1 0 auto; /* Keeps the footer at the bottom */
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Header */
+.navbar {
+    padding: 0.5rem 1.5rem;
+    background-color: var(--off-lavender);
+}
+
 .navbar-collapse {
     flex-grow: 0; /* Avoids growing so that nav bar elements can be justified */
+}
+
+#icon-menu {
+    height: 2.5rem;
+}
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--slate-gray);
+    background-color: var(--off-lavender);
+}
+
+.social-media-icon {
+    font-size: 200%;
+    padding: 1rem;
+    color: var(--slate-gray);
 }
