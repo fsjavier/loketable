@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    /* Fonts */
+    --title: 'Montserrat', sans-serif;
+    --body: 'Lato', sans-serif;
+
+    /* Colors */
+    --spring-green: rgb(41,122,76);
+    --russet: rgb(139,69,19);
+    --lavender: rgb(216,212,242);
+    --cocoa-brown: rgb(210,105,30);
+    --azure: rgb(0,127,255);
+
+    --slate-gray: rgb(112, 128, 144);
+    --cloud-white: rgb(255, 255, 255);
+    --beige: rgb(245, 245, 220);
+}
+
+/* Generic rules */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto; /* Keeps the footer at the bottom */
+}
+
+/* Header */
+.navbar-collapse {
+    flex-grow: 0; /* Avoids growing so that nav bar elements can be justified */
+}
