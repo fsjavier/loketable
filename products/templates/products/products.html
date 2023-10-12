@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Local products{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            {% for product in products %}
+                <div class="d-flex col-sm-12 col-md-6 col-lg-4 justify-content-center">
+                    <div class="card m-3 mt-4">
+                        {% if "placeholder" in product.image.url %}
+                            <img src="" alt="">
+                        {% else %}
+                            <img src="{{ product.image.url }}" alt="">
+                        {% endif %}
+                        <div class="card-body">
+                            <h2 class="card-title">{{ product.user }}</h2>
+                            <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+                            <p class="card-text">{{ product.price }} {{ product.currency }}</p>
+                            <p class="card-text">{{ product.category }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

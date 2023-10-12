@@ -67,3 +67,12 @@ footer {
     padding: 1rem;
     color: var(--slate-gray);
 }
+
+/* Products */
+.card {
+    width: 20rem;
+}
+
+.card-text {
+    margin-bottom: 0;
+}
