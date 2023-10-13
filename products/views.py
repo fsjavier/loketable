@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Product
+from .forms import ProductForm
 
 
 class ProductsList(generic.ListView):
@@ -10,3 +11,15 @@ class ProductsList(generic.ListView):
     template_name = 'products/products.html'
     context_object_name = 'products'
     paginate_by = 6
+
+
+class AddProduct(generic.CreateView):
+    """ Add a product """
+    template_name = 'products/add_product.html'
+    model = Product
+    form_class = ProductForm
+    success_url = '/products'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(AddProduct, self).form_valid(form)
