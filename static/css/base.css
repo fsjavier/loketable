@@ -70,9 +70,29 @@ footer {
 
 /* Products */
 .card {
-    width: 20rem;
+    border: none;
+ }
+
+.image-container {
+    height: 200px;
+    overflow: hidden;
+    align-self: center;
+}
+
+.image-container img {
+    object-fit: fill;
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.card-body {
+    padding: 0.5rem;
+}
+
+.card-title {
+    margin: 0;
 }
 
 .card-text {
     margin-bottom: 0;
+    font-size: 75%
 }
