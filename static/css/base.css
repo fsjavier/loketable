@@ -16,6 +16,9 @@
     --slate-gray: rgb(112, 128, 144);
     --cloud-white: rgb(255, 255, 255);
     --beige: rgb(245, 245, 220);
+
+    /* Boxes */
+    --box-shadow-small-lavender: 0px 0px 6px -1px rgb(216,212,242);
 }
 
 /* Generic rules */
@@ -27,14 +30,24 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    font-family: var(--body);
 }
 
 main {
     flex: 1 0 auto; /* Keeps the footer at the bottom */
 }
 
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: var(--title);
+}
+
 a {
     text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
 }
 
 /* Header */
@@ -49,6 +62,10 @@ a {
 
 #icon-menu {
     height: 2.5rem;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 /* Footer */
@@ -95,4 +112,25 @@ footer {
 .card-text {
     margin-bottom: 0;
     font-size: 75%
+}
+
+/* Form */
+.account-container {
+    width: 90%;
+    box-shadow: var(--box-shadow-small-lavender);
+    border-radius: 5px;
+}
+
+
+/* Media queries */
+@media screen and (min-width: 576px) {
+    .account-container {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .account-container {
+        width: 50%;
+    }
 }

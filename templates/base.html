@@ -18,38 +18,42 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand">
-        <div class="container-fluid justify-content-between">
-            <!-- Logo -->
-            <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
-            <!-- Search bar -->
-            <form class="d-flex" role="search" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
-            <!-- Profile dropdown -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            {% if user.is_authenticated %}
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
-                            {% else %}
-                            <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
-                            {% endif %}
+    <header>
+        {% with request.resolver_match.url_name as url_name %}
+            <nav class="navbar navbar-expand">
+                <div class="container-fluid justify-content-between">
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+                    <!-- Search bar -->
+                    <form class="d-flex {% if url_name == 'account_signup' or url_name == 'account_login' or url_name == 'account_logout' %}hidden{% endif %}" role="search" method="GET">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </form>
+                    <!-- Profile dropdown -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
+                                    {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+                    </div>
+                </div>
+            </nav>
+        {% endwith %}
+    </header>
 
     <main>
         {% block content %}
