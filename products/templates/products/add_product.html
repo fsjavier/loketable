@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block title %}Add Product{% endblock %}
 
@@ -9,6 +8,7 @@
             {% csrf_token %}
             {{ form.media }}
             {{ form | crispy }}
+            <input type="submit" value="Submit" class="btn">
         </form>
     </div>
 {% endblock %}

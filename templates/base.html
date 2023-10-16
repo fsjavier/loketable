@@ -35,10 +35,15 @@
                             <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
+                            {% if user.is_authenticated %}
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                 </ul>
