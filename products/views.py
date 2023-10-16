@@ -23,3 +23,10 @@ class AddProduct(generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AddProduct, self).form_valid(form)
+
+
+class ProductDetail(generic.DetailView):
+    """ View product details """
+    template_name = 'products/product_detail.html'
+    model = Product
+    context_object_name = 'product'

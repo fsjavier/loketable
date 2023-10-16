@@ -121,6 +121,12 @@ footer {
     border-radius: 5px;
 }
 
+/* Product detail */
+.product-detail-image-container {
+    height: 300px;
+    overflow: hidden;
+}
+
 
 /* Media queries */
 @media screen and (min-width: 576px) {
@@ -129,7 +135,13 @@ footer {
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
+    .product-detail-image-container {
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) {
     .account-container {
         width: 50%;
     }
