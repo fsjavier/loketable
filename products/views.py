@@ -8,7 +8,6 @@ from .forms import ProductForm
 class ProductsList(generic.ListView):
     """ View all products """
     model = Product
-    # queryset = Product.objects.filter(available=True).order_by('-updated_date')
     template_name = 'products/products.html'
     context_object_name = 'products'
     paginate_by = 6
