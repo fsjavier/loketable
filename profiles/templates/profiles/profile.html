@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {{ profile.first_name }}
+
+    {% for product in profile.user.producer.all %}
+        {{ product.title }}
+    {% endfor %}
+
+    {% if request.user == profile.user %}
+    <a href="{% url 'edit_profile' user.id %}">Edit</a>
+    {% endif %}
+</div>
+{% endblock %}
