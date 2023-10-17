@@ -25,8 +25,8 @@
                     <!-- Logo -->
                     <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
                     <!-- Search bar -->
-                    <form class="d-flex {% if 'account_signup' or 'account_login' or 'account_logout' in 'url_name' %}hidden{% endif %}" role="search" method="GET">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex {% if 'account' in url_name %}hidden{% endif %}" role="search" method="GET" action="{% url 'products' %}">
+                        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </form>
                     <!-- Profile dropdown -->

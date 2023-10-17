@@ -10,7 +10,7 @@
                     <div class="card m-3 mt-4">
                         <div class="image-container">
                             {% if product.slug %}
-                                <a href="{% url 'product_detail' product.slug %}">
+                                <a href="{% url 'product_detail' product.slug product.pk %}">
                                     {% if "placeholder" in product.image.url %}
                                         <img src="../../../static/images/market_default.png" class="img-fluid" alt="">
                                     {% else %}
@@ -27,6 +27,7 @@
                         </div>
                         <div class="card-body">
                             <h2 class="card-title">{{ product.user }}</h2>
+                            <h2 class="card-text">{{ product.title }}</h2>
                             <p class="card-text">{{ product.city }}</p>
                             <p class="card-text">{{ product.price }} {{ product.currency }}</p>
                             <p class="card-text">{{ product.category }}</p>

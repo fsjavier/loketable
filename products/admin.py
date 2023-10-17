@@ -22,5 +22,5 @@ class ProductAdmin(admin.ModelAdmin):
         'title'
     )
     prepopulated_fields = {
-        'slug': ('user', 'title')
+        'slug': ('title',)
     }
