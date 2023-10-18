@@ -7,7 +7,7 @@ from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
     """ Profile model """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     bio = models.TextField(null=False, blank=False)
