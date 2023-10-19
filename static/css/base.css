@@ -112,11 +112,11 @@ footer {
 }
 
 .card-content {
-    background: white;
+    background: var(--cloud-white);
     align-self: end;
     margin: 0.5rem 0.5rem 1rem;
     padding: 0.5rem;
-    box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.1);
+    box-shadow: var(--box-shadow-small-lavender);
 }
 
 .card-title {
@@ -125,11 +125,14 @@ footer {
 
 .card-text {
     margin-bottom: 0;
-    font-size: 75%
 }
 
 .card:hover {
     box-shadow: var(--box-shadow-small-lavender);
+}
+
+.producer-name {
+    color: var(--russet);
 }
 
 /* Form */
@@ -159,7 +162,7 @@ footer {
 
 @media screen and (min-width: 768px) {
     .image-container {
-        aspect-ratio: 1 / 1.3;
+        aspect-ratio: 1 / 1.25;
     }
 
     .product-detail-image-container {
@@ -168,7 +171,17 @@ footer {
 }
 
 @media screen and (min-width: 992px) {
+    .image-container {
+        aspect-ratio: 1 / 1.4;
+    }
+
     .account-container {
         width: 50%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .image-container {
+        aspect-ratio: 1 / 1.3;
     }
 }

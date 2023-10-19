@@ -59,6 +59,18 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    def currency_display(self):
+        if self.currency == 'eur':
+            return '€'
+        elif self.currency == 'gbp':
+            return '£'
+        elif self.currency == 'usd':
+            return '$'
+        elif self.currency == 'sek':
+            return 'SEK'
+        else:
+            return ''
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)

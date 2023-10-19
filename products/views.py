@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from django.db.models import Q
-from .models import Product
+from .models import Product, CATEGORIES
 from .forms import ProductForm
 
 
@@ -14,19 +14,26 @@ class ProductsList(generic.ListView):
 
     def get_queryset(self, **kwargs):
         query = self.request.GET.get('q')
+        category = self.request.GET.get('category')
+
+        products = self.model.objects.filter(available=True).order_by('-updated_date')
+
         if query:
-            products = self.model.objects.filter(
+            products = products.filter(
                 Q(title__icontains=query) |
                 Q(description__icontains=query) |
                 Q(category__icontains=query)
-            ).filter(
-                available=True
-            ).order_by(
-                '-updated_date'
             )
-        else:
-            products = self.model.objects.filter(available=True).order_by('-updated_date')
+
+        if category:
+            products = products.filter(category=category)
+
         return products
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = CATEGORIES
+        return context
 
 
 class AddProduct(generic.CreateView):
