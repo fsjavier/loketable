@@ -108,6 +108,7 @@ footer {
 }
 
 .card-body {
+    position: relative;
     padding: 0;
 }
 
@@ -140,6 +141,13 @@ footer {
 .card-icon {
     width: 30px;
     align-self: center;
+}
+
+.heart {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    font-size: 130%;
 }
 
 /* Form */

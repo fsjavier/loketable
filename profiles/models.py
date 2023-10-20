@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from products.models import Product
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from cloudinary.models import CloudinaryField
@@ -7,7 +8,11 @@ from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
     """ Profile model """
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='profile'
+        )
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     bio = models.TextField(null=False, blank=False)
@@ -27,3 +32,16 @@ def create_user_profile(instance, created, **kwargs):
     """ Create user profile """
     if created:
         Profile.objects.create(user=instance)
+
+
+class Favorite(models.Model):
+    """ Records of users who saved favorites """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="favorited"
+        )
+    product = models.ManyToManyField(Product)
+
+    def __str__(self):
+        return self.user.username

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.db.models import Q
 from .models import Product, CATEGORIES
+from profiles.models import Favorite
 from .forms import ProductForm
 
 
@@ -16,7 +17,8 @@ class ProductsList(generic.ListView):
         query = self.request.GET.get('q')
         category = self.request.GET.get('category')
 
-        products = self.model.objects.filter(available=True).order_by('-updated_date')
+        products = self.model.objects.filter(
+            available=True).order_by('-updated_date')
 
         if query:
             products = products.filter(
@@ -33,6 +35,25 @@ class ProductsList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = CATEGORIES
+
+        products = context['products']
+
+        # Checking for authentication is needed here
+        # Otherwise Django will throw an error because
+        # Anonymous users can't have favorites
+        if self.request.user.is_authenticated:
+
+            # Get a list of favorited product IDs for the current user
+            # https://stackoverflow.com/questions/37205793/django-values-list-vs-values
+            favorite_product_ids = self.request.user.favorited.values_list(
+                'product',
+                flat=True
+                )
+
+            # For each product, check if it's in the list of favorites
+            for product in products:
+                product.is_favorite = product.id in favorite_product_ids
+
         return context
 
 

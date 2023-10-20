@@ -35,6 +35,13 @@
                             <div class="card my-4">
                                 <div class="card-body">
 
+                                    {% if user.is_authenticated %}
+                                        {% if product.is_favorite %}
+                                            <i class="fa-solid fa-heart heart"></i>
+                                        {% else %}
+                                            <i class="fa-regular fa-heart heart"></i>
+                                        {% endif %}
+                                    {% endif %}
                                     <div class="image-container">
                                         {% if product.slug %}
                                             <a href="{% url 'product_detail' product.slug product.pk %}">
