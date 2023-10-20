@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Local products{% endblock %}
 
 {% block content %}
 
-    <nav class="navbar navbar-expand-sm bg-white">
+    <nav class="navbar navbar-expand-md bg-white">
         <div class="container-fluid justify-content-center">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="false" aria-label="Toggle categories">
                 <span class="navbar-toggler-icon"></span>
@@ -12,7 +14,6 @@
             <div class="collapse navbar-collapse" id="categoriesToggle">
                 <form method="get" class="row align-items-center justify-content-center">
                     <div class="col-12">
-                        <h3 class="d-inline">Filter by Category:</h3>
                         <button class="btn btn-outline-dark mx-1" name="category" value="">All</button>
                     {% for category, category_name in categories %}
                         <button class="btn btn-outline-dark m-1" name="category" value="{{ category }}">{{ category_name }}</button>
@@ -59,7 +60,7 @@
                                             {% else %}
                                                 <p class="card-text">{{ product.currency_display }} {{ product.price }}</p>
                                             {% endif %}
-                                            <p class="card-text">{{ product.category }}</p>
+                                            <img class="card-icon" src="{% static product.category_icon_url %}" alt="{{ product.category }}">
                                         </div>
                                     </div>
 

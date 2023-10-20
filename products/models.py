@@ -71,6 +71,29 @@ class Product(models.Model):
         else:
             return ''
 
+    def category_icon_url(self):
+        if self.category == 'meat':
+            return '/icons/meat.png'
+        elif self.category == 'fruit':
+            return '/icons/fruits.png'
+        elif self.category == 'vegetables':
+            return '/icons/vegetables.png'
+        elif self.category == 'wine':
+            return '/icons/wine.png'
+        elif self.category == 'beer':
+            return '/icons/beer.png'
+        elif self.category == 'honey':
+            return '/icons/honey.png'
+        elif self.category == 'nuts':
+            return '/icons/nuts.png'
+        elif self.category == 'cheese':
+            return '/icons/cheese.png'
+        elif self.category == 'mix':
+            return '/icons/food_mix.png'
+        else:
+            return '/icons/food_mix.png'
+            # ("other", "Other")
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
