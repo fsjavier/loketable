@@ -60,8 +60,28 @@ ul {
     flex-grow: 0; /* Avoids growing so that nav bar elements can be justified */
 }
 
+.nav-item.dropdown {
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
 #icon-menu {
-    height: 2.5rem;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+#profile-pic-menu {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#user-greeting {
+    padding: 0.25rem 1rem;
+    margin-bottom: 0;
+    /* font-weight: 500; */
+    color: var(--slate-gray);
 }
 
 .hidden {

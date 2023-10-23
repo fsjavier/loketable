@@ -13,11 +13,11 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         related_name='profile'
         )
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    bio = models.TextField(null=False, blank=False)
-    country = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200, null=True, blank=True)
+    last_name = models.CharField(max_length=200, null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    country = models.CharField(max_length=200, null=True, blank=True)
+    city = models.CharField(max_length=200, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', default='placeholder')

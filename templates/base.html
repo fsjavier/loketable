@@ -34,17 +34,30 @@
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                                    {% if user.is_authenticated %}
+                                        {% if "placeholder" in user.profile.image.url %}
+                                            <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                                        {% else %}
+                                            <img src="{{ user.profile.image.url }}" alt="Profile Picture" id="profile-pic-menu">
+                                        {% endif %}
+                                    {% else %}
+                                        <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                                    {% endif %}
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     {% if user.is_authenticated %}
-                                    <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
+                                        {% if user.profile.firstname is None %}
+                                            <li><p id="user-greeting">Hi, {{ user.username }}!</p></li>
+                                        {% else %}
+                                            <li><p id="user-greeting">Hi, {{ user.profile.first_name }}!</p></li>
+                                        {% endif %}
+                                        <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
                                     {% else %}
-                                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
                                     {% endif %}
                                 </ul>
                             </li>
