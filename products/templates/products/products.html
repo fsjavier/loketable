@@ -39,9 +39,9 @@
                                         <form action="{% url 'add_to_favorite' product.slug product.id %}" method="POST">
                                             {% csrf_token %}
                                             {% if product.is_favorite %}
-                                                <button type="submit" class=" btn fa-solid fa-heart heart"></button>
+                                                <button type="submit" class="btn fa-solid fa-heart heart"></button>
                                             {% else %}
-                                                <button type="submit" class=" btn fa-regular fa-heart heart"></button>
+                                                <button type="submit" class="btn fa-regular fa-heart heart"></button>
                                             {% endif %}
                                         </form>
                                     {% endif %}

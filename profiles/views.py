@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from .models import Profile
+from .models import Profile, Favorite
 from .forms import ProfileForm
 
 
@@ -11,6 +11,12 @@ class Profiles(generic.DetailView):
     template_name = 'profiles/profile.html'
     model = Profile
     context_object_name = 'profile'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_favorites'] = Favorite.objects.filter(user=self.request.user).count()
+
+        return context
 
 
 class EditProfile(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
