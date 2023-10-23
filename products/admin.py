@@ -11,7 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
         'title',
         'category',
         'price',
-        'currency'
+        'currency',
     )
     list_filter = (
         'user',

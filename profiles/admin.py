@@ -24,4 +24,15 @@ class ProfileAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Favorite)
+@admin.register(Favorite)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'user',
+        'product',
+    )
+
+    search_fields = (
+        'user',
+        'product'
+    )

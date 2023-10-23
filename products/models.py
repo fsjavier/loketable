@@ -52,6 +52,7 @@ class Product(models.Model):
         )
     available = models.BooleanField()
     slug = models.SlugField(max_length=200)
+    favorited_by = models.ManyToManyField(User, related_name='favorites')
 
     class Meta:
         ordering = ['-updated_date']

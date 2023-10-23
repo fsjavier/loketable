@@ -1,13 +1,16 @@
-from django.shortcuts import render
-from django.views import generic
+from django.shortcuts import redirect, get_object_or_404, HttpResponseRedirect
+from django.views import generic, View
 from django.db.models import Q
 from .models import Product, CATEGORIES
 from profiles.models import Favorite
+
 from .forms import ProductForm
 
 
 class ProductsList(generic.ListView):
-    """ View all products """
+    """
+    View all products
+    """
     model = Product
     template_name = 'products/products.html'
     context_object_name = 'products'
@@ -58,7 +61,9 @@ class ProductsList(generic.ListView):
 
 
 class AddProduct(generic.CreateView):
-    """ Add a product """
+    """
+    Add a product
+    """
     template_name = 'products/add_product.html'
     model = Product
     form_class = ProductForm
@@ -70,7 +75,38 @@ class AddProduct(generic.CreateView):
 
 
 class ProductDetail(generic.DetailView):
-    """ View product details """
+    """
+    View product details
+    """
     template_name = 'products/product_detail.html'
     model = Product
     context_object_name = 'product'
+
+
+class ProductListFavorite(View):
+    """
+    Add or remove a product from your favorites
+    """
+    def post(self, request, slug, product_id):
+        product = get_object_or_404(Product, id=product_id, slug=slug)
+
+        if product.favorited_by.filter(id=request.user.id).exists():
+            product.favorited_by.remove(request.user)
+            # Get the instance from the Favorites if it exists
+            # Or create one if it doesn't
+            # https://www.letscodemore.com/blog/django-get-or-create/
+            favorite, created = Favorite.objects.get_or_create(
+                user=request.user,
+                product=product
+                )
+            favorite.delete()
+        else:
+            product.favorited_by.add(request.user)
+            # Get the instance from the Favorites if it exists
+            # Or create one if it doesn't
+            favorite, created = Favorite.objects.get_or_create(
+                user=request.user,
+                product=product
+                )
+
+        return redirect('products')

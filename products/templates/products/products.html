@@ -36,11 +36,14 @@
                                 <div class="card-body">
 
                                     {% if user.is_authenticated %}
-                                        {% if product.is_favorite %}
-                                            <i class="fa-solid fa-heart heart"></i>
-                                        {% else %}
-                                            <i class="fa-regular fa-heart heart"></i>
-                                        {% endif %}
+                                        <form action="{% url 'add_to_favorite' product.slug product.id %}" method="POST">
+                                            {% csrf_token %}
+                                            {% if product.is_favorite %}
+                                                <button type="submit" class=" btn fa-solid fa-heart heart"></button>
+                                            {% else %}
+                                                <button type="submit" class=" btn fa-regular fa-heart heart"></button>
+                                            {% endif %}
+                                        </form>
                                     {% endif %}
                                     <div class="image-container">
                                         {% if product.slug %}

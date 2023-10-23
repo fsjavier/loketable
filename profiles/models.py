@@ -41,7 +41,11 @@ class Favorite(models.Model):
         on_delete=models.CASCADE,
         related_name="favorited"
         )
-    product = models.ManyToManyField(Product)
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="favorite_product"
+        )
 
     def __str__(self):
         return self.user.username
