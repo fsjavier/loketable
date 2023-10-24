@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import Profile, Favorite
+from products.models import Product
 from .forms import ProfileForm
 
 
@@ -14,7 +15,22 @@ class Profiles(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user_favorites'] = Favorite.objects.filter(user=self.request.user).count()
+        context['user_favorites'] = Favorite.objects.filter(
+            user=self.request.user
+            ).count()
+
+        # Filter the products for the user
+        user_products = Product.objects.filter(user=context['profile'].user)
+        # Check if there's at least one un/available product
+        context['is_any_product_available'] = user_products.filter(
+            available=True).exists()
+        context['is_any_product_unavailable'] = user_products.filter(
+            available=False).exists()
+        # Separate available and unavailable products
+        available_products = user_products.filter(available=True)
+        unavailable_products = user_products.filter(available=False)
+        context['available_products'] = available_products
+        context['unavailable_products'] = unavailable_products
 
         return context
 

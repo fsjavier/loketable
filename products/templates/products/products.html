@@ -66,9 +66,9 @@
                                             <p class="card-text">{{ product.title }}</p>
                                             <p class="card-text">In {{ product.city }}</p>
                                             {% if product.currency == 'eur' %}
-                                                <p class="card-text">{{ product.price }} {{ product.currency_display }}</p>
+                                                <p class="card-text text-muted">{{ product.price }} {{ product.currency_display }}</p>
                                             {% else %}
-                                                <p class="card-text">{{ product.currency_display }} {{ product.price }}</p>
+                                                <p class="card-text text-muted">{{ product.currency_display }} {{ product.price }}</p>
                                             {% endif %}
                                             <img class="card-icon" src="{% static product.category_icon_url %}" alt="{{ product.category }}">
                                         </div>

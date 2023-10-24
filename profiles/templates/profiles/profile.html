@@ -37,7 +37,7 @@
     </div>
 
     {% if request.user == profile.user %}
-        <div class="row">
+        <div class="row my-4">
             <div class="col d-flex justify-content-center">
                 <a href="#"><i class="fa-solid fa-heart"> Favorites: {{ user_favorites }}</i></a>
                 {% for favorite in profile.user.favorited.all %}
@@ -47,50 +47,29 @@
         </div>
     {% endif %}
 
-    <div class="row my-4">
+
+    {% if is_any_product_available %}
+    <div class="row my-4 text-center">
         <div class="col">
-            <h2>Available Products</h2>
-        </div>
-        <div class="col">
-            {% if profile.user == request.user %}
-            <a href="{% url 'add_product' %}" class="btn"><i class="fa-solid fa-plus"></i></a>
-            {% endif %}
+            <h2>Available Products {% if profile.user == request.user %} <a href="{% url 'add_product' %}" class="btn"><i class="fa-solid fa-plus"></i></a>{% endif %}</h2>
         </div>
     </div>
+    {% endif %}
 
-    {% for product in profile.user.producer.all %}
-        <div class="row">
-            <div class="col product-img-profile-container">
-                {% if "placeholder" in product.image.url %}
-                    <img src="../../../static/images/market_default.png" class="product-img-profile" alt="">
-                {% else %}
-                    <img src="{{ product.image.url }}" class="product-img-profile" alt="">
-                {% endif %}
-            </div>
-            <div class="col">
-                <p>{{ product.title }}</p>
-                <p>{{ product.description }}</p>
-                {% if product.currency == 'eur' %}
-                    <p class="card-text">{{ product.price }} {{ product.currency_display }}</p>
-                {% else %}
-                    <p class="card-text">{{ product.currency_display }} {{ product.price }}</p>
-                {% endif %}
-            </div>
-            <div class="col">
-                {% if profile.user == request.user %}
-                    <div class="row">
-                        <div class="col">
-                            <a href="{% url 'edit_product' product.slug product.id %}">Edit</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p>Delete</p>
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
+    {% for product in available_products %}
+        {% include './product_card.html' %}
+    {% endfor %}
+
+    {% if is_any_product_unavailable %}
+    <div class="row my-4 text-center">
+        <div class="col">
+            <h2>Unavailable Products</h2>
         </div>
+    </div>
+    {% endif %}
+
+    {% for product in unavailable_products %}
+        {% include './product_card.html' %}
     {% endfor %}
 
 </div>
