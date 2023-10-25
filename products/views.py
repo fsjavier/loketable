@@ -99,6 +99,28 @@ class EditProduct(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
         return self.request.user == self.get_object().user
 
 
+class ToggleProduct(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.UpdateView
+):
+    """ Toggle a Product """
+    model = Product
+    fields = ['available']
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.object.user.pk})
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.available = form.instance.available
+        form.save()
+        return super(ToggleProduct, self).form_valid(form)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
 class DeleteProduct(
     LoginRequiredMixin,
     UserPassesTestMixin,

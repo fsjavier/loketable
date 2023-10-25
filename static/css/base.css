@@ -143,6 +143,7 @@ footer {
 }
 
 .card-title {
+    font-weight: 600;
     margin: 0;
 }
 
@@ -196,6 +197,16 @@ footer {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.btn-product {
+    border: none;
+    margin: 0.5rem 0;
+}
+
+.form-switch {
+    padding-left: 3rem;
+    margin: 0.5rem 0;
 }
 
 /* Form */

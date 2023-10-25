@@ -5,6 +5,7 @@ from .views import (
     ProductDetail,
     ProductListFavorite,
     EditProduct,
+    ToggleProduct,
     DeleteProduct
 )
 
@@ -25,6 +26,11 @@ urlpatterns = [
         'edit/<slug:slug>/<int:pk1>/',
         EditProduct.as_view(),
         name='edit_product'
+        ),
+    path(
+        'toggle/<slug:slug>/<int:pk1>/',
+        ToggleProduct.as_view(),
+        name='toggle_product'
         ),
     path(
         'delete/<slug:slug>/<int:pk1>/',

@@ -16,3 +16,15 @@ deleteProductModal.addEventListener('show.bs.modal', event => {
     const deleteUrl = formElement.getAttribute('action').replace('0', productSlug).replace('1', productID);
     formElement.setAttribute('action', deleteUrl);
 });
+
+// Add event listener to know when a product has been toggled
+
+const productToggleForms = document.querySelectorAll('.product-toggle-form');
+
+productToggleForms.forEach(function(form) {
+    const checkbox = form.querySelector('.form-check-input');
+
+    checkbox.addEventListener('change', () => {
+        form.submit();
+    });
+});
