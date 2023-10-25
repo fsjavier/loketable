@@ -1,4 +1,9 @@
-from django.shortcuts import redirect, get_object_or_404, HttpResponseRedirect, reverse
+from django.shortcuts import (
+    redirect,
+    get_object_or_404,
+    HttpResponseRedirect,
+    reverse
+    )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views import generic, View
 from django.db.models import Q
@@ -68,7 +73,9 @@ class AddProduct(generic.CreateView):
     template_name = 'products/add_product.html'
     model = Product
     form_class = ProductForm
-    success_url = '/products'
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.object.user.pk})
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -87,6 +94,20 @@ class EditProduct(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(EditProduct, self).form_valid(form)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
+class DeleteProduct(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.DeleteView
+):
+    model = Product
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.object.user.pk})
 
     def test_func(self):
         return self.request.user == self.get_object().user
