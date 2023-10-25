@@ -106,7 +106,7 @@ footer {
 }
 
 /* Products */
-.card {
+.card-products {
     border: none;
 }
 
@@ -127,7 +127,7 @@ footer {
     object-fit: cover;
 }
 
-.card-body {
+.card-products-body {
     position: relative;
     padding: 0;
 }
@@ -176,6 +176,8 @@ footer {
 #profile-picture-container {
     max-height: 250px;
     max-width: 250px;
+    min-height: 156px;
+    min-width: 156px;
     border-radius: 5px;
 }
 
@@ -197,6 +199,39 @@ footer {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 5px;
+}
+
+#bio {
+    width: 95%;
+    margin: 0 auto;
+    min-height: 10rem;
+    box-shadow: var(--box-shadow-small-lavender);
+}
+
+#about-me {
+    font-size: 1rem;
+    padding-top: 0.75rem;
+}
+
+#about-me-name {
+    font-weight: 600;
+}
+
+hr {
+    margin: 0.3rem;
+    color: var(--russet);
+}
+
+#favorites-profile {
+    font-size: 1.25rem;
+    color: var(--azure);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+#favorites-profile:hover {
+    color: var(--russet);
+    /* background-color: var(--azure); */
 }
 
 .btn-product {

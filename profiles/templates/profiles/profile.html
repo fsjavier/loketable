@@ -4,48 +4,51 @@
 
 {% block content %}
 <div class="container">
-    <div class="row my-4">
+    <div class="row my-4 d-flex justify-content-center">
         <div class="col-4" id="profile-picture-container">
-            <div class="row">
+            {% if "placeholder" in profile.image.url %}
+                <img src="{% static '/icons/profile_avatar.png' %}" alt="Profile avatar" id="profile-picture">
+            {% else %}
+                <img src="{{ profile.image.url }}" alt="Profile Picture" id="profile-picture">
+            {% endif %}
+        </div>
+
+        <div class="col-sm-8">
+            <div class="row" id="bio">
                 <div class="col">
-                    {% if "placeholder" in profile.image.url %}
-                        <img src="{% static '/icons/profile_avatar.png' %}" alt="Profile avatar" id="profile-picture">
-                    {% else %}
-                        <img src="{{ profile.image.url }}" alt="Profile Picture" id="profile-picture">
-                    {% endif %}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col mt-3 mb-4 d-flex justify-content-center">
-                    {% if profile.user == request.user %}
-                        <button class="btn btn-outline-dark w-75"><a href="{% url 'edit_profile' user.id %}">Edit</a></button>
-                    {% endif %}
+                    <div class="row">
+                        <div class="col">
+                            <h2 id="about-me">About <span id="about-me-name">{{ profile.first_name }}</span></h2>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            {{ profile.bio }}
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            {% if request.user == profile.user %}
+                <div class="row my-3 text-center">
+                    <div class="col">
+                        <a href="#" id="favorites-profile"><i class="fa-solid fa-heart"></i> Favorites: {{ user_favorites }}</a>
+                    </div>
+                </div>
+            {% endif %}
+            
         </div>
-        <div class="col-8">
-            <div class="row">
-                <div class="col">
-                    <p>{{ profile.first_name }} {{ profile.last_name }}</p>
-                    <p>{{ profile.bio }}</p>
+
+        {% if profile.user == request.user %}
+            <div class="row mt-3 mb-2">
+                <div class="col d-flex justify-content-center">
+                    <button class="btn btn-outline-dark w-50"><a href="{% url 'edit_profile' user.id %}">Edit Profile</a></button>
                 </div>
             </div>
-
-        </div>
+        {% endif %}
         
     </div>
-
-    {% if request.user == profile.user %}
-        <div class="row my-4">
-            <div class="col d-flex justify-content-center">
-                <a href="#"><i class="fa-solid fa-heart"> Favorites: {{ user_favorites }}</i></a>
-                {% for favorite in profile.user.favorited.all %}
-                    {{ favorite.product }}
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
 
 
     {% if is_any_product_available %}
