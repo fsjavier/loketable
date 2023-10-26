@@ -44,6 +44,7 @@ h4, h5, h6 {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 ul {
@@ -231,7 +232,12 @@ hr {
 
 #favorites-profile:hover {
     color: var(--russet);
-    /* background-color: var(--azure); */
+}
+
+#btn-edit-profile:hover {
+    color: var(--cloud-white);
+    background-color: var(--cocoa-brown);
+    border: 1px solid var(--cocoa-brown);
 }
 
 .btn-product {

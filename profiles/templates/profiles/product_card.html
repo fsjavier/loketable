@@ -4,22 +4,29 @@
     <div class="col">
         <div class="card card mb-3 mx-auto" style="max-width: 1200px;">
             <div class="row g-0">
-                <div class="col-sm-4 product-img-profile-container">
-                    {% if "placeholder" in product.image.url %}
-                        <img src="../../../static/images/market_default.png" class="product-img-profile" alt="">
-                    {% else %}
-                        <img src="{{ product.image.url }}" class="product-img-profile" alt="">
-                    {% endif %}
-                </div>
-                <div class="col d-flex align-items-center">
-                    <div class="card-body ps-3">
-                        <p class="card-title">{{ product.title }}</p>
-                        <p class="card-text">{{ product.description }}</p>
-                        {% if product.currency == 'eur' %}
-                            <p class="card-text"><small class="text-muted">{{ product.price }} {{ product.currency_display }}</small></p>
-                        {% else %}
-                            <p class="card-text"><small class="text-muted">{{ product.currency_display }} {{ product.price }}</small></p>
-                        {% endif %}
+                <div class="col">
+                    <div class="row">
+                        <a href="{% url 'product_detail' product.slug product.id %}" class="d-flex justify-content-center">
+                            <div class="col-sm-4 product-img-profile-container">
+                                {% if "placeholder" in product.image.url %}
+                                    <img src="../../../static/images/market_default.png" class="product-img-profile" alt="">
+                                {% else %}
+                                    <img src="{{ product.image.url }}" class="product-img-profile" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="col d-flex align-items-center">
+                                <div class="card-body ps-3">
+                                    <p class="card-title">{{ product.title }}</p>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    {% if product.currency == 'eur' %}
+                                        <p class="card-text"><small class="text-muted">{{ product.price }} {{ product.currency_display }}</small></p>
+                                    {% else %}
+                                        <p class="card-text"><small class="text-muted">{{ product.currency_display }} {{ product.price }}</small></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-2 d-flex flex-sm-column justify-content-center align-items-center">
