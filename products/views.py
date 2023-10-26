@@ -144,7 +144,7 @@ class ProductDetail(generic.DetailView):
     context_object_name = 'product'
 
 
-class ProductListFavorite(View):
+class ProductListAddFavorite(View):
     """
     Add or remove a product from your favorites
     """
@@ -171,3 +171,61 @@ class ProductListFavorite(View):
                 )
 
         return redirect('products')
+
+
+class FavoriteProductsList(generic.ListView):
+    """
+    View all products
+    """
+    model = Product
+    template_name = 'products/products.html'
+    context_object_name = 'products'
+    paginate_by = 6
+    success_url = '/favorites/'
+
+    def get_queryset(self, **kwargs):
+        query = self.request.GET.get('q')
+        category = self.request.GET.get('category')
+
+        products = self.model.objects.all().order_by('-updated_date')
+        favorite_product_ids = self.request.user.favorited.values_list(
+            'product',
+            flat=True
+            )
+        products = products.filter(id__in=favorite_product_ids)
+
+        if query:
+            products = products.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(category__icontains=query)
+            )
+
+        if category:
+            products = products.filter(category=category)
+
+        return products
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = CATEGORIES
+
+        products = context['products']
+
+        # Checking for authentication is needed here
+        # Otherwise Django will throw an error because
+        # Anonymous users can't have favorites
+        if self.request.user.is_authenticated:
+
+            # Get a list of favorited product IDs for the current user
+            # https://stackoverflow.com/questions/37205793/django-values-list-vs-values
+            favorite_product_ids = self.request.user.favorited.values_list(
+                'product',
+                flat=True
+                )
+
+            # For each product, check if it's in the list of favorites
+            for product in products:
+                product.is_favorite = product.id in favorite_product_ids
+
+        return context

@@ -33,7 +33,7 @@
             {% if request.user == profile.user %}
                 <div class="row my-3 text-center">
                     <div class="col">
-                        <a href="#" id="favorites-profile"><i class="fa-solid fa-heart"></i> Favorites: {{ user_favorites }}</a>
+                        <a href="{% url 'favorite_products' %}" id="favorites-profile"><i class="fa-solid fa-heart"></i> Favorites: {{ user_favorites }}</a>
                     </div>
                 </div>
             {% endif %}

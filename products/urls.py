@@ -3,7 +3,7 @@ from .views import (
     ProductsList,
     AddProduct,
     ProductDetail,
-    ProductListFavorite,
+    ProductListAddFavorite,
     EditProduct,
     ToggleProduct,
     DeleteProduct
@@ -19,7 +19,7 @@ urlpatterns = [
         ),
     path(
         'favorite/<slug:slug>/<int:product_id>/',
-        ProductListFavorite.as_view(),
+        ProductListAddFavorite.as_view(),
         name='add_to_favorite'
         ),
     path(
