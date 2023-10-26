@@ -35,7 +35,7 @@
                         <a href="{% url 'profile' product.user.id %}" class="d-flex align-items-center">
                             <div class="profile-image-container">
                             {% if "placeholder" in product.user.profile.image.url %}
-                                <img src="{% static 'icons/icon_menu_2.png' %}" alt="Profile Menu Icon" class="icon-menu">
+                                <img src="{% static 'icons/profile_avatar.png' %}" alt="Profile Menu Icon" class="icon-menu">
                             {% else %}
                                 <img src="{{ product.user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
                             {% endif %}
