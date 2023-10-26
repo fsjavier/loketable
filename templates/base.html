@@ -35,12 +35,12 @@
                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {% if user.is_authenticated %}
                                         {% if "placeholder" in user.profile.image.url %}
-                                            <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                                            <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" class="icon-menu">
                                         {% else %}
-                                            <img src="{{ user.profile.image.url }}" alt="Profile Picture" id="profile-pic-menu">
+                                            <img src="{{ user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
                                         {% endif %}
                                     {% else %}
-                                        <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" id="icon-menu">
+                                        <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" class="icon-menu">
                                     {% endif %}
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">

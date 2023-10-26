@@ -1,33 +1,65 @@
 {% extends 'base.html' %}
 
-{% block title %}Product detail - {{product.title}}{% endblock %}
+{% load static %}
+
+{% block title %}Product details - {{product.title}}{% endblock %}
 
 {% block content %}
-    <div class="container-md mt-4">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-8 col-md-5 product-detail-image-container">
-                <img src="{{ product.image.url }}" alt="">
+    <div class="container mt-4">
+
+        <div class="row mt-5 justify-content-center">
+
+            <div class="col-8 col-md-5 d-flex align-items-center product-detail-image-container">
+                {% if "placeholder" in product.image.url %}
+                    <img src="../../../static/images/market_default.png" class="product-detail-image" alt="">
+                {% else %}
+                    <img src="{{ product.image.url }}" class="product-detail-image" alt="">
+                {% endif %}
             </div>
-            <div class="col-12 col-md-7">
-                <div class="container pt-3 pb-3">
-                    <div class="row">
-                        <div class="col">
-                            {{ product.title }}
-                        </div>
+
+            <div class="col-10 col-md-7">
+                <div class="row mt-3 mt-md-0 text-center">
+                    <div class="col card-title">
+                        <h2>{{ product.title }}</h2>
+                        <hr>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            {{ product.description }}
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col product-detail-description">
+                        {{ product.description }}
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            {{ product.price }}
-                            {{ product.currency }}
-                        </div>
+                </div>
+                <div class="row mt-3">
+                    <h3 class="mb-4 text-center">Details</h3>
+                    <div class="col d-flex mb-4 justify-content-center align-items-center">
+                        <a href="{% url 'profile' product.user.id %}" class="d-flex align-items-center">
+                            <div class="profile-image-container">
+                            {% if "placeholder" in product.user.profile.image.url %}
+                                <img src="{% static 'icons/icon_menu_2.png' %}" alt="Profile Menu Icon" class="icon-menu">
+                            {% else %}
+                                <img src="{{ product.user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
+                            {% endif %}
+                            </div>
+                            <span class="ps-3">{{ product.user.profile.first_name }}</span>
+                        </a>
+                    </div>
+                    <div class="col product-detail-box">
+                        <ul id="product-detail-list">
+                            {% if product.price %}
+                            <li class="d-flex"><i class="fa-solid fa-coins product-detail-icon"></i> <span class="product-detail-info">{{ product.price }} {{ product.currency_display }}</span></li>
+                            {% endif %}
+                            {% if product.city %}
+                            <li class="d-flex"><i class="fa-solid fa-location-dot product-detail-icon"></i> <span class="product-detail-info">{{ product.city }}, {{ product.country }}</span></li>
+                            {% endif %}
+                            {% if product.category %}
+                            <li class="d-flex"><i class="fa-solid fa-tag product-detail-icon"></i> <span class="product-detail-info">{{ product.category | title }}</span></li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
             </div>
+
         </div>
+
     </div>
 {% endblock %}
