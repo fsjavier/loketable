@@ -172,6 +172,10 @@ footer {
     font-size: 130%;
 }
 
+.disabled-product {
+    border: none;
+}
+
 /* Profile */
 
 #profile-picture-container {
