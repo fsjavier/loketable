@@ -106,6 +106,40 @@ footer {
     color: var(--slate-gray);
 }
 
+/* Home */
+#hero-image-background {
+    background: url('../images/home_3.png') no-repeat center center;
+    background-size: cover;
+    max-width: 98%;
+    border-radius: 5px;
+    background-color: var(--russet);
+    background-blend-mode: hard-light;
+    margin: 0 auto;
+}
+
+.hero-image-container {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-image {
+    aspect-ratio: 1 / 1;
+    max-width: 95%;
+    object-fit: contain;
+}
+
+#image-vegetables {
+    opacity: 0.8;
+}
+
+.home-link {
+    color: var(--azure)
+}
+
+.home-link:hover {
+    color: var(--russet)
+}
+
 /* Products */
 .card-products {
     border: none;

@@ -15,9 +15,14 @@ class Profiles(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user_favorites'] = Favorite.objects.filter(
-            user=self.request.user
-            ).count()
+
+        # Checking for authentication is needed here
+        # Otherwise Django will throw an error when
+        # Anonymous users try to access a profile
+        if self.request.user.is_authenticated:
+            context['user_favorites'] = Favorite.objects.filter(
+                user=self.request.user
+                ).count()
 
         # Filter the products for the user
         user_products = Product.objects.filter(user=context['profile'].user)

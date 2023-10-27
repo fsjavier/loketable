@@ -1,3 +1,32 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Your local market{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex text-center m-3">
+            <div class="col">
+                <h1 class="mb-3">Welcome to Loketable, your local market</h1>
+                <p>
+                    <a href="{% url 'account_signup' %}" class="home-link">Register</a> or <a href="{% url 'account_login' %}" class="home-link">Log in</a> to enjoy the full functionality.
+                </p>
+                <p>
+                    If you just want to have a look, <a href="{% url 'products' %}" class="home-link">here</a> you'll find all listed products.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-3 mb-5" id="hero-image-background">
+            <div class="col hero-image-container">
+                <img src="{% static './images/home_2.png' %}" alt="" class="hero-image">
+            </div>
+            <div class="col hero-image-container">
+                <img src="{% static './images/home_1.png' %}" alt="" class="hero-image" id="image-vegetables">
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
