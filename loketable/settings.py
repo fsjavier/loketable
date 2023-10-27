@@ -37,7 +37,10 @@ DEBUG = development
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Added CSRF_TRUSTED_ORIGINS because without it returns 403
-CSRF_TRUSTED_ORIGINS = [os.environ.get('TRUSTED_ORIGIN')]
+if development:
+    CSRF_TRUSTED_ORIGINS = [os.environ.get('TRUSTED_ORIGIN')]
+else:
+    CSRF_TRUSTED_ORIGINS = [os.environ.get('HEROKU_HOSTNAME')]
 
 if development:
     ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
