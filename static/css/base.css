@@ -53,9 +53,32 @@ ul {
 
 /* Header */
 .navbar {
-    padding: 0.5rem 1.5rem;
     background-color: var(--off-lavender);
 }
+
+#logo-navbar {
+    width: 100%;
+    aspect-ratio: 1 / 0.2;
+    object-fit: cover;
+}
+
+#search-bar-form {
+    margin: 0 auto;
+}
+
+.form-control {
+    border-radius: 50%;
+}
+
+.form-control:focus {
+    box-shadow: none;
+  }
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+  }
 
 .navbar-collapse {
     flex-grow: 0; /* Avoids growing so that nav bar elements can be justified */

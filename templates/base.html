@@ -19,52 +19,67 @@
 
     <header>
         {% with request.resolver_match.url_name as url_name %}
-            <nav class="navbar navbar-expand">
-                <div class="container-fluid justify-content-between">
-                    <!-- Logo -->
-                    {% if user.is_authenticated %}
-                    <a class="navbar-brand" href="{% url 'products' %}">Navbar</a>
-                    {% else %}
-                    <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
-                    {% endif %}
-                    <!-- Search bar -->
-                    <form class="d-flex {% if 'account' in url_name %}hidden{% endif %}" role="search" method="GET" action="{% url 'products' %}">
-                        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
-                    </form>
-                    <!-- Profile dropdown -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {% if user.is_authenticated %}
-                                        {% if "placeholder" in user.profile.image.url %}
-                                            <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" class="icon-menu">
-                                        {% else %}
-                                            <img src="{{ user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
-                                        {% endif %}
-                                    {% else %}
-                                        <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" class="icon-menu">
-                                    {% endif %}
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    {% if user.is_authenticated %}
-                                        {% if user.profile.firstname is None %}
-                                            <li><p id="user-greeting">Hi, {{ user.username }}!</p></li>
-                                        {% else %}
-                                            <li><p id="user-greeting">Hi, {{ user.profile.first_name }}!</p></li>
-                                        {% endif %}
-                                        <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
-                                    {% else %}
-                                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
-                                    {% endif %}
+            <nav class="navbar navbar-expand my-2">
+                <div class="container-fluid">
+                    <div class="row d-flex align-items-center justify-content-center">
+
+                        <!-- Logo -->
+                        <div class="col-sm-3 col-7 order-sm-1">
+                            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static './images/loketable_logo_black.png' %}" alt="" id="logo-navbar"></a>
+                        </div>
+
+                        <!-- Search bar -->
+                        <div class="col-sm-7 col-12 order-3 order-sm-2 my-3 my-sm-0">
+
+                            <form class="w-75 {% if 'account' in url_name %}hidden{% endif %}" role="search" method="GET" action="{% url 'products' %}" id="search-bar-form">
+                                <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-link" type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                        <input class="form-control bg-light border-0" name="q" type="search" placeholder="What are your searching for?" aria-label="Search">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <!-- Profile dropdown -->
+                        <div class="col-sm-2 col-3 order-sm-3">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {% if user.is_authenticated %}
+                                                {% if "placeholder" in user.profile.image.url %}
+                                                    <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" class="icon-menu">
+                                                {% else %}
+                                                    <img src="{{ user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
+                                                {% endif %}
+                                            {% else %}
+                                                <img src="{% static 'icons/icon_menu_1.png' %}" alt="Profile Menu Icon" class="icon-menu">
+                                            {% endif %}
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            {% if user.is_authenticated %}
+                                                {% if user.profile.firstname is None %}
+                                                    <li><p id="user-greeting">Hi, {{ user.username }}!</p></li>
+                                                {% else %}
+                                                    <li><p id="user-greeting">Hi, {{ user.profile.first_name }}!</p></li>
+                                                {% endif %}
+                                                <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>
+                                            {% else %}
+                                                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'account_login' %}">Log in</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
                                 </ul>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
