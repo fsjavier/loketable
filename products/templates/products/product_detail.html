@@ -5,6 +5,28 @@
 {% block title %}Product details - {{product.title}}{% endblock %}
 
 {% block content %}
+<!-- <div class="modal-dialog modal-dialog-centered"></div> -->
+    {% if not product.available %}
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">This product is currently unavailable</h1>
+                </div>
+                <div class="modal-body">
+                <p>{% if product.user.profile.first_name %}{{ product.user.profile.first_name }}{% else %}{{ product.user.username }}{% endif %} 
+                    has marked <strong>{{ product.title }}</strong> as not available at the moment.
+                </p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <a href="{% url 'products' %}" class="btn btn-outline-primary">See all available products</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="container mt-4">
 
         <div class="row mt-5 justify-content-center">
@@ -67,4 +89,17 @@
         </div>
 
     </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() { 
+            const myModal = new bootstrap.Modal('#staticBackdrop', {
+                keyboard: false,
+                });
+
+            myModal.show();
+        });
+    </script>
 {% endblock %}
