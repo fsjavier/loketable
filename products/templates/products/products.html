@@ -49,7 +49,7 @@
                                         <button class="btn {%if not product.available %}disabled disabled-product{% endif %}">
                                             <a href="{% url 'product_detail' product.slug product.pk %}">
                                                 {% if "placeholder" in product.image.url %}
-                                                    <img src="../../../static/images/market_default.png" class="card-img-top" alt="">
+                                                    <img src="{% static 'images/market_default.png' %}" class="card-img-top" alt="">
                                                 {% else %}
                                                     <img src="{{ product.image.url }}" class="card-img-top" alt="">
                                                 {% endif %}
