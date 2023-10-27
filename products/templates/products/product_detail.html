@@ -30,31 +30,36 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <h3 class="mb-4 text-center">Details</h3>
-                    <div class="col d-flex mb-4 justify-content-center align-items-center">
-                        <a href="{% url 'profile' product.user.id %}" class="d-flex align-items-center">
-                            <div class="profile-image-container">
-                            {% if "placeholder" in product.user.profile.image.url %}
-                                <img src="{% static 'icons/profile_avatar.png' %}" alt="Profile Menu Icon" class="icon-menu">
-                            {% else %}
-                                <img src="{{ product.user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
-                            {% endif %}
-                            </div>
-                            <span class="ps-3">{{ product.user.profile.first_name }}</span>
-                        </a>
+                    <div class="d-flex flex-column align-items-center">
+                        <h3>Details</h3>
+                        <hr id="product-details-hr" class="mb-4">
                     </div>
-                    <div class="col product-detail-box">
-                        <ul id="product-detail-list">
-                            {% if product.price %}
-                            <li class="d-flex"><i class="fa-solid fa-coins product-detail-icon"></i> <span class="product-detail-info">{{ product.price }} {{ product.currency_display }}</span></li>
-                            {% endif %}
-                            {% if product.city %}
-                            <li class="d-flex"><i class="fa-solid fa-location-dot product-detail-icon"></i> <span class="product-detail-info">{{ product.city }}, {{ product.country }}</span></li>
-                            {% endif %}
-                            {% if product.category %}
-                            <li class="d-flex"><i class="fa-solid fa-tag product-detail-icon"></i> <span class="product-detail-info">{{ product.category | title }}</span></li>
-                            {% endif %}
-                        </ul>
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <div class="col d-flex mb-4 justify-content-center align-items-center">
+                            <a href="{% url 'profile' product.user.id %}" class="d-flex align-items-center">
+                                <div class="profile-image-container">
+                                {% if "placeholder" in product.user.profile.image.url %}
+                                    <img src="{% static 'icons/profile_avatar.png' %}" alt="Profile Menu Icon" class="icon-menu">
+                                {% else %}
+                                    <img src="{{ product.user.profile.image.url }}" alt="Profile Picture" class="profile-pic-menu">
+                                {% endif %}
+                                </div>
+                                <span class="ps-3">{{ product.user.profile.first_name }}</span>
+                            </a>
+                        </div>
+                        <div class="col product-detail-box">
+                            <ul id="product-detail-list">
+                                {% if product.price %}
+                                <li class="d-flex"><i class="fa-solid fa-coins product-detail-icon"></i> <span class="product-detail-info">{{ product.price }} {{ product.currency_display }}</span></li>
+                                {% endif %}
+                                {% if product.city %}
+                                <li class="d-flex"><i class="fa-solid fa-location-dot product-detail-icon"></i> <span class="product-detail-info">{{ product.city }}, {{ product.country }}</span></li>
+                                {% endif %}
+                                {% if product.category %}
+                                <li class="d-flex"><i class="fa-solid fa-tag product-detail-icon"></i> <span class="product-detail-info">{{ product.category | title }}</span></li>
+                                {% endif %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

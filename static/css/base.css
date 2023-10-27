@@ -276,6 +276,10 @@ hr {
     box-shadow: var(--box-shadow-small-lavender);
 }
 
+#product-details-hr {
+    width: 50%;
+}
+
 #product-detail-list > li {
     margin-bottom: 0.75rem;
 }

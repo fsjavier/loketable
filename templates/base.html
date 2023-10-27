@@ -22,7 +22,11 @@
             <nav class="navbar navbar-expand">
                 <div class="container-fluid justify-content-between">
                     <!-- Logo -->
+                    {% if user.is_authenticated %}
+                    <a class="navbar-brand" href="{% url 'products' %}">Navbar</a>
+                    {% else %}
                     <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+                    {% endif %}
                     <!-- Search bar -->
                     <form class="d-flex {% if 'account' in url_name %}hidden{% endif %}" role="search" method="GET" action="{% url 'products' %}">
                         <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
