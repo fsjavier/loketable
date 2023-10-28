@@ -20,7 +20,7 @@ class ProductsList(generic.ListView):
     model = Product
     template_name = 'products/products.html'
     context_object_name = 'products'
-    paginate_by = 6
+    paginate_by = 8
 
     def get_queryset(self, **kwargs):
         query = self.request.GET.get('q')
@@ -180,7 +180,7 @@ class FavoriteProductsList(generic.ListView):
     model = Product
     template_name = 'products/products.html'
     context_object_name = 'products'
-    paginate_by = 6
+    paginate_by = 8
     success_url = '/favorites/'
 
     def get_queryset(self, **kwargs):
