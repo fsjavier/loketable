@@ -71,7 +71,8 @@ ul {
 }
 
 #form-control-navbar {
-    border-radius: 50%;
+    border-radius: 5px;
+    margin-right: 0.75rem;
 }
 
 .form-control:focus {
@@ -85,7 +86,7 @@ ul {
   }
 
 .navbar-collapse {
-    flex-grow: 0; /* Avoids growing so that nav bar elements can be justified */
+    flex-grow: 0; /* Avoids growing so that nav bar elements keep their size */
 }
 
 .nav-item.dropdown {
@@ -135,7 +136,7 @@ footer {
 
 /* Home */
 #hero-image-background {
-    background: url('../images/home_3.png') no-repeat center center;
+    background: url('https://res.cloudinary.com/drffvkjy6/image/upload/v1698476717/home_3_nzaa2z.png') no-repeat center center;
     background-size: cover;
     max-width: 98%;
     border-radius: 5px;
