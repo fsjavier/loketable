@@ -32,10 +32,10 @@ class Product(models.Model):
         on_delete=models.CASCADE,
         related_name="producer"
         )
-    title = models.CharField(max_length=150, null=False, blank=False)
-    description = models.TextField(null=False, blank=False)
-    country = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
+    title = models.CharField(max_length=30, null=False, blank=False)
+    description = models.TextField(max_length=1000, null=False, blank=False)
+    country = models.CharField(max_length=30)
+    city = models.CharField(max_length=30)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', default='placeholder')

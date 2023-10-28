@@ -268,14 +268,23 @@ footer {
     border-radius: 5px;
 }
 
+#about-me-container {
+    max-width: 95%;
+}
+
 #bio {
-    width: 95%;
+    max-width: 95%;
     margin: 0 auto;
     min-height: 10rem;
+    max-height: 15rem;
+    overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: var(--box-shadow-small-lavender);
 }
 
 #about-me {
+    max-width: 95%;
+    margin: 0 auto;
     font-size: 1rem;
     padding-top: 0.75rem;
 }
@@ -285,7 +294,7 @@ footer {
 }
 
 hr {
-    margin: 0.3rem;
+    margin: 0.7rem;
     color: var(--russet);
 }
 

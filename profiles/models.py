@@ -13,18 +13,23 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         related_name='profile'
         )
-    first_name = models.CharField(max_length=200, null=True, blank=True)
-    last_name = models.CharField(max_length=200, null=True, blank=True)
-    bio = models.TextField(null=True, blank=True)
-    country = models.CharField(max_length=200, null=True, blank=True)
-    city = models.CharField(max_length=200, null=True, blank=True)
+    first_name = models.CharField(max_length=30, null=True, blank=True)
+    last_name = models.CharField(max_length=30, null=True, blank=True)
+    bio = models.TextField(max_length=1500, null=True, blank=True)
+    country = models.CharField(max_length=30, null=True, blank=True)
+    city = models.CharField(max_length=30, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', default='placeholder')
-    contact = models.CharField(max_length=100, null=True, blank=True)
+    contact = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        if not self.first_name:
+            self.first_name = self.user.username
+        super(Profile, self).save(*args, **kwargs)
 
 
 @receiver(post_save, sender=User)
