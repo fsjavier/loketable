@@ -10,7 +10,7 @@
                             <a href="{% url 'product_detail' product.slug product.id %}" class="d-flex justify-content-center">
                                 <div class="col-sm-4 product-img-profile-container">
                                     {% if "placeholder" in product.image.url %}
-                                        <img src="../../../static/images/market_default.png" class="product-img-profile" alt="">
+                                        <img src="{% static 'images/market_default.png' %}" alt="" class="product-img-profile">
                                     {% else %}
                                         <img src="{{ product.image.url }}" class="product-img-profile" alt="">
                                     {% endif %}

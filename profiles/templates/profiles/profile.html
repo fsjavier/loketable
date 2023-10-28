@@ -7,7 +7,7 @@
     <div class="row my-4 d-flex justify-content-center align-items-center">
         <div class="col-4" id="profile-picture-container">
             {% if "placeholder" in profile.image.url %}
-                <img src="{% static '/icons/profile_avatar.png' %}" alt="Profile avatar" id="profile-picture">
+                <img src="{% static 'icons/profile_avatar.png' %}" alt="Profile avatar" id="profile-picture">
             {% else %}
                 <img src="{{ profile.image.url }}" alt="Profile Picture" id="profile-picture">
             {% endif %}
@@ -104,5 +104,5 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script src="{% static './js/profile.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}

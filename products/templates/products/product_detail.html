@@ -33,7 +33,7 @@
 
             <div class="col-8 col-md-5 d-flex align-items-center product-detail-image-container">
                 {% if "placeholder" in product.image.url %}
-                    <img src="../../../static/images/market_default.png" class="product-detail-image" alt="">
+                    <img src="{% static 'images/market_default.png' %}" class="product-detail-image" alt="">
                 {% else %}
                     <img src="{{ product.image.url }}" class="product-detail-image" alt="">
                 {% endif %}
