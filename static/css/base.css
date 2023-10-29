@@ -49,6 +49,17 @@ ul {
     list-style-type: none;
 }
 
+.general-purpose-btn {
+    background-color: var(--cloud-white);
+    border: 1px solid var(--jet);
+}
+
+.general-purpose-btn:hover {
+    color: var(--cloud-white);
+    background-color: var(--field-drab);
+    border: 1px solid var(--field-drab);
+}
+
 /* Header */
 .navbar {
     background-color: var(--off-lavender);
@@ -311,12 +322,6 @@ hr {
 
 #favorites-profile:hover {
     color: var(--fulvous);
-}
-
-#btn-edit-profile:hover {
-    color: var(--cloud-white);
-    background-color: var(--field-drab);
-    border: 1px solid var(--field-drab);
 }
 
 .card-products-profile {

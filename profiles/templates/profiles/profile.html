@@ -45,7 +45,7 @@
         {% if profile.user == request.user %}
             <div class="row mt-3 mt-md-0 mb-2">
                 <div class="col-md-4 d-flex justify-content-center">
-                    <a href="{% url 'edit_profile' user.id %}" class="btn btn-outline-dark w-auto" id="btn-edit-profile">Edit Profile</a>
+                    <a href="{% url 'edit_profile' user.id %}" class="btn general-purpose-btn w-auto">Edit Profile</a>
                 </div>
             </div>
         {% endif %}
