@@ -297,10 +297,15 @@ hr {
     color: var(--drab-dark-brown);
 }
 
+#btn-user-favorites {
+    padding: 0;
+    border: none;
+}
+
 #favorites-profile {
     font-size: 1.25rem;
     color: var(--field-drab);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     border-radius: 5px;
 }
 
