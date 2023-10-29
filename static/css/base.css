@@ -6,16 +6,14 @@
     --body: 'Lato', sans-serif;
 
     /* Colors */
-    --spring-green: rgb(41,122,76);
-    --russet: rgb(139,69,19);
-    --lavender: rgb(216,212,242);
-    --off-lavender: rgba(216,212,242,0.1);
-    --cocoa-brown: rgb(210,105,30);
-    --azure: rgb(0,127,255);
+    --jet: #343330;
+    --drab-dark-brown: #45462A;
+    --field-drab: #7E5920;
+    --fulvous: #DC851F;
+    --orange-peel: #FFA737;
 
-    --slate-gray: rgb(112, 128, 144);
     --cloud-white: rgb(255, 255, 255);
-    --beige: rgb(245, 245, 220);
+    --off-lavender: rgba(216,212,242,0.1);
 
     /* Boxes */
     --box-shadow-small-lavender: 0px 0px 6px -1px rgb(216,212,242);
@@ -110,7 +108,7 @@ ul {
     padding: 0.25rem 1rem;
     margin-bottom: 0;
     font-weight: 600;
-    color: var(--slate-gray);
+    color: var(--jet);
 }
 
 .hidden {
@@ -124,14 +122,14 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--slate-gray);
+    border-top: 1px solid var(--jet);
     background-color: var(--off-lavender);
 }
 
 .social-media-icon {
     font-size: 200%;
     padding: 1rem;
-    color: var(--slate-gray);
+    color: var(--jet);
 }
 
 /* Home */
@@ -140,7 +138,7 @@ footer {
     background-size: cover;
     max-width: 98%;
     border-radius: 5px;
-    background-color: var(--russet);
+    background-color: var(--field-drab);
     background-blend-mode: hard-light;
     margin: 0 auto;
 }
@@ -161,26 +159,17 @@ footer {
 }
 
 .home-link {
-    color: var(--azure)
+    color: var(--orange-peel)
 }
 
 .home-link:hover {
-    color: var(--russet)
+    color: var(--fulvous)
 }
 
 /* Products */
 .card-products {
+    background-color: var(--off-lavender);
     border: none;
-}
-
-.image-container {
-    display: grid;
-    aspect-ratio: 1 / 1.2;
-}
-
-.image-container > * {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
 }
 
 .image-container img {
@@ -219,7 +208,11 @@ footer {
 }
 
 .producer-name {
-    color: var(--russet);
+    color: var(--field-drab);
+}
+
+.producer-name:hover {
+    color: var(--drab-dark-brown);
 }
 
 .card-icon {
@@ -229,9 +222,15 @@ footer {
 
 .heart {
     position: absolute;
-    top: 3%;
-    right: 3%;
-    font-size: 130%;
+    padding: 0;
+    color: var(--fulvous);
+    top: 4%;
+    right: 10%;
+    font-size: 1.8rem;
+}
+
+.heart:hover {
+    color: var(--orange-peel);
 }
 
 .disabled-product {
@@ -295,24 +294,30 @@ footer {
 
 hr {
     margin: 0.7rem;
-    color: var(--russet);
+    color: var(--drab-dark-brown);
 }
 
 #favorites-profile {
     font-size: 1.25rem;
-    color: var(--azure);
+    color: var(--field-drab);
     padding: 0.5rem 1rem;
     border-radius: 5px;
 }
 
 #favorites-profile:hover {
-    color: var(--russet);
+    color: var(--fulvous);
 }
 
 #btn-edit-profile:hover {
     color: var(--cloud-white);
-    background-color: var(--cocoa-brown);
-    border: 1px solid var(--cocoa-brown);
+    background-color: var(--field-drab);
+    border: 1px solid var(--field-drab);
+}
+
+.card-products-profile {
+    max-width: 1200px;
+    background-color: var(--off-lavender);
+    border: none;
 }
 
 .btn-product {
@@ -370,33 +375,13 @@ hr {
 
 /* Media queries */
 @media screen and (min-width: 576px) {
-    .image-container {
-        aspect-ratio: 1 / 1.15;
-    }
-
     .account-container {
         width: 75%;
     }
 }
 
-@media screen and (min-width: 768px) {
-    .image-container {
-        aspect-ratio: 1 / 1.25;
-    }
-}
-
 @media screen and (min-width: 992px) {
-    .image-container {
-        aspect-ratio: 1 / 1.4;
-    }
-
     .account-container {
         width: 50%;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .image-container {
-        aspect-ratio: 1 / 1.3;
     }
 }
