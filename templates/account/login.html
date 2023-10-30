@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  <div class="container account-container p-3 mt-3">
+  <div class="container form-container p-3 mt-3">
     <div class="text-center">
       <h1>{% trans "Sign In" %}</h1>
 
@@ -44,7 +44,7 @@
       {% endif %}
       <div class="text-center">
         <a class="btn d-block" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+        <button class="btn general-purpose-btn my-1" type="submit">{% trans "Sign In" %}</button>
       </div>
     </form>
   </div>
