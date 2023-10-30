@@ -71,6 +71,9 @@
                         </div>
                         <div class="col product-detail-box">
                             <ul id="product-detail-list">
+                                {% if product.quantity and product.units %}
+                                <li class="d-flex"><i class="fa-solid fa-cubes-stacked product-detail-icon"></i> <span class="product-detail-info">{{ product.quantity }} {{ product.units }}</span></li>
+                                {% endif %}
                                 {% if product.price %}
                                 <li class="d-flex"><i class="fa-solid fa-coins product-detail-icon"></i> <span class="product-detail-info">{{ product.price }} {{ product.currency_display }}</span></li>
                                 {% endif %}

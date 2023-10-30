@@ -13,6 +13,8 @@ class ProductForm(forms.ModelForm):
             'city',
             'image',
             'category',
+            'quantity',
+            'units',
             'price',
             'currency',
             'available'
@@ -25,6 +27,8 @@ class ProductForm(forms.ModelForm):
             'city': 'Product City',
             'image': 'Product Photo',
             'category': 'Category',
+            'quantity': 'Quantity',
+            'units': 'Units',
             'price': 'Price',
             'currency': 'Currency',
             'available': 'Is currently available?'

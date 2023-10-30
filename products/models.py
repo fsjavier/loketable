@@ -30,6 +30,8 @@ UNIT_CHOICES = (
     ('gr', 'gr.'),
     ('liters', 'l.'),
     ('ml', 'ml.'),
+    ('bottle', 'bottle'),
+    ('bottles', 'bottles'),
     ('unit', 'unit'),
     ('units', 'units'),
 )
