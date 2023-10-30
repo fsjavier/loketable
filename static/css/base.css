@@ -285,6 +285,7 @@ footer {
 #bio {
     max-width: 95%;
     margin: 0 auto;
+    padding: 0.5rem 0.75rem;
     min-height: 10rem;
     max-height: 15rem;
     overflow-y: auto;

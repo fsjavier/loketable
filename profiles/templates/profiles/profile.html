@@ -24,7 +24,11 @@
                     <hr>
                     <div class="row">
                         <div class="col" id="bio">
-                            {{ profile.bio }}
+                            {% if not profile.bio %}
+                                <p></p>
+                            {% else %}
+                                {{ profile.bio }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

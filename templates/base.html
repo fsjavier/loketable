@@ -62,7 +62,7 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             {% if user.is_authenticated %}
-                                                {% if user.profile.firstname is None %}
+                                                {% if not user.profile.first_name %}
                                                     <li><p id="user-greeting">Hi, {{ user.username }}!</p></li>
                                                 {% else %}
                                                     <li><p id="user-greeting">Hi, {{ user.profile.first_name }}!</p></li>
