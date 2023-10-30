@@ -122,8 +122,8 @@ ul {
     color: var(--jet);
 }
 
-.hidden {
-    visibility: hidden;
+.display-none {
+    display: none;
 }
 
 /* Footer */
