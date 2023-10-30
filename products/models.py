@@ -25,6 +25,15 @@ CURRENCIES = (
     ('sek', 'SEK')
 )
 
+UNIT_CHOICES = (
+    ('kg', 'Kg.'),
+    ('gr', 'gr.'),
+    ('liters', 'l.'),
+    ('ml', 'ml.'),
+    ('unit', 'unit'),
+    ('units', 'units'),
+)
+
 
 class Product(models.Model):
     user = models.ForeignKey(
@@ -51,6 +60,12 @@ class Product(models.Model):
         default="eur"
         )
     available = models.BooleanField()
+    quantity = models.IntegerField(null=False, blank=False)
+    units = models.CharField(
+        max_length=10,
+        choices=UNIT_CHOICES,
+        default='unit'
+    )
     slug = models.SlugField(max_length=200)
     favorited_by = models.ManyToManyField(User, related_name='favorites')
 
