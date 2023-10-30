@@ -69,7 +69,10 @@ class Product(models.Model):
         default='unit'
     )
     slug = models.SlugField(max_length=200)
-    favorited_by = models.ManyToManyField(User, related_name='favorites')
+    favorited_by = models.ManyToManyField(
+        User, related_name='favorites',
+        blank=True
+    )
 
     class Meta:
         ordering = ['-updated_date']
