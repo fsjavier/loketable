@@ -33,7 +33,7 @@
                     <div class="row d-flex align-items-center justify-content-between" id="nav-wrapper">
                         <!-- Logo -->
                         <div class="col-sm-3 col-7 order-sm-1">
-                            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/loketable_logo_black.png' %}" alt="" id="logo-navbar"></a>
+                            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/loketable_logo_black.png' %}" alt="Loketable logo" id="logo-navbar"></a>
                         </div>
                         <!-- Search bar -->
                         <!-- Custom filter checks if 'display-none' class should be added -->
@@ -42,7 +42,7 @@
                                 <div class="p-1 bg-light rounded rounded-pill shadow-sm">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button class="btn btn-link" type="submit"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-link" type="submit" aria-label="Search"><i class="fa fa-search"></i></button>
                                         </div>
                                         <input class="form-control bg-light border-0" name="q" type="search" placeholder="What are your searching for?" aria-label="Search" id="form-control-navbar">
                                     </div>

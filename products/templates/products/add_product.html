@@ -5,6 +5,7 @@
 {% block content %}
     <div class="container form-container">
         <form method="POST" enctype="multipart/form-data" class="my-4 py-3">
+            <h1 class="text-center mb-3">{% if product.title %}Edit {{ product.title }}{% else %}Add Product{% endif %}</h1>
             {% csrf_token %}
             {{ form.media }}
             {{ form | crispy }}
