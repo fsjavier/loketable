@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
 from .models import Profile, Favorite
 from products.models import Product
@@ -40,11 +41,17 @@ class Profiles(generic.DetailView):
         return context
 
 
-class EditProfile(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+class EditProfile(
+    SuccessMessageMixin,
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.UpdateView
+):
     """ Edit a Profile """
     template_name = 'profiles/edit_profile.html'
     form_class = ProfileForm
     model = Profile
+    success_message = 'Profile edited successfully'
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.user.pk})

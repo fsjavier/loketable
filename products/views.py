@@ -5,6 +5,7 @@ from django.shortcuts import (
     reverse
     )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic, View
 from django.db.models import Q
@@ -74,7 +75,7 @@ class AddProduct(SuccessMessageMixin, generic.CreateView):
     template_name = 'products/add_product.html'
     model = Product
     form_class = ProductForm
-    success_message = "was added successfully"
+    success_message = '%(title)s added successfully'
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.user.pk})
@@ -84,11 +85,17 @@ class AddProduct(SuccessMessageMixin, generic.CreateView):
         return super(AddProduct, self).form_valid(form)
 
 
-class EditProduct(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+class EditProduct(
+    SuccessMessageMixin,
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.UpdateView
+):
     """ Edit a Product """
     template_name = 'products/add_product.html'
     form_class = ProductForm
     model = Product
+    success_message = '%(title)s edited successfully'
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.user.pk})
@@ -102,6 +109,7 @@ class EditProduct(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
 
 
 class ToggleProduct(
+    SuccessMessageMixin,
     LoginRequiredMixin,
     UserPassesTestMixin,
     generic.UpdateView
@@ -117,6 +125,14 @@ class ToggleProduct(
         form.instance.user = self.request.user
         form.instance.available = form.instance.available
         form.save()
+        if form.instance.available:
+            messages.success(
+                self.request, f'{form.instance.title} enabled successfully'
+            )
+        else:
+            messages.success(
+                self.request, f'{form.instance.title} disabled successfully'
+            )
         return super(ToggleProduct, self).form_valid(form)
 
     def test_func(self):
@@ -124,11 +140,19 @@ class ToggleProduct(
 
 
 class DeleteProduct(
+    SuccessMessageMixin,
     LoginRequiredMixin,
     UserPassesTestMixin,
     generic.DeleteView
 ):
     model = Product
+    success_message = "%(title)s deleted successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            title=self.object.title,
+        )
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.user.pk})
@@ -163,6 +187,9 @@ class ProductListAddFavorite(View):
                 product=product
                 )
             favorite.delete()
+            messages.warning(
+                request, f'{product.title} removed from favorites'
+            )
         else:
             product.favorited_by.add(request.user)
             # Get the instance from the Favorites if it exists
@@ -170,6 +197,9 @@ class ProductListAddFavorite(View):
             favorite, created = Favorite.objects.get_or_create(
                 user=request.user,
                 product=product
+                )
+            messages.warning(
+                request, f'{product.title} added to favorites'
                 )
 
         return redirect('products')
