@@ -13,7 +13,8 @@ deleteProductModal.addEventListener('show.bs.modal', event => {
 
     productTitleElement.textContent = productTitle;
 
-    const deleteUrl = formElement.getAttribute('action').replace('0', productSlug).replace('1', productID);
+    const deleteUrl = `/products/delete/${productID}/${productSlug}/`;
+
     formElement.setAttribute('action', deleteUrl);
 });
 

@@ -35,7 +35,7 @@
                                 <div class="card-body card-products-body"
                                 tabindex="0" {%if not product.available %}data-bs-toggle="tooltip" data-bs-title="This product is currently unavailable"{% endif %}>
                                     {% if user.is_authenticated %}
-                                        <form action="{% url 'add_to_favorite' product.slug product.id %}" method="POST">
+                                        <form action="{% url 'add_to_favorite' product.id product.slug %}" method="POST">
                                             {% csrf_token %}
                                             {% if product.is_favorite %}
                                                 <button type="submit" class="btn fa-solid fa-heart heart"></button>
@@ -47,7 +47,7 @@
                                     <div class="image-container">
                                         <!-- Disable when the product is not available. Should only be necessary for Favorites view -->
                                         <button class="btn {%if not product.available %}disabled disabled-product{% endif %}">
-                                            <a href="{% url 'product_detail' product.slug product.pk %}">
+                                            <a href="{% url 'product_detail' product.id product.slug %}">
                                                 {% if "placeholder" in product.image.url %}
                                                     <img src="{% static 'images/market_default.png' %}" class="card-img-top" alt="">
                                                 {% else %}

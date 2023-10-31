@@ -5,6 +5,7 @@ from django.shortcuts import (
     reverse
     )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic, View
 from django.db.models import Q
 from .models import Product, CATEGORIES
@@ -66,13 +67,14 @@ class ProductsList(generic.ListView):
         return context
 
 
-class AddProduct(generic.CreateView):
+class AddProduct(SuccessMessageMixin, generic.CreateView):
     """
     Add a product
     """
     template_name = 'products/add_product.html'
     model = Product
     form_class = ProductForm
+    success_message = "was added successfully"
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.user.pk})

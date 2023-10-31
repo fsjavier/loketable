@@ -13,27 +13,27 @@ urlpatterns = [
     path('', ProductsList.as_view(), name='products'),
     path('add/', AddProduct.as_view(), name='add_product'),
     path(
-        '<slug:slug>/<int:pk1>/',
+        '<int:pk>/<slug:slug>/',
         ProductDetail.as_view(),
         name='product_detail'
         ),
     path(
-        'favorite/<slug:slug>/<int:product_id>/',
+        'favorite/<int:product_id>/<slug:slug>/',
         ProductListAddFavorite.as_view(),
         name='add_to_favorite'
         ),
     path(
-        'edit/<slug:slug>/<int:pk1>/',
+        'edit/<int:pk>/<slug:slug>/',
         EditProduct.as_view(),
         name='edit_product'
         ),
     path(
-        'toggle/<slug:slug>/<int:pk1>/',
+        'toggle/<int:pk>/<slug:slug>/',
         ToggleProduct.as_view(),
         name='toggle_product'
         ),
     path(
-        'delete/<slug:slug>/<int:pk1>/',
+        'delete/<int:pk>/<slug:slug>/',
         DeleteProduct.as_view(),
         name='delete_product'
         ),
