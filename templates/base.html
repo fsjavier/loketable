@@ -25,16 +25,16 @@
 <body>
 
     <header>
+        <!-- url name used to filter use of search bar -->
         {% with request.resolver_match.url_name as url_name %}
+            <!-- Nav menu -->
             <nav class="navbar navbar-expand my-2">
                 <div class="container-fluid">
                     <div class="row d-flex align-items-center justify-content-between" id="nav-wrapper">
-
                         <!-- Logo -->
                         <div class="col-sm-3 col-7 order-sm-1">
                             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/loketable_logo_black.png' %}" alt="" id="logo-navbar"></a>
                         </div>
-
                         <!-- Search bar -->
                         <!-- Custom filter checks if 'display-none' class should be added -->
                         <div class="col-sm-7 col-12 order-3 order-sm-2 my-3 my-sm-0 {% if url_name|search_bar_urls %}display-none{% endif %}">
@@ -49,8 +49,7 @@
                                 </div>
                             </form>
                         </div>
-
-
+                        <!-- / Search bar -->
                         <!-- Profile dropdown -->
                         <div class="col-sm-2 col-3 order-sm-3">
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -87,11 +86,33 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- / Profile dropdown -->
                     </div>
                 </div>
             </nav>
+            <!-- / Nav menu -->
         {% endwith %}
     </header>
+
+<!-- 
+    <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+        {{ message | safe}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+
+
+    <!-- Messages -->
+    <div class="container">
+        {% for message in messages %}
+        <div class="row">
+            <div class="col-11 mx-auto alert {{message.tags}} alert-dismissible fade show" role="alert" id="msg">
+                <div class="text-center">
+                    {{ message|safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
     <main>
         {% block content %}
@@ -124,6 +145,13 @@
     </footer>
     <!-- Font awesome script-->
     <script src="https://kit.fontawesome.com/d0d853e7a3.js" crossorigin="anonymous"></script>
+    <script>
+        setTimeout(function() {
+            let messages = document.getElementById("msg");
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2000)
+    </script>
 
     {% block extra_js %}
 
