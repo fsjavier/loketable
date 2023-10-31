@@ -68,7 +68,12 @@ class ProductsList(generic.ListView):
         return context
 
 
-class AddProduct(SuccessMessageMixin, generic.CreateView):
+class AddProduct(
+    SuccessMessageMixin,
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.CreateView
+):
     """
     Add a product
     """
@@ -83,6 +88,9 @@ class AddProduct(SuccessMessageMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AddProduct, self).form_valid(form)
+
+    def test_func(self):
+        return self.request.user.is_authenticated
 
 
 class EditProduct(
