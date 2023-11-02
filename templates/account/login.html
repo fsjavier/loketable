@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  <div class="container form-container p-3 mt-3">
+  <div class="container form-container p-3 my-3">
     <div class="text-center">
       <h1>{% trans "Sign In" %}</h1>
 
@@ -42,10 +42,6 @@
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <div class="text-center">
-        <a class="btn d-block" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-        <button class="btn general-purpose-btn my-1" type="submit">{% trans "Sign In" %}</button>
-      </div>
     </form>
   </div>
 
