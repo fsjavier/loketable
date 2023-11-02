@@ -18,7 +18,7 @@
                                 <div class="col d-flex align-items-center text-start">
                                     <div class="card-body ps-3">
                                         <p class="card-title">{{ product.title }}</p>
-                                        <p class="card-text">{{ product.description }}</p>
+                                        <p class="card-text">{{ product.description|truncatechars:250 }}</p>
                                         {% if product.currency == 'eur' %}
                                             <p class="card-text"><small class="text-muted">{{ product.price }} {{ product.currency_display }} / {{ product.quantity }} {{ product.units }}</small></p>
                                         {% else %}
