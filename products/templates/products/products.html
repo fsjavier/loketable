@@ -7,10 +7,22 @@
 {% block content %}
 
     {% with request.resolver_match.url_name as url_name %}
-        {% if url_name == 'products' %}    
-            <h1 class="text-center"> Available Products</h1>
+        {% if url_name == 'products' %}
+            {% if category %}
+                <h1 class="text-center">Available Products for "{{category}}"</h1>
+            {% elif query %}
+                <h1 class="text-center">Available Products for "{{query}}"</h1>
+            {% else %}
+                <h1 class="text-center">Available Products</h1>
+            {% endif %}
         {% elif url_name == 'favorite_products' %}
-            <h1 class="text-center">Favorite Products</h1>
+            {% if category %}
+                <h1 class="text-center">Favorite Products for "{{category}}"</h1>
+            {% elif query %}
+                <h1 class="text-center">Favorite Products for "{{query}}"</h1>
+            {% else %}
+                <h1 class="text-center">Favorite Products</h1>
+            {% endif %}
         {% endif %}
     {% endwith %}
 
@@ -84,8 +96,14 @@
                     {% endif %}
 
                     {% empty %}
-                    <h3 class="text-center my-5">There are currently no products available for your selection</h3>
-                    <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'products' %}" class=" home-link">See Available Products</a></button>
+                        <h3 class="text-center my-5">There are currently no products available</h3>
+                        {% with request.resolver_match.url_name as url_name %}
+                            {% if url_name == 'products' %}
+                                <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'products' %}" class=" home-link">See Available Products</a></button>
+                            {% elif url_name == 'favorite_products' %}
+                                <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'favorite_products' %}" class=" home-link">See Available Products</a></button>
+                            {% endif %}
+                        {% endwith %}
                     {% endfor %}
                 </div>
             </div>
