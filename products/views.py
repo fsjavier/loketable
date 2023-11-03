@@ -45,6 +45,20 @@ class ProductsList(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # Check if there is a query and assign it to the context
+        if self.request.GET.get('q'):
+            context['query'] = self.request.GET.get('q')
+        
+        # Check if there is a category and if there is
+        # assign the readable value to the context
+        if self.request.GET.get('category'):
+            category = self.request.GET.get('category')
+            for cat in CATEGORIES:
+                if cat[0] == category:
+                    context['category'] = cat[1]
+                    break
+
         context['categories'] = CATEGORIES
 
         products = context['products']
@@ -248,6 +262,20 @@ class FavoriteProductsList(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # Check if there is a query and assign it to the context
+        if self.request.GET.get('q'):
+            context['query'] = self.request.GET.get('q')
+        
+        # Check if there is a category and if there is
+        # assign the readable value to the context
+        if self.request.GET.get('category'):
+            category = self.request.GET.get('category')
+            for cat in CATEGORIES:
+                if cat[0] == category:
+                    context['category'] = cat[1]
+                    break
+
         context['categories'] = CATEGORIES
 
         products = context['products']
