@@ -15,7 +15,7 @@ def search_bar_urls(url_name):
     included_urls = [
         'home',
         'products',
-        'favorites'
+        'favorite_products'
     ]
 
     return url_name not in included_urls
