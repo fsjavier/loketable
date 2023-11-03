@@ -240,6 +240,74 @@ All features have been prioritized and developed in response to the needs outlin
 <img src="documentation/readme_images/product_details/product_details_not_available.png">
 </details>
 
+#### Profile Page
+
+- Logged in and not registered users can view any profile page.
+
+- The profile page displays the profile photo, name, bio and all listed products (available and unavailable).
+
+- If a user is in their own profile page, they have extra functionality which is not available when seeing somebody else's profile:
+    - The "Edit Profile" button takes the user to a form to add / edit the profile information.
+    - The "Favorites" button shows how many products have been added to the user's favorites. If there are favorites it will link to the Favorites page, if there are none it's greyed out and is not clickable.
+    - Each listed product has three buttons:
+        - A switch to mark it as available / unavailable.
+        - The "Edit" button that takes the user to a form to edit the product's information.
+        - The "Delete" button that triggers a modal asking for confirmation to delete the product.
+
+- The listed products are split in 2 sections:
+    - Available products list all products marked as available. This products can be clicked and link to the product details page.
+    - Unavailable products list all products marked as unavailable. This products are greyed out and can't be clicked.
+    - Either of this sections is only displayed when there are products.
+
+- If a user enters the url of a non existing user, the custom 404 page loads.
+
+- If a user enters the url to edit a product that is not their own product or edit the profile that is not their own, the custom 403 page loads.
+
+<details><summary>Profile Page - Own Profile - Big Screen</summary>
+<img src="documentation/readme_images/profile_page/profile_own_big_screen.png">
+</details>
+<details><summary>Profile Page - Own Profile - Small Screen</summary>
+<img src="documentation/readme_images/profile_page/profile_own_small_screen.png">
+</details>
+<details><summary>Profile Page - Somebody else's Profile</summary>
+<img src="documentation/readme_images/profile_page/profile_other.png">
+</details>
+
+#### Favorites Page
+
+- It's the same as the Products Page with a few changes:
+    - Not logged in users can't access it, if the enter the url directly they'll get an error page prompting them to return to the Home Page.
+    - Instead of filtering and displaying all available products, it displays the products added to the user's favorites.
+    - Not availabe products will be displayed but greyed out and can't be clicked. The reasons to keep them in the list are:
+        - For the user to keep track of what they have added to their favorites. From this page is still possible for the user to remove the product from their favorites.
+        - The producer link is still active, so that the user can visit the profile and see if there are other available products from the same producer they liked.
+
+- Search and category filter can be perfomed the same way as in the Products Page, but it will only apply to the products added to Favorites.
+
+<details><summary>Favorites Page - Favorite Products List</summary>
+<img src="documentation/readme_images/favorites_page/favorites.png">
+</details>
+<details><summary>Favorites Page - Favorite Products Search</summary>
+<img src="documentation/readme_images/favorites_page/favorites_category_filter.png">
+</details>
+
+#### Edit Profile / Add Product / Edit Product
+
+- After clicking on "Edit Profile" the information already added by the user is prefilled and the user can update any field and submit the changes. The user can also click on "cancel" and go back to the profile.
+
+- After clicking on "Add Product" the user can fill in the information to add a new product. If the user clicks on "cancel" is taken to the profile.
+
+- After clicking on "Edit" in one of the own products the information already added by the user is prefilled and the user can update any field and submit the changes. The user can also click on "cancel" and go back to the profile.
+
+<details><summary>Edit Profile Form</summary>
+<img src="documentation/readme_images/forms/edit_profile_form.png">
+</details>
+<details><summary>Add Product Form</summary>
+<img src="documentation/readme_images/forms/add_product_form.png">
+</details>
+<details><summary>Edit Product Form</summary>
+<img src="documentation/readme_images/forms/edit_product_form.png">
+</details>
 
 #### Messages
 
