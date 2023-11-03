@@ -332,13 +332,30 @@ hr {
 }
 
 .btn-product {
-    border: none;
+    color: var(--field-drab);
+    border: 1px solid var(--off-lavender);
     margin: 0.5rem 0;
+}
+
+.btn-product:hover {
+    color: var(--cloud-white);
+    background-color: var(--field-drab);
+    border: 1px solid var(--field-drab);
+    margin: 0.5rem 0;
+}
+
+.btn-outline-danger {
+    border: none;
 }
 
 .form-switch {
     padding-left: 3rem;
     margin: 0.5rem 0;
+}
+
+.form-check-input:checked {
+    background-color: var(--orange-peel);
+    border-color: var(--orange-peel);
 }
 
 /* Form */

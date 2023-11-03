@@ -47,13 +47,13 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <a href="{% url 'edit_product' product.id product.slug %}" class="btn btn-outline-primary btn-product">Edit</a>
+                                <a href="{% url 'edit_product' product.id product.slug %}" class="btn btn-product">Edit</a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <!-- Button triggering delete modal -->
-                                <button type="button" class="btn btn-outline-danger btn-product" data-bs-toggle="modal" data-bs-target="#deleteProductModal" data-product-title="{{ product.title }}" data-product-id="{{ product.id }}" data-product-slug="{{ product.slug }}">Delete</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" data-product-title="{{ product.title }}" data-product-id="{{ product.id }}" data-product-slug="{{ product.slug }}">Delete</button>
                             </div>
                         </div>
                     </div>
