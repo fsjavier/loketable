@@ -81,6 +81,8 @@ The wireframes depict the project's initial concept and planning. However, adjus
 
 ### Design Choices
 
+All pages are responsive, following a mobile first approach.
+
 #### Colors
 
 I've curated the color palette using coolors.co, focusing on earthy and natural tones: These colors create a harmonious and inviting visual experience for the web application.
@@ -95,6 +97,8 @@ Besides the colors from the palette, I've used Off-lavender, which is consistent
 The selected fonts are Montserrat for titles and Lato for the body. This pair combines style and simplicity, providing a harmonious and balanced look.
 
 ## Features
+
+All features have been prioritized and developed in response to the needs outlined in the user stories during the planning stage.
 
 ### Existing Features
 
@@ -144,6 +148,8 @@ The selected fonts are Montserrat for titles and Lato for the body. This pair co
 
 - Logged out users land on a welcome page with a hero image and links to register, log in and visit the products page.
 
+- The search bar is displayed in the navigation bar, which allows users to search for products directly from this page.
+
 - Logged in users are redirected to the products page and won't see this page.
 
 <details><summary>Landing page for logged out users</summary>
@@ -167,6 +173,76 @@ The selected fonts are Montserrat for titles and Lato for the body. This pair co
 <details><summary>Sign Out</summary>
 <img src="documentation/readme_images/account/sign_out.png">
 </details>
+
+#### Products Page
+
+- This page is available for registered and not registered users. Here are displayed all products marked as available by the users who listed them.
+
+- The products are ordered in descending order by the last time they were updated. The goal is to order them by distance to the user, but this has not been achieved in this iteration.
+
+- Signed users are directly redirected to this page if they enter the home page url, as well as first time users after registration.
+
+- The search bar is displayed in the navigation bar.
+
+- Buttons displaying all possible categories below the navigation bar allow users to filter the products by category.
+
+- If none products match a search term or a category filter, there is a message indicating that and a link to all available products.
+
+- Pagination has been implemented, 8 products are displayed per page.
+
+- A heart button is displayed in the upper-right corner of each product for logged in users. From here they can save / remove from favorites. The heart is not displayed for not logged in users.
+
+- Each product card consists of the product image (or a default image if the user hasn't provided one), the product title, location (city), category icon, price per quantity and unit and the producer. The item and the producer are clickable and will link to the product details page or the profile page of the producer respectively.
+
+<details><summary>Products Page - Logged In User - Big Screen</summary>
+<img src="documentation/readme_images/products_page/products_logged_in_big_screen.png">
+</details>
+<details><summary>Products Page - Logged In User - Medium Screen</summary>
+<img src="documentation/readme_images/products_page/products_logged_in_medium_screen.png">
+</details>
+<details><summary>Products Page - Logged In User - Small Screen</summary>
+<img src="documentation/readme_images/products_page/products_logged_in_small_screen.png">
+</details>
+<details><summary>Products Page - Logged Out User - Big Screen</summary>
+<img src="documentation/readme_images/products_page/products_logged_out_big_screen.png">
+</details>
+<details><summary>Products Page - Category Filter</summary>
+<img src="documentation/readme_images/products_page/products_category_filter.png">
+</details>
+<details><summary>Products Page - Search</summary>
+<img src="documentation/readme_images/products_page/products_search.png">
+</details>
+<details><summary>Products Page - No Results</summary>
+<img src="documentation/readme_images/products_page/products_no_results.png">
+</details>
+
+#### Product Details Page
+
+- This page is available for registered and not registered users, but only logged in users will see the option to contact the producer.
+
+- The product information is divided in 3 areas:
+    - Product photo
+    - Product name and description
+    - Producer (with link to the profile), quantity, price, location and category.
+
+- If a user enters the url of a product marked as unavailable a modal is displayed indicating it, which can only be closed clicking on the link to "all available products"
+
+<details><summary>Products Details - Big Screen</summary>
+<img src="documentation/readme_images/product_details/product_details_big_screen.png">
+</details>
+<details><summary>Products Details - Medium Screen</summary>
+<img src="documentation/readme_images/product_details/product_details_medium_screen.png">
+</details>
+<details><summary>Products Details - Small Screen</summary>
+<img src="documentation/readme_images/product_details/product_details_small_screen.png">
+</details>
+<details><summary>Products Details - Not available</summary>
+<img src="documentation/readme_images/product_details/product_details_not_available.png">
+</details>
+
+
+#### Messages
+
 
 ## Database Design
 
