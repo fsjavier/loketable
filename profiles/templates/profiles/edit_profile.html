@@ -10,6 +10,7 @@
             {{ form.media }}
             {{ form | crispy }}
             <div class="d-flex justify-content-center">
+                <a href="{% url 'profile' user.id %}" class="btn btn-cancel">Cancel</a>
                 <input type="submit" value="Submit" class="btn general-purpose-btn my-1">
             </div>
         </form>

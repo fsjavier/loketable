@@ -365,6 +365,19 @@ hr {
     border-radius: 5px;
 }
 
+.btn-cancel {
+    align-self: center;
+    margin: 0 1rem;
+    background-color: var(--jet);
+    color: var(--cloud-white);
+}
+
+.btn-cancel:hover {
+    background-color: var(--drab-dark-brown);
+    border-color: var(--jet);
+    color: var(--cloud-white);
+}
+
 /* Product detail */
 .product-detail-image {
     width: 100%;
