@@ -311,6 +311,64 @@ All features have been prioritized and developed in response to the needs outlin
 
 #### Messages
 
+- Feedback messages are displayed to the user after the followinf actions:
+    - Sing in / Log in / Log out.
+    - Add a product to favorites / remove a product from favorites.
+    - Edit profile.
+    - Enable / Disable a product.
+    - Add / Edit / Delete a product
+
+<details><summary>Sign In</summary>
+<img src="documentation/readme_images/messages/message_sign_in.png">
+</details>
+<details><summary>Sign Out</summary>
+<img src="documentation/readme_images/messages/message_sign_out.png">
+</details>
+<details><summary>Log In</summary>
+<img src="documentation/readme_images/messages/message_login.png">
+</details>
+<details><summary>Add Product to Favorites</summary>
+<img src="documentation/readme_images/messages/message_add_favorite.png">
+</details>
+<details><summary>Remove Product from Favorites</summary>
+<img src="documentation/readme_images/messages/message_remove_favorite.png">
+</details>
+<details><summary>Edit Profile</summary>
+<img src="documentation/readme_images/messages/message_edit_profile.png">
+</details>
+<details><summary>Add Product</summary>
+<img src="documentation/readme_images/messages/message_add_product.png">
+</details>
+<details><summary>Edit Product</summary>
+<img src="documentation/readme_images/messages/message_edit_product.png">
+</details>
+<details><summary>Delete Product</summary>
+<img src="documentation/readme_images/messages/message_delete_product.png">
+</details>
+<details><summary>Enable Product</summary>
+<img src="documentation/readme_images/messages/message_enable_product.png">
+</details>
+<details><summary>Diable Product</summary>
+<img src="documentation/readme_images/messages/message_disable_product.png">
+</details>
+
+
+#### 403 / 404 /500 Page
+
+- Custom pages have been implemented to keep the feel and look of the site when:
+    - The user tries to access page that doesn't exist.
+    - The user tries to access a page for which they don't have access.
+    - There is a server error.
+
+- All these pages contain a link to return to the Home page.
+
+<details><summary>403 Page</summary>
+<img src="documentation/readme_images/errors/error_403.png">
+</details>
+<details><summary>404 Page</summary>
+<img src="documentation/readme_images/errors/error_404.png">
+</details>
+
 
 ## Database Design
 
