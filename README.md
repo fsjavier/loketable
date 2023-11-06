@@ -370,9 +370,105 @@ All features have been prioritized and developed in response to the needs outlin
 </details>
 
 
+### Future Features
+
+- To enhance the site's functionality, the idea is to introduce more flexible product sorting options. In the future, there should be a default sorting method based on the user's proximity. This may involve accessing the user's location or requesting it from them directly. 
+
+- In addition to distance based sorting, I would like to implement a relevancy based sorting option to help users find the most relevant products for their needs.
+
+- A map feature with products location could be added to help users visually locate producers nearby.
+
+- To offer more privacy options, users will have the ability to make their profiles invisible to others or delete their profiles.
+
+- For improved security and user management users might log in with Google or Facebook and email verification should be made mandatory.
+
+- Ideally there should be a user review system, potentially including comments or a rating system. However, due to the absence of on-site transactions, I still need to explore the best way to introduce this feature.
+
+
 ## Database Design
 
+The ERD has been design with Lucidchart. The database comprises three models: 
+
+- Profile model for the users profile information.
+
+- Product model for the products information.
+
+- Favorite model acts as a bridge between users and products, allowing users to create a personalized list of favored products.
+
+![](documentation/readme_images/ERD_design.png)
+
+### CRUD
+
+Only logged in users have the possibilty to create, update and delete. Not registered or logged in users can only read information.
+
+When a user signs in, a profile is automatically created and the first_name field is populated with the username. Users can edit their profile information.
+
+Logged in users can create (add) products. Once created, users can also edit or delete them.
+
 ## Technologies Used
+
+### Languages
+
+- HTML5
+
+- CSS
+
+- Python
+
+- JavaScript
+
+### Frameworks
+
+- [Django](https://www.djangoproject.com/) 4.2.6 is the web framework used to build the application.
+
+- [Bootstrap](https://getbootstrap.com/) 5.3.2 to add style and responsiveness.
+
+### Libraries and Dependencies
+
+- [allauth](https://docs.allauth.org/en/latest/#) for registration and authentication.
+
+- [crispy-forms](https://pypi.org/project/django-crispy-forms/) for rendering Django forms.
+
+- [crispy-bootstrap5](https://pypi.org/project/crispy-bootstrap5/) as the template pack for crispy forms.
+
+- [gunicorn](https://gunicorn.org/) is the WSGI HTTP server used.
+
+- [psycopg2](https://pypi.org/project/psycopg2/) as an adapter used for database connectivity.
+
+- [dj-database](https://pypi.org/project/dj-database-url/) to simplify database management.
+
+- [cloudinary](https://cloudinary.com/) for serving media files.
+
+- [whitenoise](https://pypi.org/project/whitenoise/) for serving static files.
+
+- [elephantsql](https://www.elephantsql.com/) as the PostgreSQL database for production.
+
+### Hosting and Deployment
+
+- [Heroku](https://www.heroku.com/) to host and deploy the application.
+
+### Other Technologies
+
+- Git was used for version control.
+
+- [GitHub](https://github.com) to host the code.
+
+- [Gitpod](https://www.gitpod.io/) as the IDE used to develop the website.
+
+- [Balsamiq](https://balsamiq.com/wireframes) to create the wireframes.
+
+- [Lucidchart](https://www.lucidchart.com/pages/) to create the ERD.
+
+- [Google Fonts](https://fonts.google.com) to import Montserrat and Lato fonts.
+
+- [Fontjoy](https://fontjoy.com/) to find pairing fonts.
+
+- [Font Awesome](https://fontawesome.com) to import icons.
+
+- [Favicon](https://favicon.io/) to create the favicon files and links.
+
+- [Adobe Express](https://www.adobe.com/express/create/logo) logo maker tool used to create the logo.
+
 
 ## Testing
 
