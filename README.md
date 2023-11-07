@@ -311,7 +311,7 @@ All features have been prioritized and developed in response to the needs outlin
 
 #### Messages
 
-- Feedback messages are displayed to the user after the followinf actions:
+- Feedback messages are displayed to the user after the following actions:
     - Sing in / Log in / Log out.
     - Add a product to favorites / remove a product from favorites.
     - Edit profile.
@@ -473,5 +473,130 @@ Logged in users can create (add) products. Once created, users can also edit or 
 ## Testing
 
 ## Deployment
+
+This site has been deployed to Heroku, using ElephantSQL database and Cloudinary, following the following steps:
+
+1. Installing Django and supporting libraries
+
+    - Install Django and gunicorn
+    - Install supporting database libraries: dj_database_url and psycopg2
+    - Install Cloudinary libraries: dj-3-cloudinary-storage
+    - Create requirements file
+    - Create Django project
+    - Create first app
+    - Add app to installed apps in settings.py file
+    - Migrate changes
+    - Run the server to test if the app is installed
+
+2. Create the Heroku App
+    - Log into Heroku and go to the Dashboard
+    - Click “New" and then “Create new app”
+    - Choose an app name and select the region closest to you. Then, click “Create app” to confirm.
+
+3. Create an external database with ElephantSQL
+
+    - Log into ElephantSQL
+    - Click "Create New Instance"
+    - Set up a plan by giving a Name and selecting a Plan
+    - Click "Select Region" and choose a Data center
+    - Click "Review", check all details and click "Create Instance"
+    - Return to the Dashboard and click on the database instance name
+    - Copy the database URL
+
+4. Create an env.py file to avoid exposing sensitive information
+
+    - In the project workspace, create a file called env.py. Check that the file name is included in the .gitignore file
+    - Add ``import os`` to env.py file and set environment variable DATABASE_URL to the URL copied from ElephantSQL ``os.environ["DATABASE_URL"]="<copiedURL>"``
+    - Add a SECRET_KEY environment variable ``os.environ["SECRET_KEY"]="mysecretkey"``
+
+5. Upate settings.py
+
+    - Add the following code below the path import in ``settings.py`` to connect the Django project to env.py:
+        ````
+        import os
+        if os.path.isfile("env.py"):
+            import env
+        ````
+    - Remove the secret key provided by Django in settings.py and refer to variable in env.py instead (``SECRET_KEY = os.environ.get('SECRET_KEY')``)
+
+    - Optional: To keep using the sqlite database in our development environment as well as as having Debug on, but off in production and use the new database, create a new variable called DEVELOPMENT at the top of settings.py. This means that if there's an environment variable called DEVELOPMENT in the environment this variable will be set to its value. And otherwise, it'll be false. 
+        ````
+        development = os.environ.get('DEVELOPMENT', False)
+        ````
+
+    - To connect to the new database for production and keep sqlite for development, replace the provided DATABASE variable with 
+        ````
+        if development:
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': BASE_DIR / 'db.sqlite3',
+                }
+            }
+        else:
+            DATABASES = {
+                'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+            }
+        ````
+    - Save and migrate all changes
+
+6. Heroku Config Vars
+
+    - Go back to Heroku dashboard and open the Settings tab
+    - Add two new config vars: DATABASE_URL, with the value of the database, URL and SECRET_KEY, with the value of the secret key string
+
+7. Set up Cloudinary for static and media files storage
+
+    - In the Cloudinary dashboard, copy the API Environment variable
+    - In ``env.py`` file, add new variable ``os.environ["CLOUDINARY_URL"] = "<copied_variable"``, without "CLOUDINARY_URL="
+    - Add the same variable value as new Heroku config var named CLOUDINARY_URL
+    - In ``settings.py``, in the INSTALLED_APPS list, above ``django.contrib.staticfiles`` add ``cloudinary_storage``, below add ``cloudinary``
+    - Connect Cloudinary to the Django app in settings.py:
+
+        ````
+        STATIC_URL = '/static/'
+        STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+        STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+        MEDIA_URL = '/media/'
+        DEFAULT_SITE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+        ````
+
+    - Change the templates directory to TEMPLATES_DIR. Place within the TEMPLATES array: 'DIRS': [TEMPLATES_DIR]
+    - Add Heroku Hostname to ALLOWED_HOSTS
+
+        ````
+        if development:
+            ALLOWED_HOSTS = [os.environ.get('LOCALHOST')]
+        else:
+            ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+        ````
+
+8. Create Procfile
+
+9. Heroku Deployment:
+
+    - Click Deploy tab in Heroku
+    - In the 'Deployment method' section select 'Github' and click the 'connect to Github'
+    - In the 'search' field enter the repository name
+    - Connect to link the heroku app with the Github repository
+    - Click "Deploy Branch" or enable "Automacti Deploys"
+
+### How to clone the repository
+
+- Go to https://github.com/fsjavier/loketable
+- Click on the code drop down button, then click on HTTPS and copy the link to the clipboard
+- Open a GitBash terminal and navigate to the directory where you want to locate the clone
+- Type git clone copied-git-url and press the Enter key
+
+The project will now of been cloned on your local machine for use
+
+### How to fork the Project
+
+- Go to https://github.com/fsjavier/loketable
+- Click the fork button on the top right of the page
+- A forked copy of the repository will appear in your Repositories.
+
 
 ## Credits
