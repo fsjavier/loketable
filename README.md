@@ -467,6 +467,10 @@ Logged in users can create (add) products. Once created, users can also edit or 
 
 - [Favicon](https://favicon.io/) to create the favicon files and links.
 
+- [TinyPNG](https://tinypng.com/) to compress images.
+
+- [Convertio](https://convertio.co/) to convert images to webp.
+
 - [Adobe Express](https://www.adobe.com/express/create/logo) logo maker tool used to create the logo.
 
 
