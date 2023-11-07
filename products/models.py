@@ -94,25 +94,25 @@ class Product(models.Model):
 
     def category_icon_url(self):
         if self.category == 'meat':
-            return 'icons/meat.png'
+            return 'icons/meat.webp'
         elif self.category == 'fruit':
-            return 'icons/fruits.png'
+            return 'icons/fruits.webp'
         elif self.category == 'vegetables':
-            return 'icons/vegetables.png'
+            return 'icons/vegetables.webp'
         elif self.category == 'wine':
-            return 'icons/wine.png'
+            return 'icons/wine.webp'
         elif self.category == 'beer':
-            return 'icons/beer.png'
+            return 'icons/beer.webp'
         elif self.category == 'honey':
-            return 'icons/honey.png'
+            return 'icons/honey.webp'
         elif self.category == 'nuts':
-            return 'icons/nuts.png'
+            return 'icons/nuts.webp'
         elif self.category == 'cheese':
-            return 'icons/cheese.png'
+            return 'icons/cheese.webp'
         elif self.category == 'mix':
-            return 'icons/food_mix.png'
+            return 'icons/food_mix.webp'
         else:
-            return 'icons/food_mix.png'
+            return 'icons/food_mix.webp'
             # ("other", "Other")
 
     def save(self, *args, **kwargs):
