@@ -604,3 +604,65 @@ The project will now of been cloned on your local machine for use
 
 
 ## Credits
+
+
+
+### Code
+
+- A substantial part of the inspiration for structuring the Django project, creating models, and implementing views was drawn from the following tutorials:
+    - [Dee MC's Recipe Sharing Tutorial](https://www.youtube.com/playlist?list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
+    - [I Think Therefore I Blog](https://github.com/Code-Institute-Solutions/Django3blog) from Code Institue
+- [Bootstrap documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) has been used all along the project
+- Approach to add and remove an item from the user's favorites from the products list view using [get_or_create() from Let's code more](https://www.letscodemore.com/blog/django-get-or-create/)
+- How to create a slug on the front-end from [Stackoverflow](https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django)
+- How to auto populate the profile name from [Stackoverflow](https://stackoverflow.com/questions/57336469/django-how-to-auto-populate-field-with-a-related-models-field)
+- How to execute complex queries using Q objects for the search bar from the [Django Documentation](https://docs.djangoproject.com/en/4.2/topics/db/queries/#complex-lookups-with-q-objects)
+- How to filter a queryset using Double Underscore from [dev2qa](https://www.dev2qa.com/what-does-double-underscore-__-means-in-django-model-queryset-objects-filter-method/)
+- How to filter on what pages to show the search bar using [template custom filters from realpython](https://realpython.com/django-template-custom-tags-filters/#writing-django-template-custom-filters)
+- How to pass additional context into a template from [Geeksforgeeks](https://www.geeksforgeeks.org/how-to-pass-additional-context-into-a-class-based-view-django/)
+- How to get a list of favorited products from a user using [values_list from Stackoverflow](https://stackoverflow.com/questions/37205793/django-values-list-vs-values)
+- How to customize the search bar from [Bootstrapious](https://bootstrapious.com/p/bootstrap-search-bar)
+- How to add messages from [Django documentation](https://docs.djangoproject.com/en/4.2/ref/contrib/messages/)
+
+### Content
+
+- Bios for fictional profiles and product descriptions have been enhanced using ChatGPT.
+
+### Media
+
+#### Icons
+
+- icon_menu_1: [Personal icons created by Icontive - Flaticon] (https://www.flaticon.com/free-icons/personal)
+- icon_menu_2: [Ui icons created by HideMaru - Flaticon] (https://www.flaticon.com/free-icons/ui)
+- fruits: [Fruits icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/fruits)
+- meat: [Groceries icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/groceries)
+- vegetables: [Vegetable icons created by Icongeek26 - Flaticon] (https://www.flaticon.com/free-icons/vegetable)
+- wine: [Wine icons created by iconixar - Flaticon] (https://www.flaticon.com/free-icons/wine)
+- beer: [Drink icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/drink)
+- honey: [Honey icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/honey)
+- nuts: [Nuts icons created by lapiyee - Flaticon] (https://www.flaticon.com/free-icons/nuts)
+- cheese: [Cheese slice icons created by Icon home  - Flaticon] (https://www.flaticon.com/free-icons/chesse-slice)
+- food_mix: [Food delivery icons created by iconixar - Flaticon] (https://www.flaticon.com/free-icons/food-delivery)
+- profile_avatar: [User icons created by LAFS - Flaticon] (https://www.flaticon.com/free-icons/user)
+
+#### Images
+
+- market_default: Image by [Paolo Chieselli](https://pixabay.com/users/kieselli-2969217) from [Pixabay](https://pixabay.com/)
+- home_1: Image by [OpenClipart-Vectors](https://pixabay.com/users/openclipart-vectors-30363) from [Pixabay](https://pixabay.com/)
+- home_2: Image by [Mohamed Hassan](https://pixabay.com/users/mohamed_hassan-5229782) from [Pixabay](https://pixabay.com/)
+- home_3: Image by [Agata](https://pixabay.com/users/dandelion_tea-15261675) from [Pixabay](https://pixabay.com/)
+- User John: Image by [Sasin Tipchai](https://pixabay.com/users/sasint-3639875) from [Pixabay](https://pixabay.com/)
+- organic_tomatoes: Image by [Ellen Chan](https://pixabay.com/users/ellenchan-4047246) from [Pixabay](https://pixabay.com/)
+- organic_cucumbers: Image by [Krzysztof Jaracz](https://pixabay.com/users/krzys16-1195925/) from [Pixabay](https://pixabay.com/)
+- bell_peppers: Image by [Daniel Dan outsideclick](https://pixabay.com/users/outsideclick-16930317) from [Pixabay](https://pixabay.com/)
+- spinach: Image by [Rajesh Balouria](https://pixabay.com/users/balouriarajesh-6205857) from [Pixabay](https://pixabay.com/)
+- User Sarah: Image by [Uschi Dugulin](https://pixabay.com/users/uschi_du-6837866) from [Pixabay](https://pixabay.com/)
+- cheddar_cheese: Image by [8618939](https://pixabay.com/users/8618939-8618939) from [Pixabay](https://pixabay.com/)
+- brie_cheese: Image by [Devon Breen](https://pixabay.com/users/dbreen-1643989) from [Pixabay](https://pixabay.com/)
+- User Michael: Image by [stephanfredthielen](https://pixabay.com/users/stephanfredthielen-17479201) from [Pixabay](https://pixabay.com/)
+- merlot_wine: Image by [congerdesign](https://pixabay.com/users/congerdesign-509903) from [Pixabay](https://pixabay.com/)
+- User Lisa: Image by [Jill Wellington](https://pixabay.com/users/jillwellington-334088) from [Pixabay](https://pixabay.com/)
+- peaches: Image by [Hans](https://pixabay.com/users/hans-2) from [Pixabay](https://pixabay.com/)
+- apples: Image by [Julita](https://pixabay.com/users/pasja1000-6355831) from [Pixabay](https://pixabay.com/)
+- User Robert: Image by [Michael Strobel](https://pixabay.com/users/lichtsammler-11059614) from [Pixabay](https://pixabay.com/)
+- honey: Image by [Melanie](https://pixabay.com/users/lolame-37761) from [Pixabay](https://pixabay.com/)
