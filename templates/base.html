@@ -15,7 +15,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -94,12 +93,6 @@
         {% endwith %}
     </header>
 
-<!-- 
-    <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-        {{ message | safe}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
-
-
     <!-- Messages -->
     <div class="container">
         {% for message in messages %}
@@ -143,14 +136,21 @@
                 class="fab fa-instagram-square social-media-icon"></i></a>
 
     </footer>
+    
     <!-- Font awesome script-->
     <script src="https://kit.fontawesome.com/d0d853e7a3.js" crossorigin="anonymous"></script>
+    
+    <!-- Messages script -->
     <script>
         setTimeout(function() {
-            let messages = document.getElementById("msg");
-            let alert = new bootstrap.Alert(messages);
-            alert.close();
-        }, 2500)
+            // Ensure that the element with ID "msg" exists
+            const alertmsg = document.getElementById('msg');
+            if (alertmsg) {
+                // If it exists, create a Bootstrap alert and close it
+                let alert = new bootstrap.Alert(alertmsg);
+                alert.close();
+            }
+        }, 3000);
     </script>
 
     {% block extra_js %}
