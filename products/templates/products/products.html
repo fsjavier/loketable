@@ -66,7 +66,7 @@
                                     {% endif %}
                                     <div class="image-container">
                                         <!-- Disable when the product is not available. Should only be necessary for Favorites view -->
-                                        <a href="{% url 'product_detail' product.id product.slug %}" class="btn {%if not product.available %}disabled disabled-product{% endif %}">
+                                        <a href="{% url 'product_detail' product.id product.slug %}" class="btn product-link {%if not product.available %}disabled disabled-product{% endif %}">
                                             {% if "placeholder" in product.image.url %}
                                                 <img src="{% static 'images/market_default.webp' %}" class="card-img-top" alt="{{ product.title }}">
                                             {% else %}

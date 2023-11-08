@@ -183,6 +183,10 @@ footer {
     border: none;
 }
 
+.product-link {
+    border: none;
+}
+
 .image-container img {
     border-radius: 0.3rem 0.3rem 0 0;
     max-width: 100%;

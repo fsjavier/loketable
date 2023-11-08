@@ -6,7 +6,7 @@
             <div class="row g-0">
                 <div class="col">
                     <div class="row">
-                        <a href="{% url 'product_detail' product.id product.slug %}" class="d-flex justify-content-center align-items-center btn {%if not product.available %}disabled disabled-product{% endif %}">
+                        <a href="{% url 'product_detail' product.id product.slug %}" class="d-flex justify-content-center align-items-center btn product-link {%if not product.available %}disabled disabled-product{% endif %}">
                             <div class="col-sm-4 product-img-profile-container">
                                 {% if "placeholder" in product.image.url %}
                                     <img src="{% static 'images/market_default.webp' %}" alt="{{ product.title }}" class="product-img-profile">
