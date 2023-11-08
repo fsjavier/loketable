@@ -384,6 +384,8 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Ideally there should be a user review system, potentially including comments or a rating system. However, due to the absence of on-site transactions, I still need to explore the best way to introduce this feature.
 
+- Images uploaded by users should be limited in size and compressed to keep storage more efficient and allow faster downloads.
+
 
 ## Database Design
 
@@ -475,6 +477,8 @@ Logged in users can create (add) products. Once created, users can also edit or 
 
 
 ## Testing
+
+The full testing documentation can be found in [TESTING.md](TESTING.md)
 
 ## Deployment
 
@@ -605,8 +609,6 @@ The project will now of been cloned on your local machine for use
 
 ## Credits
 
-
-
 ### Code
 
 - A substantial part of the inspiration for structuring the Django project, creating models, and implementing views was drawn from the following tutorials:
@@ -632,18 +634,18 @@ The project will now of been cloned on your local machine for use
 
 #### Icons
 
-- icon_menu_1: [Personal icons created by Icontive - Flaticon] (https://www.flaticon.com/free-icons/personal)
-- icon_menu_2: [Ui icons created by HideMaru - Flaticon] (https://www.flaticon.com/free-icons/ui)
-- fruits: [Fruits icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/fruits)
-- meat: [Groceries icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/groceries)
-- vegetables: [Vegetable icons created by Icongeek26 - Flaticon] (https://www.flaticon.com/free-icons/vegetable)
-- wine: [Wine icons created by iconixar - Flaticon] (https://www.flaticon.com/free-icons/wine)
-- beer: [Drink icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/drink)
-- honey: [Honey icons created by Eucalyp - Flaticon] (https://www.flaticon.com/free-icons/honey)
-- nuts: [Nuts icons created by lapiyee - Flaticon] (https://www.flaticon.com/free-icons/nuts)
-- cheese: [Cheese slice icons created by Icon home  - Flaticon] (https://www.flaticon.com/free-icons/chesse-slice)
-- food_mix: [Food delivery icons created by iconixar - Flaticon] (https://www.flaticon.com/free-icons/food-delivery)
-- profile_avatar: [User icons created by LAFS - Flaticon] (https://www.flaticon.com/free-icons/user)
+- icon_menu_1: [Personal icons created by Icontive - Flaticon](https://www.flaticon.com/free-icons/personal)
+- icon_menu_2: [Ui icons created by HideMaru - Flaticon](https://www.flaticon.com/free-icons/ui)
+- fruits: [Fruits icons created by Eucalyp - Flaticon](https://www.flaticon.com/free-icons/fruits)
+- meat: [Groceries icons created by Eucalyp - Flaticon](https://www.flaticon.com/free-icons/groceries)
+- vegetables: [Vegetable icons created by Icongeek26 - Flaticon](https://www.flaticon.com/free-icons/vegetable)
+- wine: [Wine icons created by iconixar - Flaticon](https://www.flaticon.com/free-icons/wine)
+- beer: [Drink icons created by Eucalyp - Flaticon](https://www.flaticon.com/free-icons/drink)
+- honey: [Honey icons created by Eucalyp - Flaticon](https://www.flaticon.com/free-icons/honey)
+- nuts: [Nuts icons created by lapiyee - Flaticon](https://www.flaticon.com/free-icons/nuts)
+- cheese: [Cheese slice icons created by Icon home  - Flaticon](https://www.flaticon.com/free-icons/chesse-slice)
+- food_mix: [Food delivery icons created by iconixar - Flaticon](https://www.flaticon.com/free-icons/food-delivery)
+- profile_avatar: [User icons created by LAFS - Flaticon](https://www.flaticon.com/free-icons/user)
 
 #### Images
 
