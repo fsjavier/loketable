@@ -238,6 +238,7 @@ footer {
     top: 4%;
     right: 10%;
     font-size: 48px;
+    border: none;
 }
 
 .heart:hover {
@@ -309,16 +310,11 @@ hr {
     color: var(--drab-dark-brown);
 }
 
-#btn-user-favorites {
-    padding: 0;
-    border: none;
-}
-
 #favorites-profile {
     font-size: 1.25rem;
     color: var(--field-drab);
     padding: 0.5rem;
-    border-radius: 5px;
+    border: none;
 }
 
 #favorites-profile:hover {

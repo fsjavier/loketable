@@ -6,28 +6,26 @@
             <div class="row g-0">
                 <div class="col">
                     <div class="row">
-                        <button class="btn {%if not product.available %}disabled disabled-product{% endif %}">
-                            <a href="{% url 'product_detail' product.id product.slug %}" class="d-flex justify-content-center align-items-center">
-                                <div class="col-sm-4 product-img-profile-container">
-                                    {% if "placeholder" in product.image.url %}
-                                        <img src="{% static 'images/market_default.webp' %}" alt="{{ product.title }}" class="product-img-profile">
+                        <a href="{% url 'product_detail' product.id product.slug %}" class="d-flex justify-content-center align-items-center btn {%if not product.available %}disabled disabled-product{% endif %}">
+                            <div class="col-sm-4 product-img-profile-container">
+                                {% if "placeholder" in product.image.url %}
+                                    <img src="{% static 'images/market_default.webp' %}" alt="{{ product.title }}" class="product-img-profile">
+                                {% else %}
+                                    <img src="{{ product.image.url }}" class="product-img-profile" alt="{{ product.title }}">
+                                {% endif %}
+                            </div>
+                            <div class="col d-flex align-items-center text-start">
+                                <div class="card-body ps-3">
+                                    <p class="card-title">{{ product.title }}</p>
+                                    <p class="card-text">{{ product.description|truncatechars:250 }}</p>
+                                    {% if product.currency == 'eur' %}
+                                        <p class="card-text"><small class="text-muted">{{ product.price }} {{ product.currency_display }} / {{ product.quantity }} {{ product.units }}</small></p>
                                     {% else %}
-                                        <img src="{{ product.image.url }}" class="product-img-profile" alt="{{ product.title }}">
+                                        <p class="card-text"><small class="text-muted">{{ product.currency_display }} {{ product.price }} / {{ product.quantity }} {{ product.units }}</small></p>
                                     {% endif %}
                                 </div>
-                                <div class="col d-flex align-items-center text-start">
-                                    <div class="card-body ps-3">
-                                        <p class="card-title">{{ product.title }}</p>
-                                        <p class="card-text">{{ product.description|truncatechars:250 }}</p>
-                                        {% if product.currency == 'eur' %}
-                                            <p class="card-text"><small class="text-muted">{{ product.price }} {{ product.currency_display }} / {{ product.quantity }} {{ product.units }}</small></p>
-                                        {% else %}
-                                            <p class="card-text"><small class="text-muted">{{ product.currency_display }} {{ product.price }} / {{ product.quantity }} {{ product.units }}</small></p>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </a>
-                        </button>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 {% if profile.user == request.user %}

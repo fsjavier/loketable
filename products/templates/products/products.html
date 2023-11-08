@@ -66,25 +66,23 @@
                                     {% endif %}
                                     <div class="image-container">
                                         <!-- Disable when the product is not available. Should only be necessary for Favorites view -->
-                                        <button class="btn {%if not product.available %}disabled disabled-product{% endif %}">
-                                            <a href="{% url 'product_detail' product.id product.slug %}">
-                                                {% if "placeholder" in product.image.url %}
-                                                    <img src="{% static 'images/market_default.webp' %}" class="card-img-top" alt="{{ product.title }}">
+                                        <a href="{% url 'product_detail' product.id product.slug %}" class="btn {%if not product.available %}disabled disabled-product{% endif %}">
+                                            {% if "placeholder" in product.image.url %}
+                                                <img src="{% static 'images/market_default.webp' %}" class="card-img-top" alt="{{ product.title }}">
+                                            {% else %}
+                                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                                            {% endif %}
+                                            <div class="card-content justify-content-start align-items-start">
+                                                <p class="card-title card-title">{{ product.title }}</p>
+                                                <p class="card-text">In {{ product.city }}</p>
+                                                {% if product.currency == 'eur' %}
+                                                    <p class="card-text text-muted">{{ product.price }} {{ product.currency_display }} / {{product.quantity}} {{product.units}}</p>
                                                 {% else %}
-                                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                                                    <p class="card-text text-muted">{{ product.currency_display }} {{ product.price }} / {{product.quantity}} {{product.units}}</p>
                                                 {% endif %}
-                                                <div class="card-content justify-content-start align-items-start">
-                                                    <p class="card-title card-title">{{ product.title }}</p>
-                                                    <p class="card-text">In {{ product.city }}</p>
-                                                    {% if product.currency == 'eur' %}
-                                                        <p class="card-text text-muted">{{ product.price }} {{ product.currency_display }} / {{product.quantity}} {{product.units}}</p>
-                                                    {% else %}
-                                                        <p class="card-text text-muted">{{ product.currency_display }} {{ product.price }} / {{product.quantity}} {{product.units}}</p>
-                                                    {% endif %}
-                                                    <img class="card-icon" src="{% static product.category_icon_url %}" alt="{{ product.category }}">
-                                                </div>
-                                            </a>
-                                        </button>
+                                                <img class="card-icon" src="{% static product.category_icon_url %}" alt="{{ product.category }}">
+                                            </div>
+                                        </a>
                                     </div>
                                     <a href="{% url 'profile' product.user.id %}" class="producer-name d-flex justify-content-center mt-2 mb-3">By {{ product.user.profile.first_name }}</a>
                                 </div>
