@@ -1,5 +1,64 @@
 ## Functional Testing
 
+### Authentication
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A user can register. | 1. In the Home Page click "Register" or click the avatar and click "Sign up".<br>2. Enter a username, email (optional) and password. | If the username doesn't already exist and the password is valid, the registration is successful and the user is redirected to the products page. | Works as expected. |
+| A user can log in. | 1. In the Home Page click "Log in" or click the avatar and click "Log in".<br>2. Enter an already existing username and password. | If the username and password are corred, the user is logged in and redirected to the products page. | Works as expected. |
+| A user can log out. | 1. Click the profile picture.<br>2. In the profile menu click "Log out".<br>3.In the Sign Out page confirm by clicking "Sign Out". | The user is logged out and redirected to the home page. | Works as expected. |
+
+### Navigation Bar
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| The search bar is displayed in relevant pages for search. | Navigate to Home Page, Products Page or Favorites Page (when logged in). | The search bar is displayed. | Works as expected. |
+| The search bar is not displayed in pages not relevant for search. | Navigate to Sign / Log In Pages, Sing Out Page, Profile Page, Products Detail Page, Edit Profile or Add / Edit Product. | The search bar is not displayed. | Works as expected. |
+| The search bar in the products page return results from all available products. | 1. Go to the Home or Products Page.<br> 2. Click on the search bar.<br>3. Press enter. | Only available products containing in their title, description or category the search term are displayed. | Works as expected. |
+| The search bar in the products page return results from the user's saved favorites. | 1. When logged in go to the profile.<br> 2. Click on the Favorites link.<br>3. Click on the search bar.<br>4. Press enter. | Only products from the favorites list containing in their title, description or category the search term are displayed. | Works as expected. |
+| The avatar icon displays the options to Sign In and Log In if the user is not logged in. | In any page click the avatar. | The options to Sign Up and Log In are displayed. | Works as expected. |
+| The avatar icon displays the options to go to Profile, Add a Product and Log out if the user is not logged in. | In any page click the avatar. | The options to go to Profile, Add a Product and Log out are displayed. | Works as expected. |
+| Clicking the Logo takes the loged out user to the Home Page. | Click the logo from any page when the user is not logged id. | The user is taken to the Home Page. | Works as expected. |
+| Clicking the Logo takes the loged in user to the Products Page. | Click the logo from any page when the user is logged id. | The user is taken to the Products Page. | Works as expected. |
+| A user who has uploaded a profile picture sees their picture instead of the default avatar. | 1. Go the Profile Page.<br>2. Click "Edit Profile".<br>3. Upload a profile picture and submit. | The uploaded profile picture is displayed as avatar. | Works as expected. |
+
+### Products Page
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A logged out user can't add products to favorites. | As a logged out user go to the Products Page. | The products don't have a heart button to add / remove from favorites. | Works as expected. |
+| A logged in user can add products to favorites. | 1. As a logged in user go to the Products Page.<br>2. Click on the heart of an item that is not a favorite already. | The product is added to the list of favorites, displaying now a filled heart. | Works as expected. |
+| A logged in user can remove products from favorites. | 1. As a logged in user go to the Products Page.<br>2. Click on the heart of an item that is already a favorite already. | The product is removed from the list of favorites, displaying now an empty heart. | Works as expected. |
+| The category filter in the products page return results from all available products. | 1. Go to the Products Page.<br> 2. Click on any of the category buttons at the top of the page. | Only available products with the selected category are displayed. | Works as expected. |
+| The search and category filter show what is being filtered for. | 1. Go to the Products Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar. | The message 'Available Products for "xxx"' is displayed. | Works as expected. |
+| If a search or category filter return no results a message saying so is displayed. | 1. Go to the Products Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar for which it's known there are no results, eg. "dinosaurs". | The message 'There are currently no products available' is shown. Additionally, there is a link to go back to all available products. | Works as expected. |
+| Clicking on one of the available products takes the user to the product details page. | 1. Go to the Products Page.<br> 2. Click on any product. | The user is taken to the details page of that product. |
+| Clicking on the producer's name of one of the available products takes the user to the producer's profile page. | 1. Go to the Products Page.<br> 2. Click on the producer's name at the bottom of any product card. | The user is taken to the product producer's profile page. |
+| If there are more than 8 available products they are paginated. | 1. Go to the Products Page. | If there are more than 8 products, at the bottom of the page there is a link ("Next") that loads the next page with the next 8 products. | Works as expected. |
+
+### Product Details Page
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| Unavailable products urls can be accessed but with restrictions. | A user tries to access the Product Details Page of an unavailable product by typing the url. | The page loads but a static modal is displayed. It can only be closed clicking the link to go back to the Products Page. | Works as expected. |
+
+### Profile Page
+
+### Edit Profile Page
+
+### Favorites Page
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| The category filter in the Favorites Page return results only from favorited products. | 1. Go to the Favorites Page.<br> 2. Click on any of the category buttons at the top of the page. | All favorited products with the selected category are displayed. | Works as expected. |
+| The search and category filter show what is being filtered for only from favorited products. | 1. Go to the Favorites Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar. | The message 'Available Products for "xxx"' is displayed. | Works as expected. |
+| If a search or category filter return no results a message saying so is displayed. | 1. Go to the Favorites Page.<br>2. Click on any of the category buttons at the top of the page or enter a search term in the search bar for which it's known there are no results, eg. "dinosaurs". | The message 'There are currently no products available' is shown. Additionally, there is a link to go back to all available favorited products. | Works as expected. |
+| When a product is not available is displayed but not clickable. | 1. Go to the Favorites Page.<br>2. Hover over an item that has been marked unavailable. | The item is greyed out, a tooltop indicates that is currently unavailable and the item can't be clicked to go to the details page. | Works as expected. |
+| A logged out user can't access the favorites page | A logged out user tries to access the favorites page by typing the url. | The 403.html page is displayed. | Works as expected. |
+
+### Add / Edit Product Page
+
+
 ## Unit Testing
 
 ## Validator Testing
