@@ -5,6 +5,7 @@
 {% block title %}Product details - {{product.title}}{% endblock %}
 
 {% block content %}
+    <!-- If the product is not available a static modal is displayed -->
     {% if not product.available %}
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -24,12 +25,12 @@
             </div>
             </div>
         </div>
+        <!-- / Modal -->
     {% endif %}
 
     <div class="container mt-4">
-
         <div class="row mt-5 justify-content-center">
-
+            <!-- Product image -->
             <div class="col-8 col-md-5 d-flex align-items-center product-detail-image-container">
                 {% if "placeholder" in product.image.url %}
                     <img src="{% static 'images/market_default.webp' %}" class="product-detail-image" alt="{{ product.title }}">
@@ -37,7 +38,9 @@
                     <img src="{{ product.image.url }}" class="product-detail-image" alt="{{ product.title }}">
                 {% endif %}
             </div>
+            <!-- / Product image -->
 
+            <!-- Product information -->
             <div class="col-10 col-md-7">
                 <div class="row mt-3 mt-md-0 text-center">
                     <div class="col card-title">
@@ -87,13 +90,12 @@
                     </div>
                 </div>
             </div>
-
+            <!-- / Product information -->
         </div>
-
     </div>
 {% endblock %}
 
-
+<!-- Script checking if the product is not available and triggering the modal -->
 {% block extra_js %}
     <script>
         document.addEventListener('DOMContentLoaded', function() {

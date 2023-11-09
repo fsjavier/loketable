@@ -6,6 +6,7 @@
             <div class="row g-0">
                 <div class="col">
                     <div class="row">
+                        <!-- Check if the product is not available do disable the link -->
                         <a href="{% url 'product_detail' product.id product.slug %}" class="d-flex justify-content-center align-items-center btn product-link {%if not product.available %}disabled disabled-product{% endif %}">
                             <div class="col-sm-4 product-img-profile-container">
                                 {% if "placeholder" in product.image.url %}
@@ -28,6 +29,7 @@
                         </a>
                     </div>
                 </div>
+                <!-- Toggle availability, Edit and Delete Options. Displayed only for own products -->
                 {% if profile.user == request.user %}
                     <div class="col-sm-2 d-flex flex-sm-column justify-content-center align-items-center">
                         <div class="row">
@@ -50,7 +52,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <!-- Button triggering delete modal -->
+                                <!-- Button triggering delete confirmation modal -->
                                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" data-product-title="{{ product.title }}" data-product-id="{{ product.id }}" data-product-slug="{{ product.slug }}">Delete</button>
                             </div>
                         </div>

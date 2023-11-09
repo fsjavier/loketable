@@ -6,8 +6,10 @@
 
 {% block content %}
 
+    <!-- Checking url to know if it's the Products or Favorites Page -->
     {% with request.resolver_match.url_name as url_name %}
         {% if url_name == 'products' %}
+            <!-- Using category or query from the view context data -->
             {% if category %}
                 <h1 class="text-center">Available Products for "{{category}}"</h1>
             {% elif query %}
@@ -26,6 +28,7 @@
         {% endif %}
     {% endwith %}
 
+    <!-- Category selection menu -->
     <nav class="navbar navbar-expand-md bg-white">
         <div class="container-fluid justify-content-center">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="false" aria-label="Toggle categories">
@@ -43,17 +46,20 @@
             </div>
         </div>
     </nav>
+    <!-- / Category selection menu -->
 
     <div class="container">
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="row">
+                    <!-- Loop through products to display each of them -->
                     {% for product in products %}
                         <div class="col-12 col-md-6 col-lg-3 justify-content-center">
                             <div class="card my-4 card-products">
                                 <!-- Disabled Tooltip. Should only be necessary for Favorites view -->
                                 <div class="card-body card-products-body"
                                 tabindex="0" {%if not product.available %}data-bs-toggle="tooltip" data-bs-title="This product is currently unavailable"{% endif %}>
+                                    <!-- Only authenticated users can add / remove items from Favorites -->
                                     {% if user.is_authenticated %}
                                         <form action="{% url 'add_to_favorite' product.id product.slug %}" method="POST">
                                             {% csrf_token %}
@@ -65,7 +71,7 @@
                                         </form>
                                     {% endif %}
                                     <div class="image-container">
-                                        <!-- Disable when the product is not available. Should only be necessary for Favorites view -->
+                                        <!-- Disable when the product is not available. Only necessary for Favorites view -->
                                         <a href="{% url 'product_detail' product.id product.slug %}" class="btn product-link {%if not product.available %}disabled disabled-product{% endif %}">
                                             {% if "placeholder" in product.image.url %}
                                                 <img src="{% static 'images/market_default.webp' %}" class="card-img-top" alt="{{ product.title }}">
@@ -93,6 +99,7 @@
                 <div class="row">
                     {% endif %}
 
+                    <!-- Content for the case that there are no products -->
                     {% empty %}
                         <h3 class="text-center my-5">There are currently no products available</h3>
                         {% with request.resolver_match.url_name as url_name %}
@@ -107,6 +114,7 @@
             </div>
         </div>
 
+        <!-- Pagination -->
         {% if is_paginated %}
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
@@ -119,13 +127,13 @@
                 </ul>
             </nav>
         {% endif %}
-
+        <!-- / Pagination -->
 
     </div>
 
 {% endblock %}
 
-
+<!-- Script for BS tooltip -->
 {% block extra_js %}
     <!-- Bootstrap Tooltips initialization -->
     <script>
