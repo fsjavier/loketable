@@ -84,7 +84,43 @@
 | A user can cancel the changes made. | 1. Log in and go to the Profile Page.<br>2<br>2. Click "Edit" foy any listed product..<br>3. Make changes in any of the fields.<br>4. Click "Cancel". | The changes are not saved and the user is redirected back to the Profile Page. | Works as expected. |
 | A user can't edit other users products. | Enter manually the url to edit a product from other user. | The 403.html page is displayed. | Works as expected. |
 
+### Responsiveness
 
+All pages have been tested for responsiveness with Google Chrome Developer Tools on screens from 320px, making sure the content adjusts correctly on all screen sizes.
+
+On physical device, it has been tested on iPhone 13 in vertical and horizontal orientation.
+
+### Browsers compatibility
+
+The website has been tested in the following browsers on desktop, without finding any significant problems:
+
+* Chrome
+* Safari
+* Firefox
+* Opera
+* Edge
+
+There is a minor issue with Safari and Firefox, where the image in the Home Page is not correctly aligned. This will be addressed in future iterations.
+
+### Fixed Bugs
+
+| Bug | Solution |
+|-----|----------|
+| When I tried to display the first_name in the products list it was not displaying. To make it worked I needed to add “first” to the tag `{{ product.user.profile.first.first_name }}`. | I realised it was due to to the ForeignKey relationship between the Profile and User models. In this case I didn't want to allow more than 1 profile per user, so I modified the model and change the relationship to OneToOneField. |
+| The EditProfile success url was not working because it was missing the primary key being passed. | I needed to override the get_success_url method: `return reverse('profile', kwargs={'pk': self.object.user.pk})` |
+| When a user added a product manually the slug was not being created. | Override save method in the model. |
+| Clicking on the heart to Add / Remove an item from the favorites in the Products list view didn’t add remove the item from the favorites. | Get the instance from the favorites table if it existed and if not create it with `get_or_create()` method.
+| When displaying the modal to delete an item from the user’s profile, it won’t delete the correct item, it always deletes the first item from the user. | Add JavaScript to pass data attributes to the modal. Solution found in [BS documentation](https://getbootstrap.com/docs/5.2/components/modal/#varying-modal-content) |
+| Product switch didn’t toggle the availability of the product. because there was no submit element triggering the action for the form. | Add JavaScript event listener to know when any of the checkbox change and submit the form. |
+| Error in production loading the static assets. | I started the static image source paths started with `./` what caused the error. Removed that from the path.
+| When two items created by the same user had the same title, Django would throw an error trying to access one of them because of multiple items found. | It was due to using the slug as a first element of the url and the id as the second. I’ve switched the order of the fields to make sure that if Django use the first field to get the object it will always be unique.
+| Search bar not being displayed in the favorite products list. | I had the wrong name for the favorites url in the custom_tags.py file. |
+| Performing a search with the search bar in the Favorites Page returns results from all products and not only the Favorites. | Remove the action url in the search bar sending the user to the products list page. |
+
+### Fixed Bugs
+
+- Removing a product from the favorites list should remove the product and keep the user in the Favorites Page, but it's redirecting the user to the Products Page.
+- The image in the Home Page is not displaying correctly in Safari and Firefox
 
 ## Unit Testing
 
