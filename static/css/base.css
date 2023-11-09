@@ -17,6 +17,7 @@
 
     /* Boxes */
     --box-shadow-small-lavender: 0px 0px 6px -1px rgb(216,212,242);
+    --box-shadow-big-lavender: 0px 0px 7px 5px rgb(216,212,242);
 }
 
 /* Generic rules */
@@ -113,6 +114,14 @@ ul {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.icon-menu:hover {
+    box-shadow: var(--box-shadow-small-lavender);
+}
+
+.profile-pic-menu:hover {
+    box-shadow: var(--box-shadow-big-lavender);
 }
 
 #user-greeting {
@@ -251,6 +260,23 @@ footer {
 
 .disabled-product {
     border: none;
+}
+
+.page-link {
+    border: none;
+    color: var(--field-drab);
+}
+
+.page-link:hover {
+    color: var(--fulvous);
+    background-color: var(--cloud-white);
+}
+
+.page-link:focus {
+    border: none;
+    box-shadow: none;
+    color: var(--fulvous);
+    background-color: var(--cloud-white);
 }
 
 /* Profile */
