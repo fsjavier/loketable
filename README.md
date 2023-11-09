@@ -2,6 +2,10 @@
 
 Lokatable is a web platform project that brings local producers and communities closer together. The goal is to simplify the process for producers to list their products, making them easily accessible to nearby consumers. And by doing so, empowering producers, enriching local communities, and contributing to environmental sustainability.
 
+[View the live site here](https://loketable-baa90e1a7202.herokuapp.com/)
+
+![Mockup](documentation/readme_images/mockup.png)
+
 ## Table of Contents
 
 * [UX / UI](#ui-/-ux)
