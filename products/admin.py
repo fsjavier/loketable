@@ -4,6 +4,9 @@ from .models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    """
+    Class to display products on admin
+    """
 
     list_display = (
         'id',

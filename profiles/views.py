@@ -9,12 +9,18 @@ from .forms import ProfileForm
 
 
 class Profiles(generic.DetailView):
-    """ View User Profile """
+    """
+    View User Profile
+    """
+
     template_name = 'profiles/profile.html'
     model = Profile
     context_object_name = 'profile'
 
     def get_context_data(self, **kwargs):
+        """
+        Provide context to use in the template
+        """
         context = super().get_context_data(**kwargs)
 
         # Checking for authentication is needed here
@@ -47,18 +53,30 @@ class EditProfile(
     UserPassesTestMixin,
     generic.UpdateView
 ):
-    """ Edit a Profile """
+    """
+    Edit a Profile
+    """
+
     template_name = 'profiles/edit_profile.html'
     form_class = ProfileForm
     model = Profile
     success_message = 'Profile edited successfully'
 
     def get_success_url(self):
+        """
+        Return to user's profile
+        """
         return reverse('profile', kwargs={'pk': self.object.user.pk})
 
     def form_valid(self, form):
+        """
+        Assign the form instance to the user making the request
+        """
         form.instance.user = self.request.user
         return super(EditProfile, self).form_valid(form)
 
     def test_func(self):
+        """
+        Requires the user to be the owner of the object
+        """
         return self.request.user == self.get_object().user

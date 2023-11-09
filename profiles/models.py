@@ -7,7 +7,10 @@ from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
-    """ Profile model """
+    """
+    Profile model
+    """
+
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
@@ -27,6 +30,9 @@ class Profile(models.Model):
         return self.user.username
 
     def save(self, *args, **kwargs):
+        """
+        Assign the username to first_name
+        """
         if not self.first_name:
             self.first_name = self.user.username
         super(Profile, self).save(*args, **kwargs)
@@ -34,13 +40,18 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(instance, created, **kwargs):
-    """ Create user profile """
+    """
+    Create user profile when a user is created
+    """
     if created:
         Profile.objects.create(user=instance)
 
 
 class Favorite(models.Model):
-    """ Records of users who saved favorites """
+    """
+    Favorites model
+    """
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

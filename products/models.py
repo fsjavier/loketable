@@ -38,6 +38,9 @@ UNIT_CHOICES = (
 
 
 class Product(models.Model):
+    """
+    Model to create a product
+    """
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -75,12 +78,18 @@ class Product(models.Model):
     )
 
     class Meta:
+        """
+        Order by most recently updated
+        """
         ordering = ['-updated_date']
 
     def __str__(self):
         return self.title
 
     def currency_display(self):
+        """
+        Return the currency symbol
+        """
         if self.currency == 'eur':
             return '€'
         elif self.currency == 'gbp':
@@ -93,6 +102,9 @@ class Product(models.Model):
             return ''
 
     def category_icon_url(self):
+        """
+        Return the category icon.
+        """
         if self.category == 'meat':
             return 'icons/meat.webp'
         elif self.category == 'fruit':
@@ -113,9 +125,11 @@ class Product(models.Model):
             return 'icons/food_mix.webp'
         else:
             return 'icons/food_mix.webp'
-            # ("other", "Other")
 
     def save(self, *args, **kwargs):
+        """
+        Creates a slug when the user adds a product.
+        """
         if not self.slug:
             self.slug = slugify(self.title)
         super(Product, self).save(*args, **kwargs)

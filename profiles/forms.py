@@ -3,7 +3,10 @@ from .models import Profile
 
 
 class ProfileForm(forms.ModelForm):
-    """ Form to edit a profile """
+    """
+    Form to edit a profile
+    """
+
     class Meta:
         model = Profile
         fields = [

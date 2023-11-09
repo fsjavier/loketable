@@ -4,6 +4,9 @@ from .models import Profile, Favorite
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
+    """
+    Class to display profiles on admin
+    """
 
     list_display = (
         'id',
@@ -26,6 +29,10 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Favorite)
 class ProfileAdmin(admin.ModelAdmin):
+    """
+    Class to display favorites on admin
+    """
+
     list_display = (
         'id',
         'user',
