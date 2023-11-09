@@ -44,7 +44,26 @@
 
 ### Profile Page
 
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A logged in user can edit their own profile. | 1. Log in and go to the Profile Page.<br>2. Click "Edit Profile". | The user is redirected to the Edit Profile Page. All previously added information by the user is present. | Works as expected. |
+| A logged in user can see the link to their Favorite products. | Log in and got to the Profile Page. | Below the "Bio" a link to the Favorites list is shown. The link is only active is there is at least 1 Favorite product saved. | Works as expected. |
+| A user can't see other users Favorites. | As a logged in user visit somebody else's profile or as a logged out user visit anybody's profile. | The link to the user's Favorites is not displayed. | Works as expected. |
+| A user can see all listed products for any profile. | Visit anybody's profile. | All listed products from the user are displayed. Available and unavailable products are split in two separate sections | Works as expected. |
+| A logged in user can edit their own products. | 1. Log in and go to the Profile Page.<br>2. List at least one product.<br>3. Clik the "Edit" button for the listed item. | The user is redirected to the Edit Product Page. All previously added information by the user is present. | Works as expected. |
+| A logged in user can toggle the availability of their own products. | 1. Log in and go to the Profile Page.<br>2. List at least one product.<br>3. Click the Switch button for the listed item. | If the product was available, it is now unavailable, and vice versa. | Works as expected. |
+| A logged in user can delete their own products. | 1. Log in and go to the Profile Page.<br>2. List at least one product.<br>3. Clik the "Delete" button for the listed item.<br>4. Confirm by clicking "Delete" again. | The product is deleted. | Works as expected. |
+| A user can't edit, toggle availability or delete other users products. | Visit somebody's profile with listed products. | The buttons to edit, toggle availabiliy and delete are not present  | Works as expected. |
+| A user can visit the product details of available products. | 1. Visit somebody's profile with listed and available products.<br>2. Click on an available product | The user is redirected to the Product Details Page. | Works as expected. | 
+| A user can't click on unavailable products. | 1.Visit somebody's profile with listed and unavailable products.<br>2. Hover over any unavailable product. | The unavailable products are listed under the "Unavailable Products" header. These items can't be clicked. | Works as expected. |
+
 ### Edit Profile Page
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A user can make changes to their Profile. | 1. Log in and go to the Profile Page.<br>2. Click "Edit Profile".<br>3. Make changes in any of the fields.<br>4. Click "Submit". | The profile is updated with the changes and the user is redirected back to the Profile Page. | Works as expected. |
+| A user can cancel the changes made. | 1. Log in and go to the Profile Page.<br>2. Click "Edit Profile".<br>3. Make changes in any of the fields.<br>4. Click "Cancel". | The changes are not saved and the user is redirected back to the Profile Page. | Works as expected. |
+| A user can't edit other users profiles. | Enter manually the url to edit a profile from other user. | The 403.html page is displayed. | Works as expected. |
 
 ### Favorites Page
 
@@ -57,6 +76,14 @@
 | A logged out user can't access the favorites page | A logged out user tries to access the favorites page by typing the url. | The 403.html page is displayed. | Works as expected. |
 
 ### Add / Edit Product Page
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A logged in user can Add Products. | 1. Log in and click on the avatar / profile picture in the navigation menu.<br>2. Click "Add product".<br>3. Enter the required information for each field (all are mandatory).<br>4. Click "Submit". | The product is saved, the user is redirected to the Profile Page and the new product is displayed. | Works as expected. |
+| A logged out user can't Add Products. | As a logged out user enter manually the url to add a product. | The user is redirected to the Log In Page. If the user logs in or signs in is then redirected to the Add Product Page. | Works as expected. |
+| A user can make changes to their Products. | 1. Log in and go to the Profile Page.<br>2. Click "Edit" foy any listed product.<br>3. Make changes in any of the fields.<br>4. Click "Submit". | The product is updated with the changes and the user is redirected back to the Profile Page. | Works as expected. |
+| A user can cancel the changes made. | 1. Log in and go to the Profile Page.<br>2<br>2. Click "Edit" foy any listed product..<br>3. Make changes in any of the fields.<br>4. Click "Cancel". | The changes are not saved and the user is redirected back to the Profile Page. | Works as expected. |
+| A user can't edit other users products. | Enter manually the url to edit a product from other user. | The 403.html page is displayed. | Works as expected. |
+
 
 
 ## Unit Testing
@@ -212,5 +239,3 @@ One accesibility issue that was highlighted was the size of the tappable heart i
 The WAVE WebAIM web accessibility tool was used throughout the development of the website. It alerted me to issues such as low contrast in the 'Sign In / Log In / Log Out' links, what led prompting me to revise their styles for better accessibility. Additionally, it identified a missing 'aria-label' attribute in the switch for activating or deactivating products in the users profiles, which I then addressed.
 
 In the final rounds of website testing, no accessibility issues were identified.
-
-## Bugs Fixed
