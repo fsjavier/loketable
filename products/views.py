@@ -278,7 +278,7 @@ class ProductListAddFavorite(View):
         return redirect('products')
 
 
-class FavoriteProductsList(generic.ListView):
+class FavoriteProductsList(LoginRequiredMixin, generic.ListView):
     """
     View all products
     """

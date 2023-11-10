@@ -73,7 +73,7 @@
 | The search and category filter show what is being filtered for only from favorited products. | 1. Go to the Favorites Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar. | The message 'Available Products for "xxx"' is displayed. | Works as expected. |
 | If a search or category filter return no results a message saying so is displayed. | 1. Go to the Favorites Page.<br>2. Click on any of the category buttons at the top of the page or enter a search term in the search bar for which it's known there are no results, eg. "dinosaurs". | The message 'There are currently no products available' is shown. Additionally, there is a link to go back to all available favorited products. | Works as expected. |
 | When a product is not available is displayed but not clickable. | 1. Go to the Favorites Page.<br>2. Hover over an item that has been marked unavailable. | The item is greyed out, a tooltop indicates that is currently unavailable and the item can't be clicked to go to the details page. | Works as expected. |
-| A logged out user can't access the favorites page | A logged out user tries to access the favorites page by typing the url. | The 403.html page is displayed. | Works as expected. |
+| A logged out user can't access the favorites page | A logged out user tries to access the favorites page by typing the url. | The user is redirected to the Log In Page. After login /signing in is redirected to the favorites page. | Works as expected. |
 
 ### Add / Edit Product Page
 |     Description     |     Steps     |     Expected Outcome     |  Outcome  |
@@ -116,6 +116,7 @@ There is a minor issue with Safari and Firefox, where the image in the Home Page
 | When two items created by the same user had the same title, Django would throw an error trying to access one of them because of multiple items found. | It was due to using the slug as a first element of the url and the id as the second. I’ve switched the order of the fields to make sure that if Django use the first field to get the object it will always be unique.
 | Search bar not being displayed in the favorite products list. | I had the wrong name for the favorites url in the custom_tags.py file. |
 | Performing a search with the search bar in the Favorites Page returns results from all products and not only the Favorites. | Remove the action url in the search bar sending the user to the products list page. |
+| A logged out user typing the user favorites url caused a server error. | Add `LoginRequiredMixin` to the view. |
 
 ### Fixed Bugs
 
