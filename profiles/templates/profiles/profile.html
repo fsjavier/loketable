@@ -32,7 +32,7 @@
                             {% if not profile.bio %}
                                 <p></p>
                             {% else %}
-                                {{ profile.bio }}
+                                {{ profile.bio|safe|linebreaks }}
                             {% endif %}
                         </div>
                     </div>

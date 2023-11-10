@@ -357,6 +357,13 @@ hr {
     border: none;
 }
 
+#product-card-description {
+    max-height: 13rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .btn-product {
     color: var(--field-drab);
     border: 1px solid var(--off-lavender);
@@ -416,6 +423,10 @@ hr {
     margin: 0.5rem auto;
     padding: 0.75rem;
     min-height: 10rem;
+    max-height: 20rem;
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: var(--box-shadow-small-lavender);
 }
 
