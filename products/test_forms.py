@@ -14,8 +14,10 @@ class TestProductForm(TestCase):
         form = ProductForm({'title': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('title', form.errors.keys())
-        self.assertEqual(form.errors['title'][0], 'This field is required.')
-    
+        self.assertEqual(
+            form.errors['title'][0], 'This field is required.'
+        )
+
     def test_description_is_required(self):
         """
         Test description is required
@@ -23,7 +25,9 @@ class TestProductForm(TestCase):
         form = ProductForm({'description': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('description', form.errors.keys())
-        self.assertEqual(form.errors['description'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['description'][0], 'This field is required.'
+        )
 
     def test_country_is_required(self):
         """
@@ -32,7 +36,9 @@ class TestProductForm(TestCase):
         form = ProductForm({'country': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('country', form.errors.keys())
-        self.assertEqual(form.errors['country'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['country'][0], 'This field is required.'
+        )
 
     def test_city_is_required(self):
         """
@@ -41,7 +47,9 @@ class TestProductForm(TestCase):
         form = ProductForm({'city': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('city', form.errors.keys())
-        self.assertEqual(form.errors['city'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['city'][0], 'This field is required.'
+        )
 
     def test_category_is_required(self):
         """
@@ -59,7 +67,9 @@ class TestProductForm(TestCase):
         form = ProductForm({'quantity': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('quantity', form.errors.keys())
-        self.assertEqual(form.errors['quantity'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['quantity'][0], 'This field is required.'
+        )
 
     def test_units_is_required(self):
         """
@@ -68,7 +78,9 @@ class TestProductForm(TestCase):
         form = ProductForm({'units': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('units', form.errors.keys())
-        self.assertEqual(form.errors['units'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['units'][0], 'This field is required.'
+        )
 
     def test_price_is_required(self):
         """
@@ -77,7 +89,9 @@ class TestProductForm(TestCase):
         form = ProductForm({'price': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('price', form.errors.keys())
-        self.assertEqual(form.errors['price'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['price'][0], 'This field is required.'
+        )
 
     def test_currency_is_required(self):
         """
@@ -86,4 +100,6 @@ class TestProductForm(TestCase):
         form = ProductForm({'currency': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('currency', form.errors.keys())
-        self.assertEqual(form.errors['currency'][0], 'This field is required.')
+        self.assertEqual(
+            form.errors['currency'][0], 'This field is required.'
+        )

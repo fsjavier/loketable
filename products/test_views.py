@@ -11,21 +11,24 @@ class TestViews(TestCase):
 
     def setUp(self):
         """
-        Create a test user and product 
+        Create a test user and product
         """
-        self.user = User.objects.create_user(username='test_user', password='test_password')
+        self.user = User.objects.create_user(
+            username='test_user',
+            password='test_password'
+        )
         self.product = Product.objects.create(
-            user = self.user,
-            title = 'Test product',
-            description = 'Test product description',
-            country = 'Country',
-            city = 'City',
-            category = 'fruit',
-            price = 10.50,
-            currency = 'eur',
-            available = True,
-            quantity = 10,
-            units = 'kg'
+            user=self.user,
+            title='Test product',
+            description='Test product description',
+            country='Country',
+            city='City',
+            category='fruit',
+            price=10.50,
+            currency='eur',
+            available=True,
+            quantity=10,
+            units='kg'
         )
 
     def test_get_products_page(self):
@@ -40,7 +43,9 @@ class TestViews(TestCase):
         """
         Test product details page response
         """
-        response = self.client.get(f'/products/{self.product.id}/{self.product.slug}/')
+        response = self.client.get(
+            f'/products/{self.product.id}/{self.product.slug}/'
+        )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/product_detail.html')
 
@@ -86,14 +91,22 @@ class TestViews(TestCase):
         """
         self.client.login(username='test_user', password='test_password')
         # Add product to favorites
-        response = self.client.post(f'/products/favorite/{self.product.id}/{self.product.slug}/')
+        response = self.client.post(
+            f'/products/favorite/{self.product.id}/{self.product.slug}/'
+        )
         self.assertRedirects(response, '/products/')
         # Check that the product is in favorites
-        favorite_items = Favorite.objects.filter(user=self.user, product=self.product)
+        favorite_items = Favorite.objects.filter(
+            user=self.user, product=self.product
+        )
         self.assertEqual(len(favorite_items), 1)
         # Remove product from favorites
-        response = self.client.post(f'/products/favorite/{self.product.id}/{self.product.slug}/')
+        response = self.client.post(
+            f'/products/favorite/{self.product.id}/{self.product.slug}/'
+        )
         self.assertRedirects(response, '/products/')
         # Check that the product is no longer in favorites
-        favorite_items = Favorite.objects.filter(user=self.user, product=self.product)
+        favorite_items = Favorite.objects.filter(
+            user=self.user, product=self.product
+        )
         self.assertEqual(len(favorite_items), 0)
