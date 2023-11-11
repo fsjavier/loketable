@@ -18,7 +18,7 @@ class Conversation(models.Model):
         ordering = ('-modified_date',)
 
     def __str__(self):
-        return self.product
+        return self.product.title
 
 
 class ConversationMessage(models.Model):
@@ -35,4 +35,4 @@ class ConversationMessage(models.Model):
     )
 
     def __str__(self):
-        return self.conversation
+        return self.conversation.product.title

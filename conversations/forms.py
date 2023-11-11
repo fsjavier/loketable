@@ -7,7 +7,7 @@ class ConversationMessageForm(forms.ModelForm):
     Form to send a message
     """
     class Meta:
-        model = Product
+        model = ConversationMessage
         fields = [
             'content',
         ]
