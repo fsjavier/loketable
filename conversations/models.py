@@ -8,14 +8,14 @@ class Conversation(models.Model):
     Model for conversations
     """
     product = models.ForeignKey(
-        Product, related_name='conversations', on_delete=models.CASCADE
+        Product, related_name='conversation_product', on_delete=models.CASCADE
     )
-    members = models.ManyToManyField(User, related_name='conversations')
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    members = models.ManyToManyField(User, related_name='conversation_member')
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ('-modified_at',)
+        ordering = ('-modified_date',)
 
     def __str__(self):
         return self.product
@@ -28,10 +28,10 @@ class ConversationMessage(models.Model):
     conversation = models.ForeignKey(
         Conversation, related_name='messages', on_delete=models.CASCADE
     )
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(max_length=1000, null=False, blank=False)
+    created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
-        User, related_name='created_messages', on_delete=models.CASCADE
+        User, related_name='message_user', on_delete=models.CASCADE
     )
 
     def __str__(self):
