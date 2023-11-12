@@ -75,7 +75,7 @@
                                                     <li><p id="user-greeting">Hi, {{ user.profile.first_name }}!</p></li>
                                                 {% endif %}
                                                 <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
-                                                <li><a class="dropdown-item" href="#">Inbox</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'inbox_conversations' %}">Inbox</a></li>
                                                 <li><a class="dropdown-item" href="{% url 'add_product' %}">Add product</a></li>
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a></li>

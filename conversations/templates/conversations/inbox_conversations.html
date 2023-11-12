@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Inbox {{ profile.first_name }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex justify-content-center my-3">
+        <h2>Your Conversations</h2>
+    </div>
+    {% for conversation in conversations %}
+    <div class="row">
+        <div class="col">
+            <div class="card card-products-profile mb-3 mx-auto">
+                <div class="row g-0">
+                    <div class="col">
+                        <div class="row">
+                            <!-- <a href=""></a> -->
+                                <div class="col-sm-4 product-img-profile-container">
+                                    {% if "placeholder" in conversation.product.image.url %}
+                                        <img src="{% static 'images/market_default.webp' %}" alt="{{ conversation.product.title }}" class="product-img-profile">
+                                    {% else %}
+                                        <img src="{{ conversation.product.image.url }}" class="product-img-profile" alt="{{ conversation.product.title }}">
+                                    {% endif %}
+                                </div>
+                                <div class="col d-flex align-items-center text-start">
+                                    <div class="card-body ps-3">
+                                        <p class="card-title">Conversation with {{ conversation.product.user }}</p>
+                                        <div class="card-text" id="product-card-description">
+                                            About {{ conversation.product.title }}
+                                        </div>
+                                        <p class="card-text"><small class="text-muted">
+                                            Last update @ {{ conversation.modified_date }}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            <!-- </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="d-flex justify-content-center my-5">
+        <h3>You have currently no conversations</h3>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
