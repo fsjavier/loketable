@@ -91,7 +91,6 @@ class ProductsList(generic.ListView):
 class AddProduct(
     SuccessMessageMixin,
     LoginRequiredMixin,
-    UserPassesTestMixin,
     generic.CreateView
 ):
     """
@@ -114,12 +113,6 @@ class AddProduct(
         """
         form.instance.user = self.request.user
         return super(AddProduct, self).form_valid(form)
-
-    def test_func(self):
-        """
-        Requires the user to be the owner of the object
-        """
-        return self.request.user.is_authenticated
 
 
 class EditProduct(
