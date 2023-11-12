@@ -10,12 +10,15 @@ from django.contrib import messages
 
 class StartConversation(LoginRequiredMixin, View):
     """
-    Start a conversation or go to the conversation
-    if already exists
+    Start a conversation
     """
 
     def get(self, request, product_id, slug):
-
+        """
+        If a conversation already exists for the product
+        redirtec the user to it.
+        If not, render the form.
+        """
         product = get_object_or_404(Product, id=product_id)
 
         # Redirect to products page if trying to access url to
@@ -30,7 +33,9 @@ class StartConversation(LoginRequiredMixin, View):
         )
 
         if conversations:
-            return redirect('products')
+            return redirect(
+                'conversation_messages', pk=conversations.first().id
+            )
 
         form = ConversationMessageForm()
         return render(
@@ -40,6 +45,10 @@ class StartConversation(LoginRequiredMixin, View):
         )
 
     def post(self, request, product_id, slug):
+        """
+        Save the new conversation and message and
+        redirect the user to the product details
+        """
 
         product = get_object_or_404(Product, id=product_id)
 
@@ -73,6 +82,7 @@ class InboxMessages(LoginRequiredMixin, generic.ListView):
     """
     View all conversations
     """
+
     model = Conversation
     template_name = 'conversations/inbox_conversations.html'
     context_object_name = 'conversations'
@@ -86,3 +96,53 @@ class InboxMessages(LoginRequiredMixin, generic.ListView):
             members__in=[self.request.user.id]).order_by('-modified_date')
 
         return conversations
+
+
+class ConversationMessages(LoginRequiredMixin, View):
+    """
+    View all messages for a conversation
+    """
+
+    def get(self, request, pk):
+        """
+        Get all messages and passed them together
+        with the form
+        """
+        conversation = Conversation.objects.filter(
+            members__in=[request.user.id]).get(pk=pk)
+        form = ConversationMessageForm()
+        context = {
+            'conversation': conversation,
+            'form': form
+        }
+
+        return render(
+            request, 'conversations/conversation_messages.html', context
+        )
+
+    def post(self, request, pk):
+        """
+        When a new message is sent keep the user
+        in the conversation page
+        """
+        conversation = Conversation.objects.filter(
+            members__in=[request.user.id]).get(pk=pk)
+        form = ConversationMessageForm(request.POST)
+        context = {
+            'conversation': conversation,
+            'form': form
+        }
+
+        if form.is_valid():
+            conversation_message = form.save(commit=False)
+            conversation_message.conversation = conversation
+            conversation_message.created_by = request.user
+            conversation_message.save()
+
+            conversation.save()
+
+            return redirect('conversation_messages', pk=pk)
+
+        return render(
+            request, 'conversations/conversation_messages.html', context
+        )

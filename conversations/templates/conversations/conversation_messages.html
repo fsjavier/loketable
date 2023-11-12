@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Conversation {{ profile.first_name }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex justify-content-center my-3">
+        <h2>Your Messages</h2>
+    </div>
+    {% for message in conversation.messages.all %}
+    <div class="row justify-content-center">
+        <div class="col md-10">
+            <div class="card card-products-profile mb-3 mx-auto">
+                <div class="row">
+                    <div class="col d-flex align-items-center text-start">
+                        <div class="card-body ps-3">
+                            <p class="card-title">{{ message.created_by.profile.first_name }}</p>
+                            <div class="card-text" id="product-card-description">
+                                {{ message.content }}
+                            </div>
+                            <p class="card-text text-end"><small class="text-muted">
+                                {{ message.created_date }}</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <form method="POST" class="my-4 py-3">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form | crispy }}
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Submit" class="btn general-purpose-btn my-1">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
