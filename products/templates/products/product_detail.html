@@ -90,7 +90,11 @@
                     </div>
                 </div>
                 {% if request.user.is_authenticated and request.user != product.user %}
-                <a href="{% url 'start_conversation' product.id product.slug%}" class="d-flex justify-content-center btn mb-3">Contact producer</a>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <a href="{% url 'start_conversation' product.id product.slug%}" class="btn general-purpose-btn w-auto mb-3">Contact producer</a>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
             <!-- / Product information -->

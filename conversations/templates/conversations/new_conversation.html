@@ -4,14 +4,23 @@
 
 {% block content %}
     <div class="container form-container">
-        <form method="POST" class="my-4 py-3">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form | crispy }}
-            <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-cancel">Cancel</a>
-                <input type="submit" value="Submit" class="btn general-purpose-btn my-1">
+        <div class="row mt-5">
+            <div class="col text-center mt-3">
+                <h2>Start a chat with {{ product.user.profile.first_name }}</h2>
+                <p>You can ask any doubts and questions about <strong>{{ product.title }}</strong></p>
             </div>
-        </form>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST" class="my-4 py-3">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'product_detail' product.id product.slug %}" class="btn btn-cancel">Cancel</a>
+                        <input type="submit" value="Submit" class="btn general-purpose-btn my-1">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}

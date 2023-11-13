@@ -11,10 +11,10 @@
         <h2>Your Conversations</h2>
     </div>
     {% for conversation in conversations %}
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-3">
         <div class="col-md-10">
             <a href="{% url 'conversation_messages' conversation.pk %}">
-                <div class="card card-products-profile mb-3 mx-auto">
+                <div class="card card-conversation mb-3 mx-auto">
                     <div class="row">
                         <div class="col-sm-4 product-img-profile-container">
                             {% if "placeholder" in conversation.product.image.url %}
@@ -28,7 +28,7 @@
                                 {% for member in conversation.members.all %}
                                     {% if member != request.user %}
                                         <p class="card-title">{{ member.profile.first_name }}</p>
-                                        <div class="card-text" id="product-card-description">
+                                        <div class="card-text">
                                             {{ conversation.product.title }}
                                         </div>
                                         <p class="card-text"><small class="text-muted">
@@ -43,11 +43,28 @@
             </a>
         </div>
     </div>
+
     {% empty %}
     <div class="d-flex justify-content-center my-5">
         <h3>You have currently no conversations</h3>
     </div>
     {% endfor %}
+
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+    <!-- / Pagination -->
 </div>
 
 {% endblock %}

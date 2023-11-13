@@ -411,12 +411,43 @@ hr {
     color: var(--cloud-white);
 }
 
+/* Conversations */
+
+.card-conversation {
+    background-color: var(--off-lavender);
+    border: none;
+}
+
+#card-conversation-messages:hover {
+    box-shadow: none;
+}
+
+#messages-container {
+    height: 50vh;
+    overflow: scroll;
+}
+
+#message-form-conversation {
+    width: 75%;
+    margin: 0 auto;
+}
+
+#icon-menu-conversation:hover,
+#profile-pic-conversation:hover {
+    box-shadow: none;
+}
+
+
 /* Product detail */
 .product-detail-image {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 5px;
+}
+
+#profile-image-conversation {
+    margin: 0.3rem auto 0;
 }
 
 .product-detail-description {
