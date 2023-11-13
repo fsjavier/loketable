@@ -16,7 +16,7 @@ class StartConversation(LoginRequiredMixin, View):
     def get(self, request, product_id, slug):
         """
         If a conversation already exists for the product
-        redirtec the user to it.
+        redirect the user to it.
         If not, render the form.
         """
         product = get_object_or_404(Product, id=product_id)
@@ -37,11 +37,20 @@ class StartConversation(LoginRequiredMixin, View):
                 'conversation_messages', pk=conversations.first().id
             )
 
+        # If a user types the url to start a conversation for a
+        # product that is not available redirect to Products page
+        if not product.available:
+            return redirect('products')
+
         form = ConversationMessageForm()
+        context = {
+            'form': form,
+            'product': product
+        }
         return render(
             request,
             'conversations/new_conversation.html',
-            {'form': form}
+            context
         )
 
     def post(self, request, product_id, slug):
@@ -106,7 +115,7 @@ class ConversationMessages(LoginRequiredMixin, View):
     def get(self, request, pk):
         """
         Get all messages and passed them together
-        with the form. If the user tries to access a 
+        with the form. If the user tries to access a
         non-existing conversation redirect to Inbox
         """
 
