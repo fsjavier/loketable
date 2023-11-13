@@ -12,6 +12,14 @@ class ConversationMessageForm(forms.ModelForm):
             'content',
         ]
 
+        widgets = {
+            'content': forms.Textarea(
+                attrs={
+                    'placeholder': 'Type a message',
+                    'rows': 3,
+                })
+        }
+
         labels = {
-            'content': 'Message',
+            'content': ''
         }
