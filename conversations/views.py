@@ -106,19 +106,24 @@ class ConversationMessages(LoginRequiredMixin, View):
     def get(self, request, pk):
         """
         Get all messages and passed them together
-        with the form
+        with the form. If the user tries to access a 
+        non-existing conversation redirect to Inbox
         """
-        conversation = Conversation.objects.filter(
-            members__in=[request.user.id]).get(pk=pk)
-        form = ConversationMessageForm()
-        context = {
-            'conversation': conversation,
-            'form': form
-        }
 
-        return render(
-            request, 'conversations/conversation_messages.html', context
-        )
+        try:
+            conversation = Conversation.objects.filter(
+                members__in=[request.user.id]).get(pk=pk)
+            form = ConversationMessageForm()
+            context = {
+                'conversation': conversation,
+                'form': form
+            }
+            return render(
+                request, 'conversations/conversation_messages.html', context
+            )
+
+        except Conversation.DoesNotExist:
+            return redirect('inbox_conversations')
 
     def post(self, request, pk):
         """
