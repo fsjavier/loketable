@@ -37,11 +37,6 @@ class StartConversation(LoginRequiredMixin, View):
                 'conversation_messages', pk=conversations.first().id
             )
 
-        # If a user types the url to start a conversation for a
-        # product that is not available redirect to Products page
-        if not product.available:
-            return redirect('products')
-
         form = ConversationMessageForm()
         context = {
             'form': form,

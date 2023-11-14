@@ -15,30 +15,36 @@
         <div class="col-md-10">
             <a href="{% url 'conversation_messages' conversation.pk %}">
                 <div class="card card-conversation mb-3 mx-auto">
-                    <div class="row">
-                        <div class="col-sm-4 product-img-profile-container">
-                            {% if "placeholder" in conversation.product.image.url %}
-                                <img src="{% static 'images/market_default.webp' %}" alt="{{ conversation.product.title }}" class="product-img-profile">
-                            {% else %}
-                                <img src="{{ conversation.product.image.url }}" class="product-img-profile" alt="{{ conversation.product.title }}">
-                            {% endif %}
-                        </div>
-                        <div class="col d-flex align-items-center text-start">
-                            <div class="card-body ps-3">
-                                {% for member in conversation.members.all %}
-                                    {% if member != request.user %}
-                                        <p class="card-title">{{ member.profile.first_name }}</p>
-                                        <div class="card-text">
-                                            {{ conversation.product.title }}
-                                        </div>
-                                        <p class="card-text"><small class="text-muted">
-                                            Last message @ {{ conversation.modified_date }}</small>
-                                        </p>
-                                    {% endif %}
-                                {% endfor %}
+
+                    <!-- Disabled Tooltip -->
+                    <div class="card-body card-products-body" tabindex="0" {%if not conversation.product.available %}data-bs-toggle="tooltip"
+                    data-bs-title="{% if request.user == conversation.product.user %}You have{% else %}{{ conversation.product.user.profile.first_name}} has{% endif %} marked {{ conversation.product.title }} unavailable"{% endif %}>
+                        <div class="row">
+                            <div class="col-sm-4 product-img-profile-container">
+                                {% if "placeholder" in conversation.product.image.url %}
+                                    <img src="{% static 'images/market_default.webp' %}" alt="{{ conversation.product.title }}" class="product-img-profile">
+                                {% else %}
+                                    <img src="{{ conversation.product.image.url }}" class="product-img-profile" alt="{{ conversation.product.title }}">
+                                {% endif %}
+                            </div>
+                            <div class="col d-flex align-items-center text-start">
+                                <div class="card-body ps-3">
+                                    {% for member in conversation.members.all %}
+                                        {% if member != request.user %}
+                                            <p class="card-title">{{ member.profile.first_name }}</p>
+                                            <div class="card-text">
+                                                {{ conversation.product.title }}
+                                            </div>
+                                            <p class="card-text"><small class="text-muted">
+                                                Last message @ {{ conversation.modified_date }}</small>
+                                            </p>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </a>
         </div>
@@ -67,4 +73,14 @@
     <!-- / Pagination -->
 </div>
 
+{% endblock %}
+
+
+<!-- Script for BS tooltip -->
+{% block extra_js %}
+    <!-- Bootstrap Tooltips initialization -->
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
 {% endblock %}
