@@ -60,9 +60,9 @@ I've adopted Agile methodology for project planning, using GitHub Projects as th
 
 ##### EPIC: Conversations
 ##### User Stories:
-- As a registered user I can access my inbox so that I can see a list of my conversations.
-- As a registered user I can send a message to another user so that I can get more information about a product.
-- As a registered user I can answer received messages from other users so that I can provide more information about my products.
+- As a registered user I can access my inbox so that I can see a list of my conversations (could have / done).
+- As a registered user I can send a message to another user so that I can get more information about a product (could have / done).
+- As a registered user I can answer received messages from other users so that I can provide more information about my products (could have / done).
 
 ### Wireframes
 The wireframes depict the project's initial concept and planning. However, adjustments were made during development, and new features may have been incorporated along the way.
@@ -81,6 +81,14 @@ The wireframes depict the project's initial concept and planning. However, adjus
 
 <details><summary>Favorites</summary>
 <img src="documentation/wireframes/wireframe_favorites.png">
+</details>
+
+<details><summary>Inbox</summary>
+<img src="documentation/wireframes/wireframe_inbox.png">
+</details>
+
+<details><summary>Conversation messages</summary>
+<img src="documentation/wireframes/wireframe_conversation_messages.png">
 </details>
 
 ### Design Choices
@@ -112,7 +120,7 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Clickin on the avatar displays the menu:
     - If the user is not logged in there are links to register and log in.
-    - It the user is logged in there are links to the profile, to add a product and to log out.
+    - It the user is logged in there are links to the profile, Inbox, to add a product and to log out.
 
 - Logo links to home page:
     - If user is not logged in the home page is the landing page.
@@ -227,7 +235,8 @@ All features have been prioritized and developed in response to the needs outlin
 - The product information is divided in 3 areas:
     - Product photo
     - Product name and description
-    - Producer (with link to the profile), quantity, price, location and category.
+    - Details: Producer (with link to the profile), quantity, price, location and category
+        - Below there is a link to contact the producer if the user is logged in and the product is not their own
 
 - If a user enters the url of a product marked as unavailable a modal is displayed indicating it, which can only be closed clicking on the link to "all available products"
 
@@ -239,6 +248,9 @@ All features have been prioritized and developed in response to the needs outlin
 </details>
 <details><summary>Products Details - Small Screen</summary>
 <img src="documentation/readme_images/product_details/product_details_small_screen.png">
+</details>
+<details><summary>Products Details - Own Product</summary>
+<img src="documentation/readme_images/product_details/product_details_own_product.png">
 </details>
 <details><summary>Products Details - Not available</summary>
 <img src="documentation/readme_images/product_details/product_details_not_available.png">
@@ -275,6 +287,63 @@ All features have been prioritized and developed in response to the needs outlin
 </details>
 <details><summary>Profile Page - Somebody else's Profile</summary>
 <img src="documentation/readme_images/profile_page/profile_other.png">
+</details>
+
+#### Inbox Page - Conversations
+
+- All existing conversations are listed. If there are no conversation a text is displayed saying so.
+
+- Each conversation has the same card style as the products listed in the profile. The information in each card is the following:
+    - Product photo.
+    - User having the conversation with.
+    - Product title.
+    - Date and time of last message.
+
+- Clicking on a conversation redirects the user to the selected conversation page.
+
+- If a conversation is about a product that is now unavailable, hovering over it displays a tooltip. The link is still active.
+
+- Pagination is implemented, eight conversations are displayed per page.
+
+<details><summary>Inbox Page</summary>
+<img src="documentation/readme_images/inbox/inbox.png">
+</details>
+<details><summary>Inbox Page - Product unavailable</summary>
+<img src="documentation/readme_images/inbox/inbox_product_unavailable.png">
+</details>
+
+#### Conversations Messages
+
+- The Page is split in 3 sections:
+    - At the top there is a button to go back to the Inbox page
+    - Below there is a header and all the messages.
+        - The height for the messages section is fixed and the user can scroll through them. When the page loads, it scrolls to the bottom, where the most recent message is.
+    - At the bottom there is the text field to write a new message and the button to send the message.
+
+- Each message has the profile picture of the user, the profile name, the message content and the date and time.
+
+- If a conversation is about a product that is now unavailable, a modal is displayed. This modal is can be closed and the conversation can be continued.
+
+<details><summary>Conversation messages</summary>
+<img src="documentation/readme_images/inbox/conversation_messages.png">
+</details>
+<details><summary>Conversation messages - Product unavailable</summary>
+<img src="documentation/readme_images/inbox/conversation_messages_product_unavailable.png">
+</details>
+
+#### Start Conversation
+
+- When the user clicks "Contact producer" in the Product Details Page:
+    - If a conversation between the users about the product already exists, the user is redirected to it.
+    - If it's a new conversation the user is redirected to the New Conversation Page, where a message can be sent.
+
+- If the user types a url to start a conversation about a product marked as unavailable a static modal is displayed and the user can only go back to the Products Page.
+
+<details><summary>Start Conversation</summary>
+<img src="documentation/readme_images/inbox/new_conversation_message.png">
+</details>
+<details><summary>Start Conversation - Product unavailable</summary>
+<img src="documentation/readme_images/inbox/new_conversation_message_unavailable.png">
 </details>
 
 #### Favorites Page
@@ -320,7 +389,8 @@ All features have been prioritized and developed in response to the needs outlin
     - Add a product to favorites / remove a product from favorites.
     - Edit profile.
     - Enable / Disable a product.
-    - Add / Edit / Delete a product
+    - Add / Edit / Delete a product.
+    - Start a conversation by sending a message to a producer.
 
 <details><summary>Sign In</summary>
 <img src="documentation/readme_images/messages/message_sign_in.png">
@@ -354,6 +424,9 @@ All features have been prioritized and developed in response to the needs outlin
 </details>
 <details><summary>Diable Product</summary>
 <img src="documentation/readme_images/messages/message_disable_product.png">
+</details>
+<details><summary>Start Conversation - Message sent</summary>
+<img src="documentation/readme_images/messages/start_conversation.png">
 </details>
 
 
@@ -390,16 +463,24 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Images uploaded by users should be limited in size and compressed to keep storage more efficient and allow faster downloads.
 
+- Split inbox messages in two: The ones about the user's own products and the ones sent about other users' products.
+
+- Users will be able to delete conversation from their inbox.
+
 
 ## Database Design
 
-The ERD has been design with Lucidchart. The database comprises three models: 
+The ERD has been designed with Lucidchart. The database comprises three models: 
 
 - Profile model for the users profile information.
 
 - Product model for the products information.
 
 - Favorite model acts as a bridge between users and products, allowing users to create a personalized list of favored products.
+
+- Conversation model for the conversations between users about a product.
+
+- ConversationMessage for the messages in a conversation.
 
 ![](documentation/readme_images/ERD_design.png)
 
@@ -618,6 +699,7 @@ The project will now of been cloned on your local machine for use
 - A substantial part of the inspiration for structuring the Django project, creating models, and implementing views was drawn from the following tutorials:
     - [Dee MC's Recipe Sharing Tutorial](https://www.youtube.com/playlist?list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
     - [I Think Therefore I Blog](https://github.com/Code-Institute-Solutions/Django3blog) from Code Institue
+    - [Learn Django by Building an Online Marketplace](https://www.youtube.com/watch?v=ZxMB6Njs3ck) from freeCodeCamp.org for conversation messages
 - [Bootstrap documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) has been used all along the project
 - Approach to add and remove an item from the user's favorites from the products list view using [get_or_create() from Let's code more](https://www.letscodemore.com/blog/django-get-or-create/)
 - How to create a slug on the front-end from [Stackoverflow](https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django)
