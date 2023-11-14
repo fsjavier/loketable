@@ -117,6 +117,7 @@ There is a minor issue with Safari and Firefox, where the image in the Home Page
 | Search bar not being displayed in the favorite products list. | I had the wrong name for the favorites url in the custom_tags.py file. |
 | Performing a search with the search bar in the Favorites Page returns results from all products and not only the Favorites. | Remove the action url in the search bar sending the user to the products list page. |
 | A logged out user typing the user favorites url caused a server error. | Add `LoginRequiredMixin` to the view. |
+| A user trying to access a conversation that doesn't exist raises and DoesNotExist error. | Catch the error with a try-except block and redirect the user to the Inbox. |
 
 ### Fixed Bugs
 
@@ -146,6 +147,15 @@ No errors or warnings to show.
 #### Profile Page
 No errors or warnings to show.
 
+#### Inbox / Conversation Page
+No errors or warnings to show.
+
+#### Conversation Messages Page
+No errors or warnings to show.
+
+#### Start New Conversation Page
+No errors or warnings to show.
+
 #### Sign in Page
 No errors or warnings to show.
 
@@ -169,8 +179,7 @@ No errors found
 </details>
 
 ### JavaScript [JSHint](https://jshint.com/)
-JSHint quality tool has been used to test the code, without finding any problems.
-The warnings reported were due to bootstrap undefined or unused variables and to the use of templating lanaguage.
+JSHint quality tool has been used to test the code, without finding any problems. The warnings reported were due to bootstrap undefined or unused variables.
 
 <details><summary>profile.js</summary>
 <img src="documentation/tests/javascript/profile.js.png">
@@ -183,6 +192,15 @@ The warnings reported were due to bootstrap undefined or unused variables and to
 </details>
 <details><summary>script in product_detail.html</summary>
 <img src="documentation/tests/javascript/script_product_detail.html.png">
+</details>
+<details><summary>script in new_conversation.html</summary>
+<img src="documentation/tests/javascript/script_new_conversation.html.png">
+</details>
+<details><summary>script in inbox_conversation.html</summary>
+<img src="documentation/tests/javascript/script_inbox_conversations.html.png">
+</details>
+<details><summary>script in conversation_messages.html</summary>
+<img src="documentation/tests/javascript/script_conversation_messages.html.png">
 </details>
 
 ### [Python Linter](https://pep8ci.herokuapp.com/)
@@ -208,6 +226,12 @@ For the following files the result was "All clear, no errors found":
 - profiles/models.py
 - profiles/urls.py
 - profiles/views.py
+- conversations/admin.py
+- conversations/apps.py
+- conversations/forms.py
+- conversations/models.py
+- conversations/urls.py
+- conversations/views.py
 
 ## Accessibility
 
@@ -255,6 +279,30 @@ One accesibility issue that was highlighted was the size of the tappable heart i
 <img src="documentation/tests/lighthouse/lighthouse_profile_mobile.png">
 </details>
 
+#### Inbox - Conversations Page
+<details><summary>Inbox Page - Desktop</summary>
+<img src="documentation/tests/lighthouse/lighthouse_inbox_desktop.png">
+</details>
+<details><summary>Inbox Page - Mobile</summary>
+<img src="documentation/tests/lighthouse/lighthouse_inbox_mobile.png">
+</details>
+
+#### Conversations Messages Page
+<details><summary>Conversation Messages Page - Desktop</summary>
+<img src="documentation/tests/lighthouse/lighthouse_conversation_messages_desktop.png">
+</details>
+<details><summary>Conversation Messages Page - Mobile</summary>
+<img src="documentation/tests/lighthouse/lighthouse_conversation_messages_mobile.png">
+</details>
+
+#### Start Conversation Page
+<details><summary>Start Conversation Page - Desktop</summary>
+<img src="documentation/tests/lighthouse/lighthouse_start_conversation_desktop.png">
+</details>
+<details><summary>Start Conversation Page - Mobile</summary>
+<img src="documentation/tests/lighthouse/lighthouse_start_conversation_mobile.png">
+</details>
+
 #### Add / Edit Product Page
 <details><summary>Add / Edit Product Page - Desktop</summary>
 <img src="documentation/tests/lighthouse/lighthouse_add_product_desktop.png">
@@ -273,6 +321,8 @@ One accesibility issue that was highlighted was the size of the tappable heart i
 
 ### Wave WebAIM
 
-The WAVE WebAIM web accessibility tool was used throughout the development of the website. It alerted me to issues such as low contrast in the 'Sign In / Log In / Log Out' links, what led prompting me to revise their styles for better accessibility. Additionally, it identified a missing 'aria-label' attribute in the switch for activating or deactivating products in the users profiles, which I then addressed.
+The WAVE WebAIM web accessibility tool was used throughout the development of the website. It alerted me to issues such as low contrast in the 'Sign In / Log In / Log Out' links, what led prompting me to revise their styles for better accessibility. It also warned me of some pages missing h1 elements.
+
+Additionally, it identified two missing 'aria-label' attributes: One in the switch for activating or deactivating products in the users profiles, and a second one in the form to send a message to another user, which I then addressed.
 
 In the final rounds of website testing, no accessibility issues were identified.
