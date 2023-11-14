@@ -425,6 +425,8 @@ hr {
 #messages-container {
     height: 45vh;
     overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #message-form-conversation {
