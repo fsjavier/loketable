@@ -17,6 +17,7 @@ class ConversationMessageForm(forms.ModelForm):
                 attrs={
                     'placeholder': 'Type a message',
                     'rows': 3,
+                    'aria-label': 'Message'
                 })
         }
 
