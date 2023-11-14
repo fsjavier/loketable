@@ -41,6 +41,14 @@ h4, h5, h6 {
     font-family: var(--title);
 }
 
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -327,7 +335,6 @@ footer {
 #about-me {
     max-width: 95%;
     margin: 0 auto;
-    font-size: 1rem;
     padding-top: 0.75rem;
 }
 
