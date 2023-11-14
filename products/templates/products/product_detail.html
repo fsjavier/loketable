@@ -104,15 +104,15 @@
 
 <!-- Script checking if the product is not available and triggering the modal -->
 {% block extra_js %}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            {% if not product.available %}
-            const myModal = new bootstrap.Modal('#staticBackdrop', {
-                keyboard: false,
-                });
+    {% if not product.available %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const myModal = new bootstrap.Modal('#staticBackdrop', {
+                    keyboard: false,
+                    });
 
-            myModal.show();
-            {% endif %}
-        });
-    </script>
+                myModal.show();
+            });
+        </script>
+    {% endif %}
 {% endblock %}
