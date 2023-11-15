@@ -73,7 +73,36 @@
 | The search and category filter show what is being filtered for only from favorited products. | 1. Go to the Favorites Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar. | The message 'Available Products for "xxx"' is displayed. | Works as expected. |
 | If a search or category filter return no results a message saying so is displayed. | 1. Go to the Favorites Page.<br>2. Click on any of the category buttons at the top of the page or enter a search term in the search bar for which it's known there are no results, eg. "dinosaurs". | The message 'There are currently no products available' is shown. Additionally, there is a link to go back to all available favorited products. | Works as expected. |
 | When a product is not available is displayed but not clickable. | 1. Go to the Favorites Page.<br>2. Hover over an item that has been marked unavailable. | The item is greyed out, a tooltop indicates that is currently unavailable and the item can't be clicked to go to the details page. | Works as expected. |
-| A logged out user can't access the favorites page | A logged out user tries to access the favorites page by typing the url. | The user is redirected to the Log In Page. After login /signing in is redirected to the favorites page. | Works as expected. |
+| A logged out user can't access the Favorites Page | A logged out user tries to access the Favorites Page by typing the url. | The user is redirected to the Log In Page. After login /signing in is redirected to the Favorites page. | Works as expected. |
+
+### Inbox - Conversations Page
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A logged user can't access the Inbox Page. | As a logged out user enter manually the inbox url. | The user is redirected to the Log In Page. After login /signing in is redirected to the Inbox Page. | Works as expected. |
+| A user that hasn't started any conversation accessing the Inbox Page is notified about not having conversations. | As a logged in user navigate to the Inbox Page. | The text "You have currently no conversations" is displayed. | Works as expected. |
+| A user with started conversations acceses the Inbox Page. | 1. Send a message to a producer about their product.<br>2. Navigate to the Inbox Page. | The conversation summary (Image, User name, Product title and date of last message) is displayed. If there are more conversations they are all listed. | Works as expected. |
+| If there are more than 8 conversations they are paginated. | As logged in user go to the Inbox Page. | If there are more than 8 conversations, at the bottom of the page there is a link ("Next") that loads the next page with the next 8 conversations. | Works as expected. |
+| Clicking a conversations takes the user to the conversation messages. | 1. As logged in user go to the Inbox Page.<br>2. Click on one of the conversations. | The user is redirected to the Conversation Messages Page. | Works as expected. |
+
+### Conversation Messages Page
+
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| The "Back to Inbox" button takes the user back to their inbox. | 1. As logged in user go to the Inbox Page.<br>2. Click on one of the conversations.<br>3. In the Conversation Messages Page click the "Back to Inbox" at the top of the page. | The user is redirected back to their Inbox Page. | Works as expected. |
+| A user can't access other user's conversations | A user types the url of somebody else's conversation. | The user is redirected to their Inbox Page. | Works as expected. |
+| A user tries to access a conversation that doesn't exist | A user types the url of a conversation that doesn't exist. | The user is redirected to their Inbox Page. | Works as expected. |
+| A user can see the full history of messages in a conversation. | 1. As logged in user go to the Inbox Page.<br>2. Click on one of the conversations. | If the conversation has a longer history of messages, when the page loads it scrolls down to the latest. The user can scroll up to see all messages. | Works as expected. |
+| A user can send a message inside the conversation. | 1. As logged in user go to the Inbox Page.<br>2. Click on one of the conversations.<br>3. At the bottom of the page write a message and click "Send". | The message is sent, the page reloads and it's displayed as the last message. | Works as expected. |
+
+### Start a Conversation / New Conversation Page
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A user is taken to the New Conversation Page when starting a conversation for a product. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer". | The New Conversation Page loads. | Works as expected. |
+| A user can go back to the Product Details from the New Conversation Page. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer".<br> In the New Conversation Page click "Cancel". | The user is redirected back to the Product Details Page. | Works as expected. |
+| A user can start a conversation by sending a message from the New Conversation Page. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer".<br> In the New Conversation Page type a message and click "Send". | The message is sent and the user is redirected back to the Product Details Page. | Works as expected. |
+| A user can continue a started conversation by clicking "Contact producer". | 1. Click on a product for which there is already a started conversation.<b2> In the Product Details Page, click "Contact Producer". | The user is redirected to the corresponding Conversation Messages. | Works as expected. |
+| A logged out user can't start a conversation. | As a logged out user enter manually the url to start a new conversation about a product. | The user is redirected to the Log In Page. After login /signing in is redirected either to the New Conversation Page or the Conversation Messages Page, depending if the user had already started a conversation about the product before. | Works as expected. |
 
 ### Add / Edit Product Page
 |     Description     |     Steps     |     Expected Outcome     |  Outcome  |
