@@ -155,6 +155,10 @@ There is a minor issue with Safari and Firefox, where the image in the Home Page
 
 ## Unit Testing
 
+Unit tests have been implemented to test basic functionality of models, forms and views.
+
+![](documentation/tests/unit_tests.png)
+
 ## Validator Testing
 
 ### HTML [W3C Validator](https://validator.w3.org/)
