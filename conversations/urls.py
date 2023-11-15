@@ -13,7 +13,7 @@ urlpatterns = [
         name='inbox_conversations'
     ),
     path(
-        'conversations/<int:pk>',
+        'conversations/<int:pk>/',
         ConversationMessages.as_view(),
         name='conversation_messages'
     ),
