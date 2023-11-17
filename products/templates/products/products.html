@@ -101,12 +101,16 @@
 
                     <!-- Content for the case that there are no products -->
                     {% empty %}
-                        <h2 class="text-center my-5">There are currently no products available</h2>
                         {% with request.resolver_match.url_name as url_name %}
                             {% if url_name == 'products' %}
+                                <h2 class="text-center my-5">There are currently no products available</h2>
                                 <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'products' %}" class=" home-link">See Available Products</a></button>
-                            {% elif url_name == 'favorite_products' %}
-                                <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'favorite_products' %}" class=" home-link">See Available Products</a></button>
+                            {% elif url_name == 'favorite_products' and favorites %}
+                                <h2 class="text-center my-5">There are no Favorite products to display</h2>
+                                <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'favorite_products' %}" class=" home-link">See All Favorite Products</a></button>
+                                {% elif url_name == 'favorite_products' and not favorites %}
+                                <h2 class="text-center my-5">There are no Favorite products to display</h2>
+                                <button class="btn d-flex justify-content-center w-auto mx-auto my-2"><a href="{% url 'products' %}" class=" home-link">See All Available Products</a></button>
                             {% endif %}
                         {% endwith %}
                     {% endfor %}

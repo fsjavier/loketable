@@ -346,4 +346,7 @@ class FavoriteProductsList(LoginRequiredMixin, generic.ListView):
             for product in products:
                 product.is_favorite = product.id in favorite_product_ids
 
+            if favorite_product_ids:
+                context['favorites'] = True
+
         return context
