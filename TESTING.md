@@ -147,6 +147,7 @@ There is a minor issue with Safari and Firefox, where the image in the Home Page
 | Performing a search with the search bar in the Favorites Page returns results from all products and not only the Favorites. | Remove the action url in the search bar sending the user to the products list page. |
 | A logged out user typing the user favorites url caused a server error. | Add `LoginRequiredMixin` to the view. |
 | A user trying to access a conversation that doesn't exist raises and DoesNotExist error. | Catch the error with a try-except block and redirect the user to the Inbox. |
+| Clicking multiple times the "Sign In" button in the Log In Page caused a 403 error. | Add JavaScript disabling the button once it's been clicked. |
 
 ### Unfixed Bugs
 
