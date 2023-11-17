@@ -50,12 +50,12 @@ I've adopted Agile methodology for project planning, using GitHub Projects as th
 ##### User Stories:
 - As a registered user I can create, view, update and delete my own products so that I can have full control about what I offer (must have / done).
 - As a registered user I can access my list of favorite products through my profile so that have a quick overview of them (should have / done).
-- As a registered user I can view, update and delete my profile so that I can have full control over it (must have / done).
+- As a registered user I can view and update my profile so that I can have full control over it (must have / done).
 
 ##### EPIC: Interaction with Products
 ##### User Stories:
 - As a registered user I can mark/unmark products as favorites so that I can easily find them later on (should have / done).
-- As a registered user I can navigate to the detailed view of products so that I can see the full information and how to contact the producer.
+- As a registered user I can navigate to the detailed view of products so that I can see the full information and how to contact the producer (must have / done).
 - As a user I can view the profiles of other users so that I see all their listed products and public profile information (must have / done).
 
 ##### EPIC: Conversations
@@ -118,13 +118,13 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Navigation bar with Logo, Search bar and avatar.
 
-- Clickin on the avatar displays the menu:
+- Clicking on the avatar displays the menu:
     - If the user is not logged in there are links to register and log in.
     - It the user is logged in there are links to the profile, Inbox, to add a product and to log out.
 
 - Logo links to home page:
     - If user is not logged in the home page is the landing page.
-    - If the user is logged in the user is redirected to the products page.
+    - If the user is logged in the user is redirected to the Products Page.
 
 - The search bar is located in the middle if the screen is big enough. For small screens it moves to the next row.
 
@@ -152,15 +152,13 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Contains links to social media, which open in a new window / tab.
 
-<details><summary>Navigation bar logged in user small screen</summary>
+<details><summary>Footer</summary>
 <img src="documentation/readme_images/footer/footer.png">
 </details>
 
 #### Home Page
 
 - Logged out users land on a welcome page with a hero image and links to register, log in and visit the products page.
-
-- The search bar is displayed in the navigation bar, which allows users to search for products directly from this page.
 
 - Logged in users are redirected to the products page and won't see this page.
 
@@ -192,13 +190,13 @@ All features have been prioritized and developed in response to the needs outlin
 
 - The products are ordered in descending order by the last time they were updated. The goal is to order them by distance to the user, but this has not been achieved in this iteration.
 
-- Signed users are directly redirected to this page if they enter the home page url, as well as first time users after registration.
+- Logged in users are directly redirected to this page if they enter the home page url, as well as first time users after registration.
 
 - The search bar is displayed in the navigation bar.
 
 - Buttons displaying all possible categories below the navigation bar allow users to filter the products by category.
 
-- If none products match a search term or a category filter, there is a message indicating that and a link to all available products.
+- If no products match a search term or a category filter, there is a message indicating that and a link to all available products.
 
 - Pagination has been implemented, 8 products are displayed per page.
 
@@ -238,7 +236,7 @@ All features have been prioritized and developed in response to the needs outlin
     - Details: Producer (with link to the profile), quantity, price, location and category
         - Below there is a link to contact the producer if the user is logged in and the product is not their own
 
-- If a user enters the url of a product marked as unavailable a modal is displayed indicating it, which can only be closed clicking on the link to "all available products"
+- If a user enters the url of a product marked as unavailable a modal is displayed indicating it, which can only be closed clicking on the link to go to "All available products"
 
 <details><summary>Products Details - Big Screen</summary>
 <img src="documentation/readme_images/product_details/product_details_big_screen.png">
@@ -301,7 +299,7 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Clicking on a conversation redirects the user to the selected conversation page.
 
-- If a conversation is about a product that is now unavailable, hovering over it displays a tooltip. The link is still active.
+- If a conversation is about a product that is not unavailable, hovering over it displays a tooltip. The link to go the conversation is still active.
 
 - Pagination is implemented, eight conversations are displayed per page.
 
@@ -322,7 +320,7 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Each message has the profile picture of the user, the profile name, the message content and the date and time.
 
-- If a conversation is about a product that is now unavailable, a modal is displayed. This modal is can be closed and the conversation can be continued.
+- If a conversation is about a product that is not unavailable, a modal is displayed. This modal is can be closed and the conversation can be continued.
 
 <details><summary>Conversation messages</summary>
 <img src="documentation/readme_images/inbox/conversation_messages.png">
@@ -349,7 +347,7 @@ All features have been prioritized and developed in response to the needs outlin
 #### Favorites Page
 
 - It's the same as the Products Page with a few changes:
-    - Not logged in users can't access it, if the enter the url directly they'll get an error page prompting them to return to the Home Page.
+    - Not logged in users can't access it. If they enter the url directly, the Log in Page loads and only after logging in or signing up they'll be redirected to the Favorites Page.
     - Instead of filtering and displaying all available products, it displays the products added to the user's favorites.
     - Not availabe products will be displayed but greyed out and can't be clicked. The reasons to keep them in the list are:
         - For the user to keep track of what they have added to their favorites. From this page is still possible for the user to remove the product from their favorites.
@@ -449,13 +447,15 @@ All features have been prioritized and developed in response to the needs outlin
 
 ### Future Features
 
-- To enhance the site's functionality, the idea is to introduce more flexible product sorting options. In the future, there should be a default sorting method based on the user's proximity. This may involve accessing the user's location or requesting it from them directly. 
+- To enhance the site's functionality, the idea is to introduce more flexible product sorting options. In the future, there should be a default sorting method based on the user's proximity. This may involve accessing the user's location or requesting it from them directly.
 
 - In addition to distance based sorting, I would like to implement a relevancy based sorting option to help users find the most relevant products for their needs.
 
+- After adding / removing a product from Favorites the user should stay in the page they are, keeping the filters and search terms if any had been applied.
+
 - A map feature with products location could be added to help users visually locate producers nearby.
 
-- To offer more privacy options, users will have the ability to make their profiles invisible to others or delete their profiles.
+- To offer more privacy options, users will have the ability to make their profiles invisible to others and delete their profiles.
 
 - For improved security and user management users might log in with Google or Facebook and email verification should be made mandatory.
 
@@ -465,12 +465,14 @@ All features have been prioritized and developed in response to the needs outlin
 
 - Split inbox messages in two: The ones about the user's own products and the ones sent about other users' products.
 
+- Notify the users when they receive a new message.
+
 - Users will be able to delete conversation from their inbox.
 
 
 ## Database Design
 
-The ERD has been designed with Lucidchart. The database comprises three models: 
+The ERD has been designed with Lucidchart. The database comprises five models: 
 
 - Profile model for the users profile information.
 
@@ -567,7 +569,7 @@ The full testing documentation can be found in [TESTING.md](TESTING.md)
 
 ## Deployment
 
-This site has been deployed to Heroku, using ElephantSQL database and Cloudinary, following the following steps:
+This site has been deployed to Heroku, using ElephantSQL database and Cloudinary, following these steps:
 
 1. Installing Django and supporting libraries
 
@@ -612,7 +614,7 @@ This site has been deployed to Heroku, using ElephantSQL database and Cloudinary
         ````
     - Remove the secret key provided by Django in settings.py and refer to variable in env.py instead (``SECRET_KEY = os.environ.get('SECRET_KEY')``)
 
-    - Optional: To keep using the sqlite database in our development environment as well as as having Debug on, but off in production and use the new database, create a new variable called DEVELOPMENT at the top of settings.py. This means that if there's an environment variable called DEVELOPMENT in the environment this variable will be set to its value. And otherwise, it'll be false. 
+    - Optional: To keep using the sqlite database in the development environment as well as as having Debug on, but off in production and use the new database, create a new variable called DEVELOPMENT at the top of settings.py. This means that if there's an environment variable called DEVELOPMENT in the environment this variable will be set to its value. And otherwise, it'll be false. 
         ````
         development = os.environ.get('DEVELOPMENT', False)
         ````
@@ -671,7 +673,7 @@ This site has been deployed to Heroku, using ElephantSQL database and Cloudinary
 9. Heroku Deployment:
 
     - Click Deploy tab in Heroku
-    - In the 'Deployment method' section select 'Github' and click the 'connect to Github'
+    - In the 'Deployment method' section select 'Github' and click 'Connect to Github'
     - In the 'search' field enter the repository name
     - Connect to link the heroku app with the Github repository
     - Click "Deploy Branch" or enable "Automacti Deploys"
@@ -754,3 +756,7 @@ The project will now of been cloned on your local machine for use
 - apples: Image by [Julita](https://pixabay.com/users/pasja1000-6355831) from [Pixabay](https://pixabay.com/)
 - User Robert: Image by [Michael Strobel](https://pixabay.com/users/lichtsammler-11059614) from [Pixabay](https://pixabay.com/)
 - honey: Image by [Melanie](https://pixabay.com/users/lolame-37761) from [Pixabay](https://pixabay.com/)
+
+### Acknowledgments
+
+Thank you to my mentor Gareth McGirr for his guidance, feedback and resources provided.

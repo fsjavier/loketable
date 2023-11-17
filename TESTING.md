@@ -4,22 +4,22 @@
 
 |     Description     |     Steps     |     Expected Outcome     |  Outcome  |
 |---------------------|---------------|--------------------------|-----------|
-| A user can register. | 1. In the Home Page click "Register" or click the avatar and click "Sign up".<br>2. Enter a username, email (optional) and password. | If the username doesn't already exist and the password is valid, the registration is successful and the user is redirected to the products page. | Works as expected. |
-| A user can log in. | 1. In the Home Page click "Log in" or click the avatar and click "Log in".<br>2. Enter an already existing username and password. | If the username and password are corred, the user is logged in and redirected to the products page. | Works as expected. |
-| A user can log out. | 1. Click the profile picture.<br>2. In the profile menu click "Log out".<br>3.In the Sign Out page confirm by clicking "Sign Out". | The user is logged out and redirected to the home page. | Works as expected. |
+| A user can register. | 1. In the Home Page click "Register" or click the avatar and click "Sign up".<br>2. Enter a username, email (optional) and password. | If the username doesn't already exist and the password is valid, the registration is successful and the user is redirected to the Products Page. | Works as expected. |
+| A user can log in. | 1. In the Home Page click "Log in" or click the avatar and click "Log in".<br>2. Enter an already existing username and password. | If the username and password are correct, the user is logged in and redirected to the Products Page. | Works as expected. |
+| A user can log out. | 1. Click the profile picture.<br>2. In the profile menu click "Log out".<br>3.In the Sign Out page confirm by clicking "Sign Out". | The user is logged out and redirected to the Home Page. | Works as expected. |
 
 ### Navigation Bar
 
 |     Description     |     Steps     |     Expected Outcome     |  Outcome  |
 |---------------------|---------------|--------------------------|-----------|
-| The search bar is displayed in relevant pages for search. | Navigate to Home Page, Products Page or Favorites Page (when logged in). | The search bar is displayed. | Works as expected. |
-| The search bar is not displayed in pages not relevant for search. | Navigate to Sign / Log In Pages, Sing Out Page, Profile Page, Products Detail Page, Edit Profile or Add / Edit Product. | The search bar is not displayed. | Works as expected. |
-| The search bar in the products page return results from all available products. | 1. Go to the Home or Products Page.<br> 2. Click on the search bar.<br>3. Press enter. | Only available products containing in their title, description or category the search term are displayed. | Works as expected. |
-| The search bar in the products page return results from the user's saved favorites. | 1. When logged in go to the profile.<br> 2. Click on the Favorites link.<br>3. Click on the search bar.<br>4. Press enter. | Only products from the favorites list containing in their title, description or category the search term are displayed. | Works as expected. |
+| The search bar is displayed in relevant pages for search. | Navigate to Products Page or Favorites Page (when logged in). | The search bar is displayed. | Works as expected. |
+| The search bar is not displayed in pages not relevant for search. | Navigate to Home, Sign / Log In Pages, Sing Out Page, Profile Page, Inbox, Conversations, Start Conversation, Products Detail Page, Edit Profile or Add / Edit Product. | The search bar is not displayed. | Works as expected. |
+| The search bar in the Products Page return results from all available products. | 1. Go to the Home or Products Page.<br> 2. Click on the search bar.<br>3. Press enter. | Only available products containing in their title, description or category the search term are displayed. | Works as expected. |
+| The search bar in the Products Page return results from the user's saved favorites. | 1. When logged in go to the profile.<br> 2. Click on the Favorites link.<br>3. Click on the search bar.<br>4. Press enter. | Only products from the favorites list containing in their title, description or category the search term are displayed. | Works as expected. |
 | The avatar icon displays the options to Sign In and Log In if the user is not logged in. | In any page click the avatar. | The options to Sign Up and Log In are displayed. | Works as expected. |
 | The avatar icon displays the options to go to Profile, Add a Product and Log out if the user is not logged in. | In any page click the avatar. | The options to go to Profile, Add a Product and Log out are displayed. | Works as expected. |
-| Clicking the Logo takes the loged out user to the Home Page. | Click the logo from any page when the user is not logged id. | The user is taken to the Home Page. | Works as expected. |
-| Clicking the Logo takes the loged in user to the Products Page. | Click the logo from any page when the user is logged id. | The user is taken to the Products Page. | Works as expected. |
+| Clicking the Logo takes the logged out user to the Home Page. | Click the logo from any page when the user is not logged id. | The user is taken to the Home Page. | Works as expected. |
+| Clicking the Logo takes the logged in user to the Products Page. | Click the logo from any page when the user is logged id. | The user is taken to the Products Page. | Works as expected. |
 | A user who has uploaded a profile picture sees their picture instead of the default avatar. | 1. Go the Profile Page.<br>2. Click "Edit Profile".<br>3. Upload a profile picture and submit. | The uploaded profile picture is displayed as avatar. | Works as expected. |
 
 ### Products Page
@@ -29,18 +29,27 @@
 | A logged out user can't add products to favorites. | As a logged out user go to the Products Page. | The products don't have a heart button to add / remove from favorites. | Works as expected. |
 | A logged in user can add products to favorites. | 1. As a logged in user go to the Products Page.<br>2. Click on the heart of an item that is not a favorite already. | The product is added to the list of favorites, displaying now a filled heart. | Works as expected. |
 | A logged in user can remove products from favorites. | 1. As a logged in user go to the Products Page.<br>2. Click on the heart of an item that is already a favorite already. | The product is removed from the list of favorites, displaying now an empty heart. | Works as expected. |
-| The category filter in the products page return results from all available products. | 1. Go to the Products Page.<br> 2. Click on any of the category buttons at the top of the page. | Only available products with the selected category are displayed. | Works as expected. |
-| The search and category filter show what is being filtered for. | 1. Go to the Products Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar. | The message 'Available Products for "xxx"' is displayed. | Works as expected. |
-| If a search or category filter return no results a message saying so is displayed. | 1. Go to the Products Page.<br> 2. Click on any of the category buttons at the top of the page or enter a search term in the search bar for which it's known there are no results, eg. "dinosaurs". | The message 'There are currently no products available' is shown. Additionally, there is a link to go back to all available products. | Works as expected. |
-| Clicking on one of the available products takes the user to the product details page. | 1. Go to the Products Page.<br> 2. Click on any product. | The user is taken to the details page of that product. |
-| Clicking on the producer's name of one of the available products takes the user to the producer's profile page. | 1. Go to the Products Page.<br> 2. Click on the producer's name at the bottom of any product card. | The user is taken to the product producer's profile page. |
-| If there are more than 8 available products they are paginated. | 1. Go to the Products Page. | If there are more than 8 products, at the bottom of the page there is a link ("Next") that loads the next page with the next 8 products. | Works as expected. |
+| The category filter in the products page return results from all available products. | 1. Go to the Products Page.<br>2. Click any of the category buttons at the top of the page. | Only available products with the selected category are displayed. | Works as expected. |
+| The search and category filter show what is being filtered for. | 1. Go to the Products Page.<br>2. Click any of the category buttons at the top of the page or enter a search term in the search bar. | The message 'Available Products for "xxx"' is displayed. | Works as expected. |
+| If a search or category filter return no results a message saying so is displayed. | 1. Go to the Products Page.<br>2. Click on any of the category buttons at the top of the page or enter a search term in the search bar for which it's known there are no results, eg. "dinosaurs". | The message 'There are currently no products available' is shown. Additionally, there is a link to go back to all available products. | Works as expected. |
+| Clicking on one of the available products takes the user to the product details page. | 1. Go to the Products Page.<br>2. Click on any product. | The user is taken to the details page of that product. |
+| Clicking on the producer's name of one of the available products takes the user to the producer's profile page. | 1. Go to the Products Page.<br>2. Click on the producer's name at the bottom of any product card. | The user is taken to the product producer's profile page. |
+| If there are more than 8 available products they are paginated. | Go to the Products Page. | If there are more than 8 products, at the bottom of the page there is a link ("Next") that loads the next page with the next 8 products. | Works as expected. |
 
 ### Product Details Page
 
 |     Description     |     Steps     |     Expected Outcome     |  Outcome  |
 |---------------------|---------------|--------------------------|-----------|
 | Unavailable products urls can be accessed but with restrictions. | A user tries to access the Product Details Page of an unavailable product by typing the url. | The page loads but a static modal is displayed. It can only be closed clicking the link to go back to the Products Page. | Works as expected. |
+
+### Start a Conversation / New Conversation Page
+|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
+|---------------------|---------------|--------------------------|-----------|
+| A user is taken to the New Conversation Page when starting a conversation for a product. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer". | The New Conversation Page loads. | Works as expected. |
+| A user can go back to the Product Details from the New Conversation Page. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer".<br> In the New Conversation Page click "Cancel". | The user is redirected back to the Product Details Page. | Works as expected. |
+| A user can start a conversation by sending a message from the New Conversation Page. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer".<br> In the New Conversation Page type a message and click "Send". | The message is sent and the user is redirected back to the Product Details Page. | Works as expected. |
+| A user can continue a started conversation by clicking "Contact producer". | 1. Click on a product for which there is already a started conversation.<b2> In the Product Details Page, click "Contact Producer". | The user is redirected to the corresponding Conversation Messages. | Works as expected. |
+| A logged out user can't start a conversation. | As a logged out user enter manually the url to start a new conversation about a product. | The user is redirected to the Log In Page. After login /signing in is redirected either to the New Conversation Page or the Conversation Messages Page, depending if the user had already started a conversation about the product before. | Works as expected. |
 
 ### Profile Page
 
@@ -95,15 +104,6 @@
 | A user can see the full history of messages in a conversation. | 1. As logged in user go to the Inbox Page.<br>2. Click on one of the conversations. | If the conversation has a longer history of messages, when the page loads it scrolls down to the latest. The user can scroll up to see all messages. | Works as expected. |
 | A user can send a message inside the conversation. | 1. As logged in user go to the Inbox Page.<br>2. Click on one of the conversations.<br>3. At the bottom of the page write a message and click "Send". | The message is sent, the page reloads and it's displayed as the last message. | Works as expected. |
 
-### Start a Conversation / New Conversation Page
-|     Description     |     Steps     |     Expected Outcome     |  Outcome  |
-|---------------------|---------------|--------------------------|-----------|
-| A user is taken to the New Conversation Page when starting a conversation for a product. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer". | The New Conversation Page loads. | Works as expected. |
-| A user can go back to the Product Details from the New Conversation Page. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer".<br> In the New Conversation Page click "Cancel". | The user is redirected back to the Product Details Page. | Works as expected. |
-| A user can start a conversation by sending a message from the New Conversation Page. | 1. Click on a product.<b2> In the Product Details Page, click "Contact Producer".<br> In the New Conversation Page type a message and click "Send". | The message is sent and the user is redirected back to the Product Details Page. | Works as expected. |
-| A user can continue a started conversation by clicking "Contact producer". | 1. Click on a product for which there is already a started conversation.<b2> In the Product Details Page, click "Contact Producer". | The user is redirected to the corresponding Conversation Messages. | Works as expected. |
-| A logged out user can't start a conversation. | As a logged out user enter manually the url to start a new conversation about a product. | The user is redirected to the Log In Page. After login /signing in is redirected either to the New Conversation Page or the Conversation Messages Page, depending if the user had already started a conversation about the product before. | Works as expected. |
-
 ### Add / Edit Product Page
 |     Description     |     Steps     |     Expected Outcome     |  Outcome  |
 |---------------------|---------------|--------------------------|-----------|
@@ -148,10 +148,11 @@ There is a minor issue with Safari and Firefox, where the image in the Home Page
 | A logged out user typing the user favorites url caused a server error. | Add `LoginRequiredMixin` to the view. |
 | A user trying to access a conversation that doesn't exist raises and DoesNotExist error. | Catch the error with a try-except block and redirect the user to the Inbox. |
 
-### Fixed Bugs
+### Unfixed Bugs
 
-- Removing a product from the favorites list should remove the product and keep the user in the Favorites Page, but it's redirecting the user to the Products Page.
-- The image in the Home Page is not displaying correctly in Safari and Firefox
+- When adding or removing a product from Favorites, the it redirects the user to the Products Page. While not strictly a bug, it may be an inconvenience for users. Particularly, if they have applied a filter, performed a search, or are navigating the Favorites Page, the action of adding or removing a product redirects them to the Products Page.
+- Once the user has uploaded a profile picture or product picture and then goes to edit it, there is a "Currently" field for the image that is always empty.
+- The image in the Home Page is not displaying correctly in Safari and Firefox.
 
 ## Unit Testing
 
@@ -247,24 +248,33 @@ For the following files the result was "All clear, no errors found":
 - home/views.py
 - home/urls.py
 - home/templatetags/custom_tags.py
+- home/tests.py
 - products/admin.py
 - products/apps.py
 - products/forms.py
 - products/models.py
 - products/urls.py
 - products/views.py
+- products/tests_forms.py
+- products/tests_models.py
+- products/tests_views.py
 - profiles/admin.py
 - profiles/apps.py
 - profiles/forms.py
 - profiles/models.py
 - profiles/urls.py
 - profiles/views.py
+- profiles/tests_forms.py
+- profiles/tests_models.py
+- profiles/tests_views.py
 - conversations/admin.py
 - conversations/apps.py
 - conversations/forms.py
 - conversations/models.py
 - conversations/urls.py
 - conversations/views.py
+- conversations/tests_forms.py
+- conversations/tests_views.py
 
 ## Accessibility
 
