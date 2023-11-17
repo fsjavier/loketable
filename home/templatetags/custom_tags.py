@@ -13,7 +13,6 @@ def search_bar_urls(url_name):
     one of the urls that should include the search bar.
     """
     included_urls = [
-        'home',
         'products',
         'favorite_products'
     ]
