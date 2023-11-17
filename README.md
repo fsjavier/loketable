@@ -24,6 +24,11 @@ The website prioritizes a clean and simple design, catering to users of all ages
 
 I've adopted Agile methodology for project planning, using GitHub Projects as the tool. Within the [project](https://github.com/users/fsjavier/projects/3), I've organized work into Epics (Milestones) to group user stories. Each user story includes a title, description, acceptance criteria, tasks, and tags to distinguish between "must have", "should have" and "could have" features. The workflow progresses from "To Do" to "In Progress" while working on user stories and finally to "Done" upon completion.
 
+#### Project Goal
+
+The project aims to support local producers by offering a seamless platform to showcase and distribute their products directly to nearby customers. By eliminating the need for intermediaries, the system facilitates effortless listing, editing, and communication with customers. Simultaneously, it provides consumers with a convenient way to discover and access high-quality products, supporting both local producers and environmentally conscious choices.
+
+
 #### User Stories
 
 ##### EPIC: Admin Functionality
